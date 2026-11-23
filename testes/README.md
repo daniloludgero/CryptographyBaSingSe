@@ -102,6 +102,16 @@ ferramentas/medicao_v52/executar_medicao.sh 2 resultados/v5_2/minha_medicao
 
 Método, ambiente e limites: [`docs/evidencia/MEDICOES_V5_2.md`](../docs/evidencia/MEDICOES_V5_2.md).
 
+## Prova das correções da v5.2
+
+O mesmo exploit escrito contra a v5.1 roda contra o código v5.1 e contra o v5.2, em menos de um minuto. Exige `gcc` com ThreadSanitizer, `scipy` e `pytest`:
+
+```bash
+python3 ferramentas/verificacao_correcoes_v52/reproduzir.py
+```
+
+Explicação de cada achado: [`docs/evidencia/CORRECOES_V5_2.md`](../docs/evidencia/CORRECOES_V5_2.md).
+
 ## Fórmulas CNF grandes
 
 Os arquivos `*.cnf` com mais de 1 MB não ficam na árvore do repositório. Eles são publicados como *asset* de cada release, com soma SHA-256 (veja `ferramentas/LEIAME_CNF.md`). Os geradores em `implementacao/` os recriam: `rsd_round_cnf.py`, `rsd_differential_cnf.py`, `analise_duas_rodadas.py` e `mds_xor_synthesis.py`.

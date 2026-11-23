@@ -600,10 +600,14 @@ class TestFrente2ImplementacaoFaultSideChannelAPI:
 
     def test_05_dfa_sifa_penultimate_round_r7_bypass(self) -> None:
         """
-        DFA / SIFA na rodada R-1 (R7):
+        DFA / SIFA na rodada R-1 (R7) — achado RT-F2-01 (Alto), corrigido na v5.2:
           - Falha na rodada final R=8 é bloqueada (FaultDetectedError em Python, rc == -2 em C99).
-          - Falha na penúltima rodada R-1 (R7) propaga identicamente para state_a e state_b
-            da rodada R8 e passa 100% despercebida (rc == 0, saída corrompida sem erro!).
+          - Falha transitória DENTRO da execução, na entrada de QUALQUER rodada r = 1..8
+            (incluindo R-1 = R7), é detectada: os fluxos A e B percorrem R1..R e divergem.
+            Na v5.1 a duplicação só começava na rodada final e a falha em R7 passava despercebida.
+          - Limite declarado (não é contorno da correção): se o estado for corrompido FORA do núcleo,
+            entre duas chamadas, a segunda chamada recebe uma entrada já corrompida e nenhuma
+            redundância interna pode distingui-la de uma entrada legítima (especificação, §2.4).
           - fault_mask == 0 com fault_word >= 0 retorna rc == 0.
         """
         lib_path = _ensure_c_lib()
@@ -633,7 +637,24 @@ class TestFrente2ImplementacaoFaultSideChannelAPI:
         )
         assert rc_zero_mask == 0
 
-        # 4) Bypass real em R7 (R-1) tanto em C99 quanto em Python:
+        # 4) RT-F2-01 corrigido: falha injetada DENTRO da execução, em cada rodada 1..8, é detectada
+        #    em C99 (rc == -2, saída zerada) e em Python (FaultDetectedError).
+        for r_falha in range(1, 9):
+            rc_f, out_f = run_c_core_pre_sha(
+                lib_path, x, y, s, n_sess, rounds=8,
+                inject_fault_word=0, inject_fault_mask=0x0001, inject_fault_round=r_falha,
+            )
+            assert rc_f == -2 and np.all(out_f == 0), f"RT-F2-01: falha na rodada {r_falha} deveria ser detectada"
+            with pytest.raises(FaultDetectedError):
+                diffuse_rsd_s_v5_pre_sha(
+                    x, y, s, n_sess, rounds=8, fault_injector=_inject_bit0, fault_round=r_falha
+                )
+        print("[DFA RT-F2-01 CORRIGIDO] falha dentro da execução detectada nas rodadas 1..8 (C99 e Python)")
+
+        # 5) Limite declarado: corrupção do estado ENTRE duas chamadas do núcleo.
+        #    O cenário abaixo reproduz a prova de conceito da v5.1 (rodadas 1..7 numa chamada, estado
+        #    corrompido fora do núcleo, rodada 8 em outra chamada). A segunda chamada recebe uma
+        #    entrada já corrompida, que nenhuma redundância interna distingue de uma entrada legítima.
         #    Simula execução das rodadas 1..7 com falha injetada na entrada de R7 (antes da rodada 7)
         #    e depois executa a rodada final R8 com redundância Anti-DFA intacta.
         lib = _load_c_lib()
@@ -657,10 +678,13 @@ class TestFrente2ImplementacaoFaultSideChannelAPI:
             lib, corrupted_r7, rk_r8_only, rc_r8_only, 1, fault_word=-1, fault_mask=0
         )
         print(
-            f"[DFA R7 BYPASS] status_r8={status_r8_bypass} (esperado 0), "
+            f"[DFA LIMITE ENTRE CHAMADAS] status_r8={status_r8_bypass} (esperado 0), "
             f"out_corrompida != out_limpa: {not np.array_equal(out_r8_corrupted, out_clean)}"
         )
-        assert status_r8_bypass == 0, "Falha em R-1 (R7) passa 100% despercebida pela proteção Anti-DFA de R8"
+        assert status_r8_bypass == 0, (
+            "Limite declarado: estado corrompido entre chamadas é aceito como entrada legítima "
+            "(fora do modelo do Anti-DFA; ver especificação §2.4)"
+        )
         assert not np.array_equal(out_r8_corrupted, out_clean)
 
         # Mesmo bypass em Python (usando as mesmas chaves/constantes de rounds=8):

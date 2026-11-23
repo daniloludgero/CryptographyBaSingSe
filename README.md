@@ -25,7 +25,7 @@
 | Auditoria independente | **Nenhuma** |
 | Validação FIPS | **Não** |
 | Prova formal de segurança | **Rascunho condicional**, escrito para a v5.1 e ainda não atualizado para a v5.2 ([`REDUCAO_QROM_RASCUNHO_V5_1.md`](especificacao/REDUCAO_QROM_RASCUNHO_V5_1.md)). Não certifica segurança pós-quântica |
-| Revisão ofensiva interna (red-team) | 9 achados. Os 2 de severidade **Alta** e os 3 **Médios** foram corrigidos na v5.2. Dos 4 **Baixos**: 1 se dissipa na 1ª rodada, 1 é mitigado pela subchave, 1 recebeu validação de faixa e **1 segue aberto** (pegada de cache L1D e limpeza parcial de registradores AVX2) |
+| Revisão ofensiva interna (red-team) | 9 achados. Os 2 de severidade **Alta** e os 3 **Médios** foram corrigidos na v5.2, e o mesmo exploit da v5.1 falha contra o código novo ([prova](docs/evidencia/CORRECOES_V5_2.md)). Os 4 **Baixos** não foram corrigidos: 1 se dissipa na 1ª rodada, 1 é quebrado pela subchave, 1 é uma propriedade documentada da função isolada e **1 segue aberto** (pegada de cache L1D e limpeza parcial de registradores AVX2) |
 | Revisão por pares | **Pendente** |
 
 Detalhes e o que cada linha **não** garante: [`docs/evidencia/GARANTIAS_E_LIMITES.md`](docs/evidencia/GARANTIAS_E_LIMITES.md).
@@ -60,6 +60,24 @@ python3 -m unittest discover -s testes -p "test_*.py"
 ```
 
 `testes/test_vetores_v52.py` também compila o núcleo C99 e confere a paridade bit a bit com o Python, então exige `gcc`.
+
+## O que a v5.2 corrigiu
+
+A revisão ofensiva da v5.1 achou 5 falhas de severidade Alta e Média. Todas foram corrigidas. A prova abaixo executa **o mesmo exploit** escrito contra a v5.1 sobre os dois códigos:
+
+| Achado | Severidade | Na v5.1 | Na v5.2 |
+|---|---|---|---|
+| RT-F2-01: proteção contra injeção de falhas (Anti-DFA) | **Alta** | Falha nas rodadas 1 a 7 passava sem detecção | Detectada nas 8 rodadas, em C99 e Python |
+| RT-F2-02: inicialização concorrente da tabela MDS | **Alta** | Corrida de dados com 16 *threads* (ThreadSanitizer) | Nenhuma corrida |
+| RT-F1-01: subchave expunha a chave de rodada | Média | Metade da subchave reconstruída sem a chave mestra | Bloqueado |
+| RT-F2-03: API devolvia o estado secreto | Média | `s_priv_state` no retorno público | Só com opção explícita de depuração |
+| RT-F2-04: vazamento de tempo no *folding* | Média | Welch t = 13,2 | t = 0,12 |
+
+```bash
+python3 ferramentas/verificacao_correcoes_v52/reproduzir.py
+```
+
+Os 4 achados de severidade Baixa **não** foram corrigidos; 1 deles (resíduos em registradores AVX2) segue aberto. Detalhes, custos e limites: [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md).
 
 ## Resultados verificados e o que eles **não** mostram
 

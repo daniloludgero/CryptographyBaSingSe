@@ -132,6 +132,8 @@ class TestRepositoryGovernanceAndAssets(unittest.TestCase):
             "docs/evidencia/GARANTIAS_E_LIMITES.md",
             "docs/evidencia/COBERTURA_DE_CRIPTOANALISE.md",
             "docs/evidencia/MEDICOES_V5_2.md",
+            "docs/evidencia/CORRECOES_V5_2.md",
+            "ferramentas/verificacao_correcoes_v52/reproduzir.py",
             "ferramentas/medicao_v52/executar_medicao.sh",
             "resultados/v5_2/medicoes_v52_20261123.json",
             "docs/evidencia/OBJETIVO_E_MODELO_DE_AMEACA.md",

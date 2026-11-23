@@ -38,7 +38,7 @@ jobs:
           pip install -r requirements.txt
 
       - name: Compilação e verificação de sintaxe
-        run: python -m py_compile implementacao/*.py testes/*.py ferramentas/*.py ferramentas/medicao_v52/*.py
+        run: python -m py_compile implementacao/*.py testes/*.py ferramentas/*.py ferramentas/medicao_v52/*.py ferramentas/verificacao_correcoes_v52/*.py ferramentas/verificacao_correcoes_v52/historico_v5_1/*.py
 
       - name: Higiene (segredos e arquivos sensíveis)
         run: python ferramentas/verificar_higiene.py

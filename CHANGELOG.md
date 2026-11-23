@@ -16,12 +16,14 @@ Todas as mudanças relevantes do **BaSingSe (RSD-S)** ficam neste arquivo. O for
 
 - **Medições da v5.2** em [`docs/evidencia/MEDICOES_V5_2.md`](docs/evidencia/MEDICOES_V5_2.md): latência do núcleo C99, custo do Anti-DFA, TVLA com controle, paridade C99 × Python, ataque Square de 3 rodadas reproduzido e comparativo com o AES. Dados brutos em [`resultados/v5_2/`](resultados/v5_2/) e ferramenta reproduzível em [`ferramentas/medicao_v52/`](ferramentas/medicao_v52/).
 - `testes/test_matriz_b.py`: confere `det(B) mod 65537 = 31974`.
+- **Prova das correções da v5.2** em [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md): o mesmo exploit da v5.1 é executado contra o código v5.1 e contra o v5.2 (`ferramentas/verificacao_correcoes_v52/reproduzir.py`). Os 2 achados Altos e os 3 Médios ficam bloqueados; os 4 Baixos continuam como estavam.
 
 ### Corrigido
 - **Desempenho:** o README citava 16,26 µs por chamada (v5.1, outra CPU). Na v5.2 o núcleo leva **29,6 µs**, porque o Anti-DFA agora cobre todas as rodadas (custo de 1,95×).
 - **Comparativo linear com o AES:** o relatório R5 comparava a RSD-S com N = 524 288 contra o AES com N = 16 384. Com máscaras genéricas e o mesmo N, a RSD-S é detectada em 0R e o AES em 1R; com máscaras estruturais da MDS, a RSD-S é detectada em 1R.
 - **Tempo constante:** o \|t\| de 0,32 era da v5.1; na v5.2 o máximo foi 2,30 em 12 execuções (controle 2,18).
 - **Quebra de 3 rodadas:** reproduzida na v5.2 em cerca de 10 s (o relatório da v5.1 dizia 296 s).
+- `testes/test_r5_m4_red_team_offensive.py`, teste 05: a afirmação "falha em R-1 passa despercebida" passava na v5.2 e contradizia a correção do RT-F2-01. O teste agora injeta a falha **dentro** da execução em cada rodada (detectada) e trata a corrupção **entre duas chamadas** como o limite declarado que é.
 - Comentários do cabeçalho de `rsd_s_v5_ct.c` (versão, 6 multiplicações, Anti-DFA em `R1..R`). O código de máquina gerado não mudou.
 
 ### Alterado

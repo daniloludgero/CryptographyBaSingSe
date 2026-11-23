@@ -25,7 +25,7 @@
 | Independent audit | **None** |
 | FIPS validation | **No** |
 | Formal security proof | **Conditional draft**, written for v5.1 and not yet updated to v5.2 ([`REDUCAO_QROM_RASCUNHO_V5_1.md`](especificacao/REDUCAO_QROM_RASCUNHO_V5_1.md)). It does not certify post-quantum security |
-| Internal offensive review (red team) | 9 findings. The 2 **High** and 3 **Medium** findings were fixed in v5.2. Of the 4 **Low**: 1 dissipates after round 1, 1 is mitigated by the round key, 1 received range validation and **1 remains open** (L1D cache footprint and partial clearing of AVX2 registers) |
+| Internal offensive review (red team) | 9 findings. The 2 **High** and 3 **Medium** findings were fixed in v5.2, and the same v5.1 exploit fails against the new code ([proof](docs/evidencia/CORRECOES_V5_2.md), Portuguese). The 4 **Low** findings were not fixed: 1 dissipates after round 1, 1 is broken by the round key, 1 is a documented property of the isolated function and **1 remains open** (L1D cache footprint and partial clearing of AVX2 registers) |
 | Peer review | **Pending** |
 
 Details, and what each line does **not** guarantee: [`docs/evidencia/GARANTIAS_E_LIMITES.md`](docs/evidencia/GARANTIAS_E_LIMITES.md) (Portuguese).
@@ -60,6 +60,24 @@ python3 -m unittest discover -s testes -p "test_*.py"
 ```
 
 `testes/test_vetores_v52.py` also compiles the C99 core and checks bit-for-bit parity with Python, so it needs `gcc`.
+
+## What v5.2 fixed
+
+The v5.1 offensive review found 5 High and Medium severity flaws. All were fixed. The proof below runs **the same exploit** written against v5.1 on both codebases:
+
+| Finding | Severity | On v5.1 | On v5.2 |
+|---|---|---|---|
+| RT-F2-01: fault-injection protection (Anti-DFA) | **High** | A fault in rounds 1 to 7 went undetected | Detected in all 8 rounds, in C99 and Python |
+| RT-F2-02: concurrent MDS table initialization | **High** | Data race with 16 threads (ThreadSanitizer) | No race |
+| RT-F1-01: subkey exposed the round key | Medium | Half of the subkey rebuilt without the master key | Blocked |
+| RT-F2-03: API returned the secret state | Medium | `s_priv_state` in the public return | Only with an explicit debug option |
+| RT-F2-04: timing leak in the *folding* | Medium | Welch t = 13.2 | t = 0.12 |
+
+```bash
+python3 ferramentas/verificacao_correcoes_v52/reproduzir.py
+```
+
+The 4 Low severity findings were **not** fixed; 1 of them (leftover data in AVX2 registers) remains open. Details, costs and limits: [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md) (Portuguese).
 
 ## Verified results and what they do **not** show
 

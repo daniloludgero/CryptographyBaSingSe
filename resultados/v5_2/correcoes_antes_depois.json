@@ -1,0 +1,54 @@
+{
+ "exploits": [
+  {
+   "id": "RT-F1-01",
+   "severidade": "Média",
+   "ataque": "subchave expõe K_r literalmente; metade da subchave reconstruída sem a chave mestra",
+   "v5.1": "ataque funciona",
+   "v5.2": "ataque bloqueado"
+  },
+  {
+   "id": "RT-F2-02",
+   "severidade": "Alta",
+   "ataque": "corrida de dados em init_cauchy_mds() detectada pelo ThreadSanitizer",
+   "v5.1": "ataque funciona",
+   "v5.2": "ataque bloqueado"
+  },
+  {
+   "id": "RT-F2-04",
+   "severidade": "Média",
+   "ataque": "vazamento de tempo no folding (teste de Welch)",
+   "v5.1": "ataque funciona",
+   "v5.2": "ataque bloqueado"
+  },
+  {
+   "id": "RT-F2-03",
+   "severidade": "Média",
+   "ataque": "API pública devolve o estado privado s_priv_state",
+   "v5.1": "ataque funciona",
+   "v5.2": "ataque bloqueado"
+  }
+ ],
+ "falha_dentro_da_execucao": {
+  "v5.1": {
+   "1": "NAO detectada",
+   "2": "NAO detectada",
+   "3": "NAO detectada",
+   "4": "NAO detectada",
+   "5": "NAO detectada",
+   "6": "NAO detectada",
+   "7": "NAO detectada",
+   "8": "detectada"
+  },
+  "v5.2": {
+   "1": "detectada",
+   "2": "detectada",
+   "3": "detectada",
+   "4": "detectada",
+   "5": "detectada",
+   "6": "detectada",
+   "7": "detectada",
+   "8": "detectada"
+  }
+ }
+}

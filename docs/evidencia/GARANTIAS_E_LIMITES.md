@@ -36,7 +36,7 @@ Esta página lista o que o projeto afirma, com que base, e o que isso **não** g
 
 ## Achados do red-team interno
 
-Revisão ofensiva interna da v5.1, com 9 achados. Estado atual:
+Revisão ofensiva interna da v5.1, com 9 achados. Estado atual (prova antes × depois com o mesmo exploit em [`CORRECOES_V5_2.md`](CORRECOES_V5_2.md)):
 
 | ID | Severidade | Descrição curta | Estado |
 |---|---|---|---|
@@ -47,7 +47,7 @@ Revisão ofensiva interna da v5.1, com 9 achados. Estado atual:
 | RT-F2-04 | Média | Vazamento de tempo no *folding* em Python | **Corrigido na v5.2** (seleção por máscara) |
 | RT-F1-02 | Baixa | Dois bits mais significativos fixos na entrada | Dissipa-se após a 1ª rodada |
 | RT-F1-03 | Baixa | Simetria de constante de rodada e soma de linha da MDS | Mitigada pela subchave |
-| RT-F2-05 | Baixa | Colisão 2 para 1 na função isolada de *folding* | Validação de faixa entregue; a não injetividade está documentada na especificação (§3.2) |
+| RT-F2-05 | Baixa | Colisão 2 para 1 na função isolada de *folding* | Não corrigido; a não injetividade está documentada na especificação (§3.2). A validação de faixa veio com a correção do RT-F2-04 |
 | RT-F2-06 | Baixa | Pegada de cache L1D e registradores AVX2 não zerados | **Aberto** |
 
 Esta revisão foi feita **pelo próprio projeto**. Não substitui auditoria independente.
