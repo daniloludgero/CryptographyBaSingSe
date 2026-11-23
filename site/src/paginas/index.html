@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+{{@head}}
+<script src="{{base}}js/pagina.js" defer></script>
+</head>
+<body id="topo">
+<a class="pular" href="#principal">{{t:pular}}</a>
+{{@glifos}}
+{{@aviso}}
+{{@cabecalho}}
+<main id="principal">
+
+<section class="heroi" aria-labelledby="h-heroi">
+  <img class="cena-dia" src="{{base}}assets/cenas/cena-dia-semtexto-1280x640.png" alt="{{t:heroi_alt}}" width="1280" height="640">
+  <img class="cena-noite" src="{{base}}assets/cenas/cena-noite-semtexto-1280x640.png" alt="" width="1280" height="640">
+  <div class="caixa"><div class="conteudo"><div class="painel-heroi">
+    <h1 id="h-heroi">{{t:nome}}</h1>
+    <p class="lema">{{t:lema}}</p>
+    <p>{{t:heroi_sub}}</p>
+    <p><a class="btn" href="{{lab}}">{{t:heroi_cta_lab}}</a> <a class="btn contorno" href="{{repo}}">{{t:heroi_cta_repo}}</a></p>
+  </div></div></div>
+</section>
+
+<section aria-labelledby="h-oq"><div class="conteudo">
+  <h2 id="h-oq">{{t:oq_titulo}}</h2>
+  <p>{{t:oq_p1}}</p>
+  <p>{{t:oq_p2}}</p>
+  <p>{{t:oq_p3}}</p>
+  <p class="suave"><strong>{{t:oq_nao_titulo}}.</strong> {{t:oq_nao}}</p>
+</div></section>
+
+<section aria-labelledby="h-rodada"><div class="conteudo">
+  <h2 id="h-rodada">{{t:rodada_titulo}}</h2>
+  <p>{{t:rodada_intro}}</p>
+  {{@caso-dono}}
+  <p>{{t:rodada_nota}}</p>
+  <p class="suave pequeno">{{t:rodada_fonte}}</p>
+  <p><a class="btn sec" href="{{lab}}">{{t:rodada_cta}}</a></p>
+</div></section>
+
+<section id="garantias" aria-labelledby="h-gar"><div class="conteudo">
+  <h2 id="h-gar">{{t:gar_titulo}}</h2>
+  {{@garantias}}
+  <p><a href="{{repo}}/blob/main/docs/evidencia/GARANTIAS_E_LIMITES.md">{{t:gar_link}}</a></p>
+</div></section>
+
+<section id="correcoes" aria-labelledby="h-corr"><div class="conteudo">
+  <h2 id="h-corr">{{t:corr_titulo}}</h2>
+  <p>{{t:corr_intro}}</p>
+  {{@cercos-resumo}}
+  <p>{{t:corr_baixos}}</p>
+  <p>{{t:corr_repro}}</p>
+  <pre class="comando"><code>python3 ferramentas/verificacao_correcoes_v52/reproduzir.py</code></pre>
+  <p><a href="{{repo}}/blob/main/docs/evidencia/CORRECOES_V5_2.md">{{t:corr_link}}</a></p>
+</div></section>
+
+<section id="ataques" aria-labelledby="h-atq"><div class="conteudo">
+  <h2 id="h-atq">{{t:atq_titulo}}</h2>
+  <p>{{t:atq_intro}}</p>
+  {{@integral}}
+  <p>{{t:atq_nota}}</p>
+  <p>{{t:atq_rec}}</p>
+  <p><a class="btn sec" href="{{lab}}#feixe">{{t:atq_cta}}</a></p>
+  <h3>{{t:alc_titulo}}</h3>
+  <p>{{t:alc_intro}}</p>
+  {{@alcance}}
+  <div class="nota-limite"><strong>{{t:alc_nao_mostra_t}}</strong>{{t:alc_nao_mostra}}</div>
+</div></section>
+
+<section id="licenca" aria-labelledby="h-lic"><div class="conteudo">
+  <h2 id="h-lic">{{t:lic_titulo}}</h2>
+  <p>{{t:lic_p1}}</p>
+  <p><strong>{{t:lic_p2}}</strong></p>
+  <p><a href="{{repo}}/blob/main/COMMERCIAL.md">{{t:lic_link}}</a></p>
+</div></section>
+
+<section id="limites" aria-labelledby="h-nao"><div class="conteudo">
+  <h2 id="h-nao">{{t:rod_nao_titulo}}</h2>
+  <ul>
+    <li>{{t:rod_nao_1}}</li><li>{{t:rod_nao_2}}</li><li>{{t:rod_nao_3}}</li><li>{{t:rod_nao_4}}</li><li>{{t:rod_nao_5}}</li>
+  </ul>
+</div></section>
+
+</main>
+{{@rodape}}
+</body>
+</html>

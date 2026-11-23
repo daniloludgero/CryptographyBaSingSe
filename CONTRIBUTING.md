@@ -39,5 +39,6 @@ Para que o autor possa licenciar o projeto também de forma comercial, toda cont
 - [ ] `python3 testes/suite_testes_completa.py` passa
 - [ ] `python3 ferramentas/rsd_cli.py kat` e `kat52` passam
 - [ ] `python3 ferramentas/verificar_higiene.py` passa. Nenhum segredo, `.env`, chave ou `__pycache__` no commit
+- [ ] Se mexeu em `site/`: `cd site && npm ci && node --test "testes/*.test.js" "testes/*.e2e.mjs"` passa (veja [`site/README.md`](site/README.md))
 - [ ] Resultados novos trazem o ambiente (versões de Python, NumPy e solver, semente e comando) em `resultados/`
 - [ ] Você aceitou o CLA

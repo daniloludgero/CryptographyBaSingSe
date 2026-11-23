@@ -79,6 +79,12 @@ python3 ferramentas/verificacao_correcoes_v52/reproduzir.py
 
 The 4 Low severity findings were **not** fixed; 1 of them (leftover data in AVX2 registers) remains open. Details, costs and limits: [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md) (Portuguese).
 
+## Laboratory in the browser
+
+Flip a bit, fire the mirror beam, inject a fault into the two sentinels and check every vector, **with nothing to install**. The laboratory runs RSD-S v5.2 in your browser, in Portuguese and English, in Explore and Verify modes. The values are computed, and the engine code is checked bit for bit against Python and the C core.
+
+**<https://daniloludgero.github.io/CryptographyBaSingSe/en/lab/>** (available once the owner enables GitHub Pages). How it works and what it does not cover: [`site/README.md`](site/README.md) (Portuguese).
+
 ## Verified results and what they do **not** show
 
 | Result | What it does **not** show |

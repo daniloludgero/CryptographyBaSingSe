@@ -1,0 +1,17 @@
+{
+  "name": "basingse-site",
+  "private": true,
+  "type": "module",
+  "description": "Site est\u00e1tico e laborat\u00f3rio da RSD-S v5.2. Sem depend\u00eancias em tempo de execu\u00e7\u00e3o.",
+  "scripts": {
+    "build": "node ferramentas/build.mjs",
+    "test": "node --test \"testes/*.test.js\"",
+    "test:e2e": "node --test \"testes/*.e2e.mjs\"",
+    "test:tudo": "node ferramentas/build.mjs && node --test \"testes/*.test.js\" \"testes/*.e2e.mjs\""
+  },
+  "license": "SEE LICENSE IN ../LICENSE",
+  "devDependencies": {
+    "axe-core": "4.10.2",
+    "playwright": "1.63.0"
+  }
+}

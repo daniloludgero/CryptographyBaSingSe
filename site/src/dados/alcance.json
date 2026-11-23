@@ -1,0 +1,12 @@
+{
+  "fonte": "resultados/v5_2/ (campanha R5 reexecutada na v5.2) e docs/evidencia/MEDICOES_V5_2.md, seção 3.7",
+  "total": {"aes128": 10, "aes256": 14, "rsd": 8},
+  "linhas": [
+    {"pt": "Integral / Square", "en": "Integral / Square", "aes128": 3, "aes256": 3, "rsd": 2},
+    {"pt": "Diferencial e truncado", "en": "Differential and truncated", "aes128": 2, "aes256": 2, "rsd": 1},
+    {"pt": "Linear / Walsh, máscaras genéricas (mesmo N)", "en": "Linear / Walsh, generic masks (same N)", "aes128": 1, "aes256": 1, "rsd": 0},
+    {"pt": "Linear / Walsh, máscaras estruturais da MDS", "en": "Linear / Walsh, structured MDS masks", "aes128": null, "aes256": null, "rsd": 1},
+    {"pt": "Algébrico (grau não saturado)", "en": "Algebraic (non-saturated degree)", "aes128": 3, "aes256": 3, "rsd": 2},
+    {"pt": "Proxy de consulta quântica (QROM analógico)", "en": "Quantum-query proxy (analogous QROM)", "aes128": 3, "aes256": 3, "rsd": 1}
+  ]
+}

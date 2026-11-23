@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="{{lang}}">
+<head>
+{{@head}}
+<script src="{{base}}js/pagina.js" defer></script>
+<script type="module" src="{{base}}js/lab.js"></script>
+</head>
+<body id="topo">
+<a class="pular" href="#principal">{{t:pular}}</a>
+{{@glifos}}
+{{@aviso}}
+{{@cabecalho}}
+{{@i18n-json}}
+{{@cercos-json}}
+{{@kats-json}}
+<main id="principal">
+
+<section class="intro" aria-labelledby="h-lab"><div class="conteudo">
+  <h1 id="h-lab">{{t:lab_h1}}</h1>
+  <p>{{t:lab_intro}}</p>
+  <div class="sem-js-aviso" role="note"><strong>{{t:nojs_titulo}}.</strong> {{t:nojs_texto}}</div>
+  <div class="so-js" id="bloco-modo">
+    <p id="rotulo-modo" class="mono">{{t:modo_rotulo}}</p>
+    <div class="grupo" role="group" aria-labelledby="rotulo-modo">
+      <button type="button" class="btn contorno" id="modo-explorar" aria-pressed="true">{{t:modo_explorar}}</button>
+      <button type="button" class="btn contorno" id="modo-verificar" aria-pressed="false">{{t:modo_verificar}}</button>
+    </div>
+    <p class="ajuda" id="modo-desc"></p>
+  </div>
+  <div id="anuncio" class="sr-only" role="status" aria-live="polite"></div>
+</div></section>
+
+<section id="sessao" class="so-js" aria-labelledby="h-sessao"><div class="conteudo">
+  <h2 id="h-sessao">{{t:sessao_titulo}}</h2>
+  <p>{{t:sessao_intro}}</p>
+  <p>
+    <button type="button" class="btn" id="preset-dono">{{t:sessao_dono}}</button>
+    <button type="button" class="btn sec" id="sortear">{{t:sessao_sortear}}</button>
+  </p>
+  <p class="mono" id="resumo-sessao"></p>
+  <details id="det-entrada" class="limite">
+    <summary>{{t:sessao_editar}}</summary>
+    <form id="form-sessao" novalidate autocomplete="off">
+      <div class="linha-campos">
+        <div class="campo"><label for="campo-x">x</label><input id="campo-x" class="mono" type="text" inputmode="text" spellcheck="false"><p class="ajuda">{{t:sessao_ajuda_campo}}</p></div>
+        <div class="campo"><label for="campo-y">y</label><input id="campo-y" class="mono" type="text" inputmode="text" spellcheck="false"></div>
+        <div class="campo"><label for="campo-n">{{t:sessao_n}}</label><input id="campo-n" class="mono" type="text" inputmode="numeric" spellcheck="false"></div>
+        <div class="campo"><label for="campo-rodadas">{{t:sessao_rodadas}}</label><input id="campo-rodadas" type="number" min="1" max="255" step="1"></div>
+        <div class="campo"><label for="campo-bit">{{t:sessao_bit}}</label><input id="campo-bit" type="number" min="0" max="509" step="1"><p class="ajuda">{{t:sessao_bit_ajuda}}</p></div>
+        <div class="campo"><label for="campo-saida">{{t:sessao_saida}}</label><select id="campo-saida"><option value="32">32 B (SHA-256)</option><option value="64">64 B (SHAKE256)</option></select></div>
+      </div>
+      <div class="campo"><label for="campo-chave">{{t:sessao_chave}}</label><input id="campo-chave" class="mono" type="text" spellcheck="false" maxlength="70"><p class="ajuda">{{t:sessao_chave_ajuda}}</p></div>
+      <p><button type="submit" class="btn">{{t:sessao_calcular}}</button></p>
+    </form>
+  </details>
+  <div id="erros-sessao" class="erro" role="alert"></div>
+</div></section>
+
+<section id="rodada" aria-labelledby="h-rodada"><div class="conteudo">
+  <h2 id="h-rodada">{{t:rodada_titulo}}</h2>
+  <p>{{t:rodada_intro}}</p>
+  <div class="so-sem-js">{{@caso-dono}}</div>
+  <div class="so-js">
+    <div class="controles" role="group" aria-label="{{t:rod_momento_grupo}}">
+      <button type="button" class="btn sec pequeno" id="mom-ant">{{t:rod_anterior}}</button>
+      <label for="momento" class="rotulo-inline">{{t:rod_momento}}</label>
+      <input type="range" id="momento" min="0" max="8" step="1" value="1">
+      <output id="momento-txt" for="momento" class="mono"></output>
+      <button type="button" class="btn sec pequeno" id="mom-prox">{{t:rod_proxima}}</button>
+      <label class="rotulo-inline"><input type="checkbox" id="ver-hex"> {{t:rod_ver_hex}}</label>
+    </div>
+    <p class="suave" id="rotulacao"></p>
+    <div class="painel-duplo">
+      <div class="painel" id="painel-a"><h3>{{t:rodada_a}}</h3><ul id="grade-a" class="grade" aria-label="{{t:rodada_a}}"></ul></div>
+      <div class="painel" id="painel-b"><h3>{{t:rod_b_lab}}</h3><ul id="grade-b" class="grade" aria-label="{{t:rod_b_lab}}"></ul></div>
+    </div>
+    <p class="legenda-grade suave">{{t:rod_legenda}}</p>
+    <div class="metricas">
+      <div class="metrica"><div class="rotulo">{{t:rod_m_palavras}}</div><div class="valor num" id="m-pal">–</div></div>
+      <div class="metrica"><div class="rotulo">{{t:rod_m_bits}}</div><div class="valor num" id="m-bits">–</div></div>
+      <div class="metrica so-verificar"><div class="rotulo">{{t:rod_m_saida}}</div><div class="valor num" id="m-saida">–</div></div>
+    </div>
+    <div class="painel" id="painel-palavra" aria-live="polite"><p class="suave">{{t:painel_vazio}}</p></div>
+    <div class="nota-limite" id="nota-rotulacao"></div>
+    <details class="limite" id="det-tabela"><summary>{{t:rod_tabela_titulo}}</summary>
+      <div class="tabela-rolavel"><table><thead><tr><th class="num">{{t:rod_t_rodada}}</th><th class="num">{{t:rod_m_palavras}}</th><th class="num">{{t:rod_m_bits}}</th></tr></thead><tbody id="tabela-rodadas"></tbody></table></div>
+    </details>
+    <div class="so-explorar" id="jogo-palpite">
+      <h3>{{t:palpite_titulo}}</h3>
+      <p>{{t:palpite_texto}}</p>
+      <div class="campo"><label for="palpite">{{t:palpite_rotulo}}</label><input id="palpite" type="number" min="0" max="512" step="1" inputmode="numeric"></div>
+      <p><button type="button" class="btn sec" id="revelar-palpite">{{t:palpite_revelar}}</button></p>
+      <div id="palpite-saida" aria-live="polite"></div>
+    </div>
+    <div class="so-verificar" id="exportacao">
+      <h3>{{t:exp_titulo}}</h3>
+      <p>{{t:exp_texto}}</p>
+      <p><label class="rotulo-inline"><input type="checkbox" id="exp-chave"> {{t:exp_incluir_chave}}</label></p>
+      <p><button type="button" class="btn sec" id="exp-baixar">{{t:exp_baixar}}</button> <button type="button" class="btn contorno" id="exp-link">{{t:exp_link}}</button></p>
+      <p class="mono pequeno" id="exp-hash" aria-live="polite"></p>
+      <p class="ajuda">{{t:exp_reproduzir}}</p>
+      <pre class="comando"><code id="exp-cmd"></code></pre>
+    </div>
+  </div>
+</div></section>
+
+<section id="chaves" class="so-js" aria-labelledby="h-chaves"><div class="conteudo">
+  <h2 id="h-chaves">{{t:chaves_titulo}}</h2>
+  <p>{{t:chaves_intro}}</p>
+  <div class="painel-duplo">
+    <div class="painel"><h3>{{t:chaves_chaveiro}}</h3><ul id="chaveiro" class="grade" aria-label="{{t:chaves_chaveiro}}"></ul><p class="legenda-grade">{{t:chaves_chaveiro_nota}}</p></div>
+    <div class="painel"><h3>{{t:chaves_selo}} <span id="selo-r" class="mono"></span></h3>
+      <div class="controles"><label for="sel-chave" class="rotulo-inline">{{t:chaves_rodada}}</label><input type="range" id="sel-chave" min="0" max="8" step="1" value="0"><output id="sel-chave-txt" for="sel-chave" class="mono"></output></div>
+      <ul id="selo" class="grade" aria-label="{{t:chaves_selo}}"></ul>
+      <p class="legenda-grade">{{t:chaves_selo_nota}}</p>
+      <h3>{{t:chaves_constante}}</h3>
+      <div class="linha-const"><div class="bloco" id="bloco-rc" role="img" aria-label=""></div><p class="legenda-grade" id="rc-texto"></p></div>
+    </div>
+  </div>
+  <div class="so-verificar"><h3>{{t:chaves_cadeia}}</h3><div class="tabela-rolavel"><table><thead><tr><th class="num">r</th><th>K_r (hex)</th><th class="num">rc_r</th></tr></thead><tbody id="tabela-chaves"></tbody></table></div></div>
+  <div class="nota-limite"><strong>{{t:chaves_aviso_t}}</strong>{{t:chaves_aviso}}</div>
+</div></section>
+
+<section id="feixe" aria-labelledby="h-feixe"><div class="conteudo">
+  <h2 id="h-feixe">{{t:feixe_titulo}}</h2>
+  <p>{{t:feixe_intro}}</p>
+  <div class="so-sem-js">{{@integral}}</div>
+  <div class="so-js">
+  <div class="linha-campos">
+    <div class="campo"><label for="feixe-palavra">{{t:feixe_palavra}}</label><select id="feixe-palavra"></select></div>
+    <div class="campo"><span class="rotulo-fake" id="rot-feixe-r">{{t:feixe_rodadas}}</span>
+      <div class="grupo" role="group" aria-labelledby="rot-feixe-r" id="feixe-rodadas"></div></div>
+  </div>
+  <p class="so-explorar suave">{{t:feixe_camara}}</p>
+  <p class="so-verificar suave">{{t:feixe_chave_sessao}}</p>
+  <p>
+    <button type="button" class="btn" id="feixe-disparar">{{t:feixe_disparar}}</button>
+    <button type="button" class="btn contorno" id="feixe-cancelar" disabled>{{t:feixe_cancelar}}</button>
+  </p>
+  <div class="painel-duplo">
+    <div><canvas id="mosaico" class="mosaico" width="256" height="256" role="img" aria-label="{{t:feixe_mosaico}}"></canvas>
+      <progress id="feixe-prog" max="65536" value="0" aria-label="{{t:feixe_progresso}}"></progress><p class="mono pequeno" id="feixe-prog-txt" aria-live="off"></p></div>
+    <div id="feixe-resultado" aria-live="polite"><p class="suave">{{t:feixe_vazio}}</p></div>
+  </div>
+  <ul id="pocos" class="pocos" aria-label="{{t:feixe_pocos}}"></ul>
+  <div id="feixe-veredito"></div>
+  <details class="limite"><summary>{{t:feixe_acaso_titulo}}</summary><p>{{t:feixe_acaso}}</p></details>
+  <details class="limite"><summary>{{t:feixe_nao_prova_t}}</summary><p>{{t:feixe_nao_prova}}</p></details>
+  </div>
+</div></section>
+
+<section id="sentinelas" class="so-js" aria-labelledby="h-sent"><div class="conteudo">
+  <h2 id="h-sent">{{t:sent_titulo}}</h2>
+  <p>{{t:sent_intro}}</p>
+  <div class="linha-campos">
+    <div class="campo"><label for="sent-modo">{{t:sent_cenario}}</label><select id="sent-modo">
+      <option value="A">{{t:sent_c_a}}</option><option value="ambos">{{t:sent_c_ambos}}</option><option value="antes">{{t:sent_c_antes}}</option></select></div>
+    <div class="campo"><label for="sent-rodada">{{t:sent_rodada}}</label><select id="sent-rodada"></select></div>
+    <div class="campo"><label for="sent-palavra">{{t:sent_palavra}}</label><select id="sent-palavra"></select></div>
+    <div class="campo"><label for="sent-bit">{{t:sent_bit}}</label><select id="sent-bit"></select></div>
+  </div>
+  <p id="sent-desc" class="suave"></p>
+  <p><button type="button" class="btn" id="sent-executar">{{t:sent_executar}}</button></p>
+  <div id="sent-resultado" aria-live="polite"></div>
+  <div class="painel-duplo" id="sent-grades" hidden>
+    <div class="painel"><h3>{{t:sent_final_a}}</h3><ul id="sent-a" class="grade" aria-label="{{t:sent_final_a}}"></ul></div>
+    <div class="painel"><h3>{{t:sent_final_b}}</h3><ul id="sent-b" class="grade" aria-label="{{t:sent_final_b}}"></ul></div>
+  </div>
+  <div class="nota-limite"><strong>{{t:sent_limite_t}}</strong>{{t:sent_limite}}</div>
+</div></section>
+
+<section id="kat" class="so-js" aria-labelledby="h-kat"><div class="conteudo">
+  <h2 id="h-kat">{{t:kat_titulo}}</h2>
+  <p>{{t:kat_intro}}</p>
+  <div class="grupo" role="group" aria-label="{{t:kat_escolha}}" id="kat-lista"></div>
+  <div id="kat-quadro" aria-live="polite"></div>
+  <p><button type="button" class="btn contorno" id="kat-adulterar">{{t:kat_adulterar}}</button> <button type="button" class="btn contorno" id="kat-restaurar" hidden>{{t:kat_restaurar}}</button></p>
+  <p class="suave">{{t:kat_selo_nota}}</p>
+  <pre class="comando"><code>python3 ferramentas/rsd_cli.py kat52</code></pre>
+</div></section>
+
+<section id="cercos" aria-labelledby="h-cercos"><div class="conteudo">
+  <h2 id="h-cercos">{{t:cercos_titulo}}</h2>
+  <p>{{t:cercos_intro}}</p>
+  <div class="so-sem-js">{{@cercos}}</div>
+  <div class="so-js" id="cercos-lista"></div>
+</div></section>
+
+<section id="alcance" aria-labelledby="h-alc"><div class="conteudo">
+  <h2 id="h-alc">{{t:alc_titulo}}</h2>
+  <p>{{t:alc_intro}}</p>
+  {{@alcance}}
+  <div class="nota-limite"><strong>{{t:alc_nao_mostra_t}}</strong>{{t:alc_nao_mostra}}</div>
+</div></section>
+
+<section id="limites" aria-labelledby="h-nao"><div class="conteudo">
+  <h2 id="h-nao">{{t:rod_nao_titulo}}</h2>
+  <ul>
+    <li>{{t:rod_nao_1}}</li><li>{{t:rod_nao_2}}</li><li>{{t:rod_nao_3}}</li><li>{{t:rod_nao_4}}</li><li>{{t:rod_nao_5}}</li>
+    <li>{{t:lab_nao_6}}</li><li>{{t:lab_nao_7}}</li><li>{{t:lab_nao_8}}</li>
+  </ul>
+  <p class="suave">{{t:lab_pontuacao}}</p>
+</div></section>
+
+</main>
+{{@rodape}}
+</body>
+</html>

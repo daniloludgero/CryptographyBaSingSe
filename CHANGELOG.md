@@ -16,6 +16,7 @@ Todas as mudanças relevantes do **BaSingSe (RSD-S)** ficam neste arquivo. O for
 
 - **Medições da v5.2** em [`docs/evidencia/MEDICOES_V5_2.md`](docs/evidencia/MEDICOES_V5_2.md): latência do núcleo C99, custo do Anti-DFA, TVLA com controle, paridade C99 × Python, ataque Square de 3 rodadas reproduzido e comparativo com o AES. Dados brutos em [`resultados/v5_2/`](resultados/v5_2/) e ferramenta reproduzível em [`ferramentas/medicao_v52/`](ferramentas/medicao_v52/).
 - `testes/test_matriz_b.py`: confere `det(B) mod 65537 = 31974`.
+- **Site e laboratório** em [`site/`](site/README.md), publicados no GitHub Pages (português e inglês): motor da RSD-S v5.2 em JavaScript conferido bit a bit contra o Python e o núcleo C; modos Explorar e Verificar; missões do Feixe de espelhos e das Duas sentinelas; pergaminhos de referência com os 6 vetores; Livro de cercos com verificações ao vivo; versão sem JavaScript. 51 testes (paridade, glifos, feixe e E2E com rede zero e acessibilidade automática).
 - **Prova das correções da v5.2** em [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md): o mesmo exploit da v5.1 é executado contra o código v5.1 e contra o v5.2 (`ferramentas/verificacao_correcoes_v52/reproduzir.py`). Os 2 achados Altos e os 3 Médios ficam bloqueados; os 4 Baixos continuam como estavam.
 
 ### Corrigido

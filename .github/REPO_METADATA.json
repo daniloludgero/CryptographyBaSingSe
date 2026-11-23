@@ -1,7 +1,7 @@
 {
   "repository": "daniloludgero/CryptographyBaSingSe",
   "description": "Laboratório de criptoanálise para a RSD-S v5.2, primitiva simétrica experimental. Código-fonte disponível, vetores públicos, limites declarados. Protótipo de pesquisa, não auditado.",
-  "homepage": "",
+  "homepage": "https://daniloludgero.github.io/CryptographyBaSingSe/",
   "topics": [
     "cryptography",
     "cryptanalysis",

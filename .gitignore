@@ -106,3 +106,7 @@ Desktop.ini
 *~
 .vscode/
 .idea/
+
+# site (gerado e dependências de teste)
+site/dist/
+site/node_modules/

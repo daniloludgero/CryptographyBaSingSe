@@ -79,6 +79,12 @@ python3 ferramentas/verificacao_correcoes_v52/reproduzir.py
 
 Os 4 achados de severidade Baixa **não** foram corrigidos; 1 deles (resíduos em registradores AVX2) segue aberto. Detalhes, custos e limites: [`docs/evidencia/CORRECOES_V5_2.md`](docs/evidencia/CORRECOES_V5_2.md).
 
+## Laboratório no navegador
+
+Inverta um bit, dispare o feixe de espelhos, injete uma falha nas duas sentinelas e confira cada vetor, **sem instalar nada**. O laboratório executa a RSD-S v5.2 no seu navegador, em português e inglês, nos modos Explorar e Verificar. Os valores são calculados, e o código do motor é conferido bit a bit contra o Python e o núcleo C.
+
+**<https://daniloludgero.github.io/CryptographyBaSingSe/lab/>** (disponível depois que o dono ativar o GitHub Pages). Como funciona e o que não cobre: [`site/README.md`](site/README.md).
+
 ## Resultados verificados e o que eles **não** mostram
 
 | Resultado | O que **não** mostra |
