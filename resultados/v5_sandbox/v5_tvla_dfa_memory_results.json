@@ -1,0 +1,19 @@
+{
+  "gates": [
+    "GATE_M2_TVLA",
+    "GATE_M2_CACHE",
+    "GATE_M2_MEMORY",
+    "GATE_M3_DFA"
+  ],
+  "tvla_abs_t": 0.35436104043479016,
+  "tvla_threshold": 4.5,
+  "tvla_passed": true,
+  "secret_dependent_lut_bytes": 0,
+  "dfa_faults_injected": 1000,
+  "dfa_detection_rate": 1.0,
+  "dfa_zeroed_rate": 1.0,
+  "dfa_key_recovery_rate": 0.0,
+  "memory_wipe_rc": 0,
+  "residual_key_bytes_after_wipe": 0,
+  "all_gates_passed": true
+}

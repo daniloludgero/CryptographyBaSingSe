@@ -1,0 +1,11 @@
+data: 2026-11-23
+cpu: Intel(R) Xeon(R) Processor @ 2.10GHz (VM KVM, 4 vCPU, 1 thread por núcleo; AVX2, AVX-512F/BW, SHA-NI)
+cache: L1d 192 KiB (4 instâncias), L2 8 MiB (4 instâncias), L3 260 MiB (compartilhado)
+tsc: 2,10 GHz
+so: Linux 6.18
+gcc: 13.3.0 (Ubuntu 13.3.0-6ubuntu2~24.04.1)
+python: 3.13.18
+numpy: 2.5.3
+cpu_fixada: sim (taskset, núcleo 2)
+codigo_medido: commit 97b0975 do repositório de origem; ver sha256 em medicoes_v52_20261123.json
+observacao: VM compartilhada; sem controle de frequência, de turbo nem de vizinhos

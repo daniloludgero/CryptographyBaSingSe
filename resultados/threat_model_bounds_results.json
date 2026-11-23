@@ -1,0 +1,308 @@
+{
+  "timestamp_utc": "2026-11-07T05:55:25Z",
+  "target_primitive": "RSD-S v4",
+  "parameters": {
+    "samples_msb": 10000,
+    "samples_nonce": 1000,
+    "samples_prf": 300
+  },
+  "nonce_reuse_audit": {
+    "identical_output": {
+      "num_trials": 1000,
+      "identical_output_matches": 1000,
+      "identical_equality_rate": 1.0,
+      "deterministic_collision_guarantee": true,
+      "distinct_input_divergence_rate": 1.0,
+      "distinct_nonce_divergence_rate": 1.0,
+      "verdict": "VULNERABLE_TO_DETERMINISTIC_COLLISION"
+    },
+    "ctr_two_time_pad": {
+      "num_blocks": 64,
+      "total_keystream_bytes": 2048,
+      "keystream_perfectly_cancelled": true,
+      "xor_bit_error_count": 0,
+      "two_time_pad_leakage_rate": 1.0,
+      "crib_drag_test": {
+        "crib_length_bytes": 14,
+        "crib_tested": "CONFIDENTIAL: ",
+        "recovered_plaintext_bytes": "SECURITY AUDIT",
+        "expected_plaintext_bytes": "SECURITY AUDIT",
+        "crib_recovery_success": true
+      },
+      "verdict": "CATASTROPHIC_TWO_TIME_PAD_VULNERABILITY"
+    },
+    "replay_attack": {
+      "num_trials": 100,
+      "replays_accepted": 100,
+      "replay_acceptance_rate": 1.0,
+      "verdict": "UNPROTECTED_AGAINST_REPLAY_WITHOUT_FRESHNESS_TRACKING"
+    }
+  },
+  "domain_boundary_audit": {
+    "msb_clamping": {
+      "num_samples_tested": 10006,
+      "violations_word15_msb": 0,
+      "violations_word31_msb": 0,
+      "total_violations": 0,
+      "msb_clamped_rate": 1.0,
+      "max_observed_word15": "0x7fff",
+      "max_observed_word31": "0x7fff",
+      "theoretical_max_allowed": "0x7fff",
+      "exceeds_0x7fff": false,
+      "theoretical_active_entropy_bits": 510.0,
+      "internal_state_bits": 512,
+      "clamped_structural_bits": 2,
+      "unclamped_bits_entropy": 510,
+      "verdict": "CONFIRMED_BIT255_ZERO_CLAMPING"
+    },
+    "round_diffusion": {
+      "num_samples": 1000,
+      "stochastic_noise_floor_sigma": 0.015811388300841896,
+      "stochastic_acceptance_bound_4sigma": 0.06324555320336758,
+      "rounds": {
+        "r0_raw": {
+          "max_bias": 0.5,
+          "mean_bias": 0.01425585937500001,
+          "bit255_freq": 0.0,
+          "bit511_freq": 0.0,
+          "bit255_bias": 0.5,
+          "bit511_bias": 0.5
+        },
+        "r0_whitened": {
+          "max_bias": 0.5,
+          "mean_bias": 0.01425585937500001,
+          "bit255_freq": 0.0,
+          "bit511_freq": 1.0,
+          "bit255_bias": 0.5,
+          "bit511_bias": 0.5
+        },
+        "r1": {
+          "max_bias": 0.050000000000000044,
+          "mean_bias": 0.01292187500000001,
+          "bit255_freq": 0.486,
+          "bit511_freq": 0.485,
+          "bit255_bias": 0.014000000000000012,
+          "bit511_bias": 0.015000000000000013
+        },
+        "r2": {
+          "max_bias": 0.05299999999999999,
+          "mean_bias": 0.012572265625000011,
+          "bit255_freq": 0.49,
+          "bit511_freq": 0.51,
+          "bit255_bias": 0.010000000000000009,
+          "bit511_bias": 0.010000000000000009
+        },
+        "r4": {
+          "max_bias": 0.051000000000000045,
+          "mean_bias": 0.012582031250000009,
+          "bit255_freq": 0.514,
+          "bit511_freq": 0.518,
+          "bit255_bias": 0.014000000000000012,
+          "bit511_bias": 0.018000000000000016
+        }
+      },
+      "msb_dissipation_successful": true,
+      "cauchy_diffusion_effect": "Cauchy MDS with BN=33 diffuses 1-bit restriction across all 32 words in Round 1",
+      "verdict": "PERFECT_DIFFUSION_AFTER_4_ROUNDS"
+    }
+  },
+  "endianness_audit": {
+    "key_expansion": {
+      "total_words_evaluated": 32,
+      "mismatched_word_count": 32,
+      "mismatch_percentage": 100.0,
+      "sample_word_conversions": [
+        {
+          "word_index": 0,
+          "bytes_hex": "[0x0, 0x1]",
+          "le_value_hex": "0x100",
+          "be_value_hex": "0x1",
+          "match": false
+        },
+        {
+          "word_index": 1,
+          "bytes_hex": "[0x2, 0x3]",
+          "le_value_hex": "0x302",
+          "be_value_hex": "0x203",
+          "match": false
+        },
+        {
+          "word_index": 2,
+          "bytes_hex": "[0x4, 0x5]",
+          "le_value_hex": "0x504",
+          "be_value_hex": "0x405",
+          "match": false
+        },
+        {
+          "word_index": 3,
+          "bytes_hex": "[0x6, 0x7]",
+          "le_value_hex": "0x706",
+          "be_value_hex": "0x607",
+          "match": false
+        }
+      ],
+      "verdict": "MIXED_ENDIANNESS_CONFIRMED"
+    },
+    "state_serialization": {
+      "state_word_count": 32,
+      "serialized_byte_length": 64,
+      "byte_differences_in_stream": 64,
+      "hash_be_hex": "a0b3fd69ebed746d272556a47036ea8b45278ed99efe5136dc9f837a70c14d7b",
+      "hash_le_hex": "a1eb77080550efda618b37b062db7f4c0e4d5c2535ef7df44c6aa5d914fd66aa",
+      "hash_hamming_distance_bits": 124,
+      "hash_bit_flip_percentage": 48.4375,
+      "verdict": "STATE_SERIALIZATION_STRICTLY_BIG_ENDIAN"
+    },
+    "kat_sensitivity": {
+      "total_kat_vectors": 4,
+      "canonical_matches": 4,
+      "canonical_pass_rate": 1.0,
+      "variant2_be_keys_matches": 0,
+      "variant3_le_hash_matches": 0,
+      "variant4_all_be_matches": 0,
+      "vectors": [
+        {
+          "name": "zeros",
+          "expected": "6a73a2975c18d0880483b71dfca4a98e64fabc3b470cf0b87a79c401a3ffb64f",
+          "canonical_match": true,
+          "v2_be_keys_match": false,
+          "v3_le_hash_match": false,
+          "v4_all_be_match": false
+        },
+        {
+          "name": "sequencial",
+          "expected": "38659dbb20ab18e575e635a708bdd67131ab6afefc79b253c246ced16e8a41ac",
+          "canonical_match": true,
+          "v2_be_keys_match": false,
+          "v3_le_hash_match": false,
+          "v4_all_be_match": false
+        },
+        {
+          "name": "bits_altos",
+          "expected": "410a7064d587cf1bf9f784f8c6dd2b913798178214231218700020b6e76c7f3f",
+          "canonical_match": true,
+          "v2_be_keys_match": false,
+          "v3_le_hash_match": false,
+          "v4_all_be_match": false
+        },
+        {
+          "name": "limites_do_campo",
+          "expected": "e03ebb1905f7157fbdc8a7a6c34bb6a3dc2d88085077225be7f98c79cbefeb65",
+          "canonical_match": true,
+          "v2_be_keys_match": false,
+          "v3_le_hash_match": false,
+          "v4_all_be_match": false
+        }
+      ],
+      "conclusion": "Altering endianness in key expansion or state serialization breaks 100% of KAT vectors. The canonical test suite rigidly mandates little-endian key expansion (<u2) and big-endian state serialization (to_bytes(2, 'big')).",
+      "verdict": "KAT_VERIFICATION_RIGIDLY_ENDIAN_SENSITIVE"
+    }
+  },
+  "prf_distinguishing_simulation": {
+    "birthday_collision": {
+      "theoretical_256bit_bounds": [
+        {
+          "queries_log2": 32,
+          "queries_scientific": "2^32",
+          "collision_probability": 7.965459555662261e-59,
+          "collision_probability_str": "7.9655e-59"
+        },
+        {
+          "queries_log2": 64,
+          "queries_scientific": "2^64",
+          "collision_probability": 1.4693679385278594e-39,
+          "collision_probability_str": "1.4694e-39"
+        },
+        {
+          "queries_log2": 96,
+          "queries_scientific": "2^96",
+          "collision_probability": 2.710505431213761e-20,
+          "collision_probability_str": "2.7105e-20"
+        },
+        {
+          "queries_log2": 128,
+          "queries_scientific": "2^128",
+          "collision_probability": 0.3934693402873666,
+          "collision_probability_str": "39.35%"
+        },
+        {
+          "queries_log2": 160,
+          "queries_scientific": "2^160",
+          "collision_probability": 1.0,
+          "collision_probability_str": "100.00%"
+        }
+      ],
+      "empirical_truncated_simulation": {
+        "truncation_bits": 12,
+        "state_space_size": 4096,
+        "fifty_percent_threshold_queries": 75.4,
+        "data_points": [
+          {
+            "queries": 20,
+            "theoretical_probability": 0.0453,
+            "empirical_probability": 0.0625,
+            "collisions_observed": 1,
+            "total_trials": 16,
+            "absolute_error": 0.0172
+          },
+          {
+            "queries": 40,
+            "theoretical_probability": 0.1734,
+            "empirical_probability": 0.3125,
+            "collisions_observed": 5,
+            "total_trials": 16,
+            "absolute_error": 0.1391
+          },
+          {
+            "queries": 60,
+            "theoretical_probability": 0.3509,
+            "empirical_probability": 0.4375,
+            "collisions_observed": 7,
+            "total_trials": 16,
+            "absolute_error": 0.0866
+          },
+          {
+            "queries": 80,
+            "theoretical_probability": 0.5377,
+            "empirical_probability": 0.75,
+            "collisions_observed": 12,
+            "total_trials": 16,
+            "absolute_error": 0.2123
+          },
+          {
+            "queries": 100,
+            "theoretical_probability": 0.7014,
+            "empirical_probability": 0.8125,
+            "collisions_observed": 13,
+            "total_trials": 16,
+            "absolute_error": 0.1111
+          },
+          {
+            "queries": 120,
+            "theoretical_probability": 0.825,
+            "empirical_probability": 0.8125,
+            "collisions_observed": 13,
+            "total_trials": 16,
+            "absolute_error": 0.0125
+          }
+        ],
+        "mean_absolute_error": 0.0965
+      },
+      "prf_collision_resistance_bits": 128,
+      "verdict": "CONFIRMED_128_BIT_PRF_COLLISION_BOUND"
+    },
+    "reduced_round_advantage": {
+      "num_differential_pairs_tested": 200,
+      "round1_linear_matches": 200,
+      "round1_success_rate": 1.0,
+      "round1_distinguishing_advantage": 1.0,
+      "round4_linear_matches": 0,
+      "round4_success_rate": 0.0,
+      "round4_distinguishing_advantage": 0.0,
+      "wide_trail_differential_bound": "2^-924",
+      "wide_trail_linear_bound": "2^-462",
+      "verdict": "ROUND_1_TRIVIALLY_DISTINGUISHED_ROUND_4_PROVABLY_SECURE"
+    }
+  },
+  "execution_time_seconds": 119.42
+}

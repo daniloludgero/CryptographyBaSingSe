@@ -1,0 +1,14 @@
+{
+ "O3_avx2": {
+  "paridade": "126/126",
+  "falhas_detectadas_zeram_saida": "24/24"
+ },
+ "O2_escalar": {
+  "paridade": "126/126",
+  "falhas_detectadas_zeram_saida": "24/24"
+ },
+ "O0": {
+  "paridade": "126/126",
+  "falhas_detectadas_zeram_saida": "24/24"
+ }
+}

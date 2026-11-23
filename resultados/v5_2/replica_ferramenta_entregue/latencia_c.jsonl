@@ -1,0 +1,10 @@
+{"pass":1,"cfg":"O3_avx2","r":8,"x":{"rounds":8,"iters":4000,"reps":21,"tsc_ghz":2.1000,"us_median":29.7128,"us_min":29.1784,"us_p95":42.9295,"cyc_median":62397,"cpb_median":974.95,"mib_s_median":2.0542}}
+{"pass":1,"cfg":"O2_escalar","r":8,"x":{"rounds":8,"iters":600,"reps":21,"tsc_ghz":2.1000,"us_median":351.7946,"us_min":349.6642,"us_p95":357.7745,"cyc_median":738769,"cpb_median":11543.26,"mib_s_median":0.1735}}
+{"pass":1,"cfg":"O3_avx2","r":4,"x":{"rounds":4,"iters":4000,"reps":21,"tsc_ghz":2.1000,"us_median":14.7445,"us_min":14.5688,"us_p95":15.0927,"cyc_median":30963,"cpb_median":483.80,"mib_s_median":4.1395}}
+{"pass":1,"cfg":"O2_escalar","r":4,"x":{"rounds":4,"iters":600,"reps":21,"tsc_ghz":2.1000,"us_median":176.0181,"us_min":174.0564,"us_p95":201.7329,"cyc_median":369638,"cpb_median":5775.59,"mib_s_median":0.3468}}
+{"pass":1,"cfg":"O0","r":8,"x":{"rounds":8,"iters":150,"reps":21,"tsc_ghz":2.1000,"us_median":1803.2529,"us_min":1753.7738,"us_p95":1892.7560,"cyc_median":3786832,"cpb_median":59169.26,"mib_s_median":0.0338}}
+{"pass":2,"cfg":"O3_avx2","r":8,"x":{"rounds":8,"iters":4000,"reps":21,"tsc_ghz":2.1000,"us_median":29.5554,"us_min":28.9912,"us_p95":32.9524,"cyc_median":62066,"cpb_median":969.79,"mib_s_median":2.0651}}
+{"pass":2,"cfg":"O2_escalar","r":8,"x":{"rounds":8,"iters":600,"reps":21,"tsc_ghz":2.1000,"us_median":349.8296,"us_min":348.3863,"us_p95":361.5082,"cyc_median":734642,"cpb_median":11478.79,"mib_s_median":0.1745}}
+{"pass":2,"cfg":"O3_avx2","r":4,"x":{"rounds":4,"iters":4000,"reps":21,"tsc_ghz":2.1000,"us_median":15.4343,"us_min":14.5322,"us_p95":17.0658,"cyc_median":32412,"cpb_median":506.44,"mib_s_median":3.9545}}
+{"pass":2,"cfg":"O2_escalar","r":4,"x":{"rounds":4,"iters":600,"reps":21,"tsc_ghz":2.1000,"us_median":175.8425,"us_min":173.0493,"us_p95":199.2058,"cyc_median":369269,"cpb_median":5769.83,"mib_s_median":0.3471}}
+{"pass":2,"cfg":"O0","r":8,"x":{"rounds":8,"iters":150,"reps":21,"tsc_ghz":2.1000,"us_median":1746.5603,"us_min":1739.0761,"us_p95":1790.7943,"cyc_median":3667777,"cpb_median":57309.02,"mib_s_median":0.0349}}

@@ -1,0 +1,464 @@
+{
+  "metadata": {
+    "round": "Round 3",
+    "metric": "Metric 1: SIV Nonce-Misuse Resistance & Differentials in Z_65537",
+    "date": "2026-11-22",
+    "target_file": "implementacao/bandlimited_dual_key.py",
+    "q_mod": 65537,
+    "dim": 32,
+    "elapsed_seconds": 127.55427207699995
+  },
+  "siv_code_audit": {
+    "function_name": "_derive_dual_key_noise",
+    "parameters": [
+      "s",
+      "n_sess",
+      "s_priv_bytes",
+      "dim",
+      "q_mod"
+    ],
+    "domain_prefix": "RSD-S-V5|DUALKEY|",
+    "siv_domain_tag_present": true,
+    "noise_xof_tag_present": true,
+    "s_priv_bytes_bound_in_hmac": true,
+    "rejection_sampling_unbiased": true,
+    "whitebox_kat_exact_match": true,
+    "rejection_sampling_limit": 4294967295,
+    "exact_preimages_per_z65537_residue": 65535,
+    "rejection_probability": 2.3283064365386963e-10,
+    "k_priv_formula": "HMAC-SHA256(s, \"RSD-S-V5|DUALKEY|V5.1|SIV|\" || uint64_be(n_sess) || S_priv_bytes)",
+    "e_priv_formula": "RejectionSample_Z65537(SHAKE256(\"RSD-S-V5|DUALKEY|NOISE|V5.1|\" || k_priv))"
+  },
+  "campaign_a_general_random_differentials": {
+    "n_pairs": 1000,
+    "total_word_comparisons": 32000,
+    "v50_legacy_comparison": {
+      "vector_leaks_count": 1000,
+      "vector_leak_rate": 1.0,
+      "word_leaks_count": 32000,
+      "word_leak_rate": 1.0
+    },
+    "v51_siv_algebraic_attack_results": {
+      "vector_leaks_count": 0,
+      "vector_leak_rate": 0.0,
+      "word_matches_count": 3,
+      "word_match_rate": 9.375e-05,
+      "expected_random_word_matches": 0.4882737995330882,
+      "max_words_matched_in_single_pair": 1
+    },
+    "delta_e_priv_uniformity": {
+      "n_samples": 32000,
+      "mean": 32899.6329375,
+      "expected_mean": 32768.0,
+      "std": 19006.262615510845,
+      "expected_std": 18918.90229373787,
+      "min": 0,
+      "max": 65535,
+      "zero_coordinates_count": 1,
+      "chi2_64bins_stat": 58.748850222167974,
+      "chi2_64bins_pvalue": 0.6284749561674972,
+      "ks_stat": 0.0071451637052352135,
+      "ks_pvalue": 0.07584219039214557,
+      "indistinguishable_from_uniform": true
+    }
+  },
+  "campaign_b_single_bit_and_word_differentials": {
+    "direct_s_priv_hw1_differentials": {
+      "total_trials": 2048,
+      "n_word_positions_tested": 32,
+      "n_bits_per_word_tested": 16,
+      "n_base_states": 4,
+      "algebraic_recovery_leaks": 0,
+      "y_pub_bytes_512bit_hamming_distance": {
+        "mean_bits": 256.0908203125,
+        "ideal_mean_bits": 256.0,
+        "mean_fraction": 0.5001773834228516,
+        "std_bits": 11.37755610493033,
+        "ideal_binomial_std_bits": 11.313708498984761,
+        "min_bits": 219,
+        "max_bits": 294
+      },
+      "delta_y_pub_z65537_word_change_rate": {
+        "mean_words_changed_out_of_32": 31.99951171875,
+        "expected_words_changed_out_of_32": 31.999511726200467,
+        "mean_word_change_fraction": 0.9999847412109375,
+        "min_words_changed": 31,
+        "max_words_changed": 32
+      },
+      "delta_e_priv_z65537_word_change_rate": {
+        "mean_words_changed_out_of_32": 31.99951171875,
+        "mean_word_change_fraction": 0.9999847412109375,
+        "min_words_changed": 31,
+        "max_words_changed": 32
+      },
+      "per_word_position_summary": [
+        {
+          "word_index": 0,
+          "mean_hd_bits": 255.984375,
+          "min_hd_bits": 227,
+          "max_hd_bits": 284,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 1,
+          "mean_hd_bits": 257.390625,
+          "min_hd_bits": 235,
+          "max_hd_bits": 286,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 2,
+          "mean_hd_bits": 257.265625,
+          "min_hd_bits": 226,
+          "max_hd_bits": 277,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 3,
+          "mean_hd_bits": 256.765625,
+          "min_hd_bits": 235,
+          "max_hd_bits": 273,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 4,
+          "mean_hd_bits": 255.921875,
+          "min_hd_bits": 226,
+          "max_hd_bits": 279,
+          "mean_coords_changed": 31.984375
+        },
+        {
+          "word_index": 5,
+          "mean_hd_bits": 256.875,
+          "min_hd_bits": 229,
+          "max_hd_bits": 284,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 6,
+          "mean_hd_bits": 254.34375,
+          "min_hd_bits": 228,
+          "max_hd_bits": 279,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 7,
+          "mean_hd_bits": 254.671875,
+          "min_hd_bits": 219,
+          "max_hd_bits": 279,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 8,
+          "mean_hd_bits": 258.0,
+          "min_hd_bits": 225,
+          "max_hd_bits": 294,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 9,
+          "mean_hd_bits": 256.734375,
+          "min_hd_bits": 235,
+          "max_hd_bits": 281,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 10,
+          "mean_hd_bits": 253.859375,
+          "min_hd_bits": 225,
+          "max_hd_bits": 279,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 11,
+          "mean_hd_bits": 256.578125,
+          "min_hd_bits": 231,
+          "max_hd_bits": 275,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 12,
+          "mean_hd_bits": 256.296875,
+          "min_hd_bits": 223,
+          "max_hd_bits": 276,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 13,
+          "mean_hd_bits": 252.34375,
+          "min_hd_bits": 224,
+          "max_hd_bits": 278,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 14,
+          "mean_hd_bits": 256.640625,
+          "min_hd_bits": 232,
+          "max_hd_bits": 289,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 15,
+          "mean_hd_bits": 258.21875,
+          "min_hd_bits": 230,
+          "max_hd_bits": 290,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 16,
+          "mean_hd_bits": 255.234375,
+          "min_hd_bits": 226,
+          "max_hd_bits": 283,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 17,
+          "mean_hd_bits": 255.703125,
+          "min_hd_bits": 231,
+          "max_hd_bits": 284,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 18,
+          "mean_hd_bits": 255.609375,
+          "min_hd_bits": 226,
+          "max_hd_bits": 282,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 19,
+          "mean_hd_bits": 256.25,
+          "min_hd_bits": 225,
+          "max_hd_bits": 288,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 20,
+          "mean_hd_bits": 255.875,
+          "min_hd_bits": 235,
+          "max_hd_bits": 286,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 21,
+          "mean_hd_bits": 256.203125,
+          "min_hd_bits": 231,
+          "max_hd_bits": 278,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 22,
+          "mean_hd_bits": 259.8125,
+          "min_hd_bits": 235,
+          "max_hd_bits": 291,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 23,
+          "mean_hd_bits": 254.75,
+          "min_hd_bits": 228,
+          "max_hd_bits": 281,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 24,
+          "mean_hd_bits": 255.03125,
+          "min_hd_bits": 234,
+          "max_hd_bits": 289,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 25,
+          "mean_hd_bits": 255.890625,
+          "min_hd_bits": 230,
+          "max_hd_bits": 276,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 26,
+          "mean_hd_bits": 257.484375,
+          "min_hd_bits": 225,
+          "max_hd_bits": 285,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 27,
+          "mean_hd_bits": 256.25,
+          "min_hd_bits": 224,
+          "max_hd_bits": 280,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 28,
+          "mean_hd_bits": 254.609375,
+          "min_hd_bits": 234,
+          "max_hd_bits": 280,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 29,
+          "mean_hd_bits": 256.671875,
+          "min_hd_bits": 226,
+          "max_hd_bits": 282,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 30,
+          "mean_hd_bits": 256.4375,
+          "min_hd_bits": 224,
+          "max_hd_bits": 285,
+          "mean_coords_changed": 32.0
+        },
+        {
+          "word_index": 31,
+          "mean_hd_bits": 255.203125,
+          "min_hd_bits": 223,
+          "max_hd_bits": 284,
+          "mean_coords_changed": 32.0
+        }
+      ]
+    },
+    "e2e_x_y_single_bit_differentials": {
+      "total_trials": 510,
+      "x_bits_tested": 255,
+      "y_bits_tested": 255,
+      "algebraic_recovery_leaks": 0,
+      "y_pub_bytes_512bit_hamming_distance": {
+        "overall_mean_bits": 256.3411764705882,
+        "overall_mean_fraction": 0.5006663602941176,
+        "overall_std_bits": 11.450887053071106,
+        "overall_min_bits": 220,
+        "overall_max_bits": 291,
+        "x_flips_mean_bits": 256.2,
+        "y_flips_mean_bits": 256.4823529411765
+      },
+      "delta_y_pub_word_change_rate": {
+        "mean_words_changed_out_of_32": 32.0,
+        "mean_word_change_fraction": 1.0,
+        "min_words_changed": 32,
+        "max_words_changed": 32
+      },
+      "delta_s_priv_internal_word_change_rate": {
+        "mean_words_changed_out_of_32": 32.0,
+        "min_words_changed": 32,
+        "max_words_changed": 32
+      }
+    }
+  },
+  "campaign_c_correlation_mi_and_lattice_residuals": {
+    "pearson_correlation_32x32": {
+      "max_abs_corr": 0.10120784114581588,
+      "mean_abs_corr": 0.024825207347440394,
+      "std_corr": 0.03129426465639832,
+      "expected_null_std": 0.03162277660168379
+    },
+    "spearman_correlation_32x32": {
+      "max_abs_corr": 0.10365103324818904,
+      "mean_abs_corr": 0.024848625763184782,
+      "std_corr": 0.03129208644386704,
+      "expected_null_std": 0.03162277660168379
+    },
+    "pairwise_mutual_information_16bins": {
+      "n_coordinate_pairs": 1024,
+      "n_bins_per_coord": 16,
+      "mean_mi_bits": 0.1742945131080192,
+      "max_mi_bits": 0.23407223966715016,
+      "min_mi_bits": 0.12747431141331378,
+      "expected_miller_madow_null_bias_bits": 0.1623031921000084,
+      "chi2_dof": 225,
+      "mean_chi2_stat": 224.70008772853822,
+      "min_chi2_pvalue": 0.0006900552739375065,
+      "median_chi2_pvalue": 0.5035693990630699
+    },
+    "kannan_cvp_lattice_residual_check": {
+      "residual_equals_neg_delta_e_priv_exact": true,
+      "n_vectors_evaluated": 1000,
+      "residual_32d_l2_norm_mean": 106109.54704903146,
+      "residual_32d_l2_norm_min": 76444.218120143,
+      "residual_32d_l2_norm_max": 130366.7220075737,
+      "expected_uniform_32d_l2_norm": 107021.47283606221,
+      "full_65d_target_norm_mean": 151023.5889907774,
+      "full_65d_target_norm_min": 122821.25631990579,
+      "full_65d_gaussian_heuristic": 458.5776509203446,
+      "full_65d_min_target_to_gh_ratio": 267.83088114610274,
+      "full_65d_mean_target_to_gh_ratio": 329.33046058324015,
+      "short_vector_vulnerability_present": false,
+      "subdimension_lll_experiments": [
+        {
+          "subdim_d": 6,
+          "lattice_dim": 13,
+          "gaussian_heuristic": 145.79018824991581,
+          "small_noise_control_recovered": true,
+          "small_noise_control_lll_min_norm": 6.855654600401044,
+          "v51_siv_true_target_norm": 73695.55245060586,
+          "v51_siv_lll_min_norm": 174.4190356583822,
+          "v51_siv_true_to_gh_ratio": 505.49048146008147,
+          "v51_siv_recovered_exact": false
+        },
+        {
+          "subdim_d": 8,
+          "lattice_dim": 17,
+          "gaussian_heuristic": 184.31861352225172,
+          "small_noise_control_recovered": true,
+          "small_noise_control_lll_min_norm": 8.48528137423857,
+          "v51_siv_true_target_norm": 78211.48241786496,
+          "v51_siv_lll_min_norm": 217.92429878285716,
+          "v51_siv_true_to_gh_ratio": 424.32764072643664,
+          "v51_siv_recovered_exact": false
+        },
+        {
+          "subdim_d": 12,
+          "lattice_dim": 25,
+          "gaussian_heuristic": 248.11120429886824,
+          "small_noise_control_recovered": true,
+          "small_noise_control_lll_min_norm": 9.16515138991168,
+          "v51_siv_true_target_norm": 96143.56426719367,
+          "v51_siv_lll_min_norm": 281.52086956387444,
+          "v51_siv_true_to_gh_ratio": 387.5019047966155,
+          "v51_siv_recovered_exact": false
+        }
+      ]
+    }
+  },
+  "campaign_d_determinism_and_siv_prf_commitment": {
+    "determinism_check": {
+      "trials": 100,
+      "exact_matches": 100,
+      "deterministic_100_percent": true
+    },
+    "siv_verification_check": {
+      "valid_tag_verified": true,
+      "single_bit_tamper_trials": 512,
+      "single_bit_tamper_rejections": 512,
+      "rejection_rate": 1.0
+    },
+    "single_bit_avalanche_s_256bits": {
+      "y_pub_bytes_mean_hd_bits": 255.12890625,
+      "y_pub_bytes_min_hd_bits": 222,
+      "y_pub_bytes_max_hd_bits": 291,
+      "e_priv_mean_hd_bits": 257.2265625,
+      "e_priv_min_hd_bits": 225,
+      "e_priv_max_hd_bits": 292
+    },
+    "single_bit_avalanche_n_sess_64bits": {
+      "y_pub_bytes_mean_hd_bits": 255.453125,
+      "y_pub_bytes_min_hd_bits": 231,
+      "y_pub_bytes_max_hd_bits": 275,
+      "e_priv_mean_hd_bits": 256.265625,
+      "e_priv_min_hd_bits": 232,
+      "e_priv_max_hd_bits": 277
+    },
+    "single_bit_avalanche_s_priv_512bits_in_noise_prf": {
+      "e_priv_mean_hd_bits": 256.51953125,
+      "e_priv_min_hd_bits": 218,
+      "e_priv_max_hd_bits": 301
+    },
+    "kem_pke_impossibility_reconfirmation": {
+      "regev_decapsulation_trials": 1000,
+      "regev_decapsulation_accuracy": 0.477,
+      "supports_kem_or_pke": false,
+      "primitive_classification": "Keyed PRF / Deterministic SIV Symmetric Verifiable Commitment",
+      "security_reduction_summary": "Under the PRF assumption on HMAC-SHA256 and random-oracle/XOF security of SHAKE-256, for any Q distinct queries (n_sess^(i), S_priv^(i)), the derived masks e_priv^(i) are computationally indistinguishable from independent uniform vectors in Z_65537^32 (advantage <= Adv^{prf}_{HMAC-SHA256}(Q) + Q^2 / 2^257). Consequently, Y_pub^(i) = (B_{K_j} S_priv^(i) + e_priv^(i)) mod 65537 is a one-time-pad-masked vector in Z_65537^32 for every distinct (n_sess, S_priv) pair, completely eliminating nonce-misuse differential cancellation."
+    }
+  }
+}

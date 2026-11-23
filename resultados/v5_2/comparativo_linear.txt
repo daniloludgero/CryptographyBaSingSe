@@ -1,0 +1,9 @@
+RSD-S v5.2 1R (generico)           max_z= 2.804  detectado= False
+AES-128 1R (generico)              max_z= 68.418  detectado= True
+AES-256 1R (generico)              max_z= 68.418  detectado= True
+RSD-S v5.2 2R (generico)           max_z= 2.815  detectado= False
+AES-128 2R (generico)              max_z= 2.174  detectado= False
+AES-256 2R (generico)              max_z= 1.909  detectado= False
+RSD-S v5.2 3R (generico)           max_z= 2.605  detectado= False
+AES-128 3R (generico)              max_z= 2.834  detectado= False
+AES-256 3R (generico)              max_z= 2.248  detectado= False

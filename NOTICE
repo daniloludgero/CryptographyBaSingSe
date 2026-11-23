@@ -1,0 +1,22 @@
+Required Notice: Copyright (c) 2026 Danilo Ludgero (https://github.com/daniloludgero)
+
+BaSingSe / RSD-S
+Autor e titular dos direitos: Danilo Ludgero.
+
+Este software é licenciado sob a PolyForm Noncommercial License 1.0.0 (arquivo LICENSE).
+Quem redistribuir qualquer parte do software deve repassar este arquivo, ou ao menos a linha
+"Required Notice" acima, conforme a seção "Distribution License" da licença.
+
+Uso comercial exige licença escrita do autor. Veja COMMERCIAL.md.
+
+Nota sobre versões anteriores
+-----------------------------
+As versões v0.4.0 a v0.5.2 do projeto, publicadas antes desta licença, foram distribuídas sob
+a licença MIT. Essa concessão é irrevogável para quem obteve essas versões e continua
+valendo para elas. A licença acima se aplica à versão 0.6.0 e às posteriores.
+
+Dependências
+------------
+O núcleo Python depende de NumPy (licença BSD). Os modelos SMT opcionais usam z3-solver
+(licença MIT). Essas dependências não são redistribuídas neste repositório e mantêm suas
+próprias licenças.

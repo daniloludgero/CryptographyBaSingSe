@@ -1,0 +1,169 @@
+{
+  "timestamp": "2026-11-07T06:11:54Z",
+  "primitive": "BaSingSe (RSD-S v4)",
+  "analysis_type": "Algebraic Cryptanalysis over GF(2^16)",
+  "vulnerability_root_cause": "Absence of GF(2)-affine transformation in inversion S-box. Relation U_i * (V_i ^ rc) = 1 is bilinear (degree 2 over GF(2^16)). Cauchy MDS inversion decouples 1-round cipher into 32 independent 3x3 linear systems.",
+  "round1_attack": {
+    "trials_executed": 3,
+    "all_trials_successful": true,
+    "avg_execution_time_ms": 25.151075999929162,
+    "pairs_required": 3,
+    "data_complexity_bits": 1536,
+    "trials": [
+      {
+        "trial_id": 1,
+        "pairs_used": 3,
+        "words_total": 32,
+        "k0_matched": true,
+        "k1_matched": true,
+        "full_key_recovered": true,
+        "execution_time_seconds": 0.025072554999951535,
+        "recovered_k0_hex": "dcaf5077dd258665391d1325eb1fea7325e4eb3b5f5d245a3cde4bf3d1890a020491a1f7e80f980b5cf3b4344a07051ea801439ee0f4f91aedcb4d4fd4eb836a",
+        "ground_truth_k0_hex": "dcaf5077dd258665391d1325eb1fea7325e4eb3b5f5d245a3cde4bf3d1890a020491a1f7e80f980b5cf3b4344a07051ea801439ee0f4f91aedcb4d4fd4eb836a",
+        "recovered_k1_hex": "3ecf2d2ec512c7ee690f4c925a41198c4e09f3546a5546c3cff67a90198730f2233fff26021eeb60acc78a028d81abb7f8a7b00aa8d08270778c025415c5284e",
+        "ground_truth_k1_hex": "3ecf2d2ec512c7ee690f4c925a41198c4e09f3546a5546c3cff67a90198730f2233fff26021eeb60acc78a028d81abb7f8a7b00aa8d08270778c025415c5284e",
+        "consistency_checks_passed": 32
+      },
+      {
+        "trial_id": 2,
+        "pairs_used": 3,
+        "words_total": 32,
+        "k0_matched": true,
+        "k1_matched": true,
+        "full_key_recovered": true,
+        "execution_time_seconds": 0.02566212299984727,
+        "recovered_k0_hex": "ee4752b0538f80d37972ca56c859c0b523c9d5ece80ad1727fc86b6f96c7b1f27681f8c8f2464da2d8913d3ea2fff8e2cc055e57a03b726dddb11d9904e8bb14",
+        "ground_truth_k0_hex": "ee4752b0538f80d37972ca56c859c0b523c9d5ece80ad1727fc86b6f96c7b1f27681f8c8f2464da2d8913d3ea2fff8e2cc055e57a03b726dddb11d9904e8bb14",
+        "recovered_k1_hex": "306de665ee35dde0007ecfafcea81ba4c5d589885629135b4f4c07b10ba1a4f609ab94de3653fefaa0fbb71264748b6a1738852d3d97b0b8ab6d91aaefe9a844",
+        "ground_truth_k1_hex": "306de665ee35dde0007ecfafcea81ba4c5d589885629135b4f4c07b10ba1a4f609ab94de3653fefaa0fbb71264748b6a1738852d3d97b0b8ab6d91aaefe9a844",
+        "consistency_checks_passed": 32
+      },
+      {
+        "trial_id": 3,
+        "pairs_used": 3,
+        "words_total": 32,
+        "k0_matched": true,
+        "k1_matched": true,
+        "full_key_recovered": true,
+        "execution_time_seconds": 0.02471854999998868,
+        "recovered_k0_hex": "4820ce8e1b479dd715a31f154cb383f719447646042382545b763da4032f84daa2e12631f716f1610574096180889103421ab790161fbef86e0228d9d2276799",
+        "ground_truth_k0_hex": "4820ce8e1b479dd715a31f154cb383f719447646042382545b763da4032f84daa2e12631f716f1610574096180889103421ab790161fbef86e0228d9d2276799",
+        "recovered_k1_hex": "1602fbe737fbe8aaf68db5b55f5979b444951650585c023e127a3f08d043e9ef0f954745e7810b885d9cd96321f6fbb8af0116b65b54dae5d1a625f88f87d1be",
+        "ground_truth_k1_hex": "1602fbe737fbe8aaf68db5b55f5979b444951650585c023e127a3f08d043e9ef0f954745e7810b885d9cd96321f6fbb8af0116b65b54dae5d1a625f88f87d1be",
+        "consistency_checks_passed": 32
+      }
+    ]
+  },
+  "round2_toy_solver": {
+    "words": 2,
+    "rounds": 2,
+    "pairs_used": 5,
+    "candidates_tested": 46,
+    "k0_recovered": true,
+    "k1_recovered": true,
+    "k2_prime_recovered": true,
+    "execution_time_seconds": 0.015301938999982667,
+    "ground_truth_k0": [
+      46070,
+      25559
+    ],
+    "recovered_k0": [
+      46070,
+      25559
+    ],
+    "ground_truth_k1": [
+      3308,
+      24828
+    ],
+    "recovered_k1": [
+      3308,
+      24828
+    ]
+  },
+  "monomial_complexity_matrix": [
+    {
+      "configuration": "Toy 2-Round (W=2)",
+      "words_w": 2,
+      "rounds_r": 2,
+      "key_variables_m": 6,
+      "quadratic_monomials": 28,
+      "pairs_required": 14,
+      "linearization_complexity_ops": 21952.0,
+      "log2_complexity_ops": 14.422064766172813,
+      "nominal_brute_force_log2": 32.0,
+      "security_reduction_factor_log2": 17.577935233827187
+    },
+    {
+      "configuration": "Reduced 2-Round (W=4)",
+      "words_w": 4,
+      "rounds_r": 2,
+      "key_variables_m": 12,
+      "quadratic_monomials": 91,
+      "pairs_required": 23,
+      "linearization_complexity_ops": 753571.0,
+      "log2_complexity_ops": 19.52338392059609,
+      "nominal_brute_force_log2": 64.0,
+      "security_reduction_factor_log2": 44.47661607940391
+    },
+    {
+      "configuration": "Reduced 2-Round (W=8)",
+      "words_w": 8,
+      "rounds_r": 2,
+      "key_variables_m": 24,
+      "quadratic_monomials": 325,
+      "pairs_required": 41,
+      "linearization_complexity_ops": 34328125.0,
+      "log2_complexity_ops": 25.03288772374745,
+      "nominal_brute_force_log2": 128.0,
+      "security_reduction_factor_log2": 102.96711227625255
+    },
+    {
+      "configuration": "Reduced 2-Round (W=16)",
+      "words_w": 16,
+      "rounds_r": 2,
+      "key_variables_m": 48,
+      "quadratic_monomials": 1225,
+      "pairs_required": 77,
+      "linearization_complexity_ops": 1838265625.0,
+      "log2_complexity_ops": 30.7756981016698,
+      "nominal_brute_force_log2": 256.0,
+      "security_reduction_factor_log2": 225.2243018983302
+    },
+    {
+      "configuration": "Full 2-Round (W=32)",
+      "words_w": 32,
+      "rounds_r": 2,
+      "key_variables_m": 96,
+      "quadratic_monomials": 4753,
+      "pairs_required": 149,
+      "linearization_complexity_ops": 107375065777.0,
+      "log2_complexity_ops": 36.64386805890701,
+      "nominal_brute_force_log2": 512.0,
+      "security_reduction_factor_log2": 475.356131941093
+    },
+    {
+      "configuration": "Full 3-Round (W=32)",
+      "words_w": 32,
+      "rounds_r": 3,
+      "key_variables_m": 128,
+      "quadratic_monomials": 8385,
+      "pairs_required": 263,
+      "linearization_complexity_ops": 589534466625.0,
+      "log2_complexity_ops": 39.10078520535512,
+      "nominal_brute_force_log2": 512.0,
+      "security_reduction_factor_log2": 472.8992147946449
+    },
+    {
+      "configuration": "Full 4-Round (W=32)",
+      "words_w": 32,
+      "rounds_r": 4,
+      "key_variables_m": 160,
+      "quadratic_monomials": 13041,
+      "pairs_required": 408,
+      "linearization_complexity_ops": 2217852627921.0,
+      "log2_complexity_ops": 41.01230064299772,
+      "nominal_brute_force_log2": 512.0,
+      "security_reduction_factor_log2": 470.98769935700227
+    }
+  ]
+}

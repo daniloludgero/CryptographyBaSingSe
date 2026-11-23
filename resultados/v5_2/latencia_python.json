@@ -1,0 +1,26 @@
+{
+ "python": "3.13.18",
+ "numpy": "2.5.3",
+ "init_engine_ms": 4.8,
+ "pre_sha_8r": {
+  "ms_mediana": 82.652,
+  "ms_min": 75.744,
+  "ms_max": 112.781
+ },
+ "api_32B_8r": {
+  "ms_mediana": 77.66,
+  "ms_min": 76.981,
+  "ms_max": 81.628
+ },
+ "api_64B_8r": {
+  "ms_mediana": 76.359,
+  "ms_min": 75.503,
+  "ms_max": 77.957
+ },
+ "dual_key_refactor_8r": {
+  "ms_mediana": 79.934,
+  "ms_min": 76.269,
+  "ms_max": 109.967
+ },
+ "derive_keys_8r_us": 25.0
+}

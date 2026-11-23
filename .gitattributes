@@ -1,0 +1,26 @@
+# Normaliza finais de linha entre Linux, macOS e Windows
+* text=auto eol=lf
+
+*.py text eol=lf diff=python
+*.sh text eol=lf
+*.c text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.cff text eol=lf
+*.toml text eol=lf
+*.svg text eol=lf
+
+# Binários
+*.png binary
+*.gif binary
+*.ico binary
+*.gz binary
+*.zip binary
+
+# Fórmulas DIMACS CNF
+*.cnf text eol=lf linguist-generated=true
+
+# Arte e assets não entram na estatística de linguagens
+assets/** linguist-vendored

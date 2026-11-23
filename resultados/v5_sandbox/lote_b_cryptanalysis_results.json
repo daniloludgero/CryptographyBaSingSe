@@ -1,0 +1,77 @@
+{
+  "lote": "Lote B — Criptoanálise Diferencial, Linear e Algébrica de RSD-S v5",
+  "sbox_v5_exact": {
+    "bijection_size": 65536,
+    "fixed_points": 0,
+    "opposite_fixed_points": 0,
+    "ddt_max": 4,
+    "ddt_max_prob": 6.103515625e-05,
+    "ddt_histogram": {
+      "0": 2147516415,
+      "2": 2147319810,
+      "4": 65535,
+      "other_nonzero": 0
+    },
+    "ddt_compute_time_sec": 4.458,
+    "lat_max_abs_walsh": 512,
+    "lat_max_abs_bias": 256,
+    "lat_max_correlation": 0.0078125,
+    "nonlinearity": 32512,
+    "lat_compute_time_sec": 18.688,
+    "anf_min_degree": 15,
+    "anf_max_degree": 15,
+    "anf_monomial_counts": [32984, 32929, 32805, 32464, 32641, 32693, 32551, 32616, 32560, 32708, 32861, 32821, 32658, 32869, 32743, 32873],
+    "f2_quadratic_monomials_total": 529,
+    "f2_quadratic_eval_matrix_rank": 450,
+    "f2_independent_quadratic_equations": 79
+  },
+  "affine_layer_A16": {
+    "rank_f2": 16,
+    "multiplicative_order": 8,
+    "nilpotent_index_A_plus_I": 6,
+    "fixed_points_dim": 3,
+    "linearized_poly_nonzero_terms": 16,
+    "preserves_subfields_gf2k": false
+  },
+  "cauchy_mds_M32": {
+    "distinct_row_sums": 1,
+    "distinct_col_sums": 1,
+    "zero_row_or_col_sums": 0,
+    "dyadic_involution_M2_eq_cI": true,
+    "scalar_c_hex": "0x5e26",
+    "multiplicative_order_of_M": 43690
+  },
+  "reduced_round_attacks": {
+    "1R_v4_bilinear_gf216_recovered": false,
+    "1R_word_decoupled_time_sec": 0.244,
+    "1R_word_decoupled_recovered_words": 32,
+    "anf_degree_growth_word0": {
+      "1R": {"min_deg": 15, "max_deg": 15, "avg_monomials": 32771.9},
+      "2R": {"min_deg": 15, "max_deg": 15, "avg_monomials": 32747.6},
+      "3R": {"min_deg": 15, "max_deg": 16, "avg_monomials": 32768.2}
+    },
+    "integral_2r_nonzero_words": 0,
+    "integral_4r_nonzero_words": 32,
+    "square_attack_3R_pre_sha": {
+      "chosen_plaintexts": 131072,
+      "words_recovered_of_32": 32,
+      "total_candidates": 32,
+      "time_sec": 296.763
+    }
+  },
+  "full_8R_wide_trail_verified": {
+    "rounds": 8,
+    "min_active_sboxes": 132,
+    "differential_single_trail_bound_log2": -1848,
+    "linear_correlation_bound_log2": -924,
+    "xl_8r_variables_min": 3840,
+    "xl_8r_quadratic_eqs": 20224,
+    "security_margin_rounds": 5
+  },
+  "verdicts": {
+    "objective_1_ddt_lat_optimal": "CONCLUÍDA",
+    "objective_2_algebraic_1r_v4_mitigated": "CONCLUÍDA",
+    "objective_2_reduced_round_3r_square_break": "REFUTADA_PARA_3R_PRE_SHA (3R quebrado em 296.76s; 4R-8R íntegros)",
+    "objective_3_cauchy_dyadic_invariant_discovered": "CONCLUÍDA (M^2 = 0x5e26*I; 8R Wide-Trail preservado)"
+  }
+}

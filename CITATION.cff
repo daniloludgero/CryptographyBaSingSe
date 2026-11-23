@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "RSD-S v5.2: laboratório de criptoanálise e implementações de referência"
+message: "Se você usar este software, os vetores ou os modelos SAT/SMT em pesquisa ou ensino, cite-o com os metadados abaixo."
+type: software
+authors:
+  - family-names: "Ludgero"
+    given-names: "Danilo"
+repository-code: "https://github.com/daniloludgero/CryptographyBaSingSe"
+license: PolyForm-Noncommercial-1.0.0
+version: "0.6.0"
+date-released: "2026-11-22"
+keywords:
+  - cryptography
+  - cryptanalysis
+  - symmetric-cryptography
+  - mds-matrix
+  - s-box
+  - finite-fields
+  - known-answer-tests
+  - sat-solver
+  - smt-solver
+abstract: >-
+  RSD-S é uma primitiva simétrica experimental de difusão (SPN de 512 bits sobre
+  32 palavras de 16 bits em GF(2^16), S-box por inversão com camada afim, matriz
+  MDS de Cauchy 32x32, chaves de rodada derivadas por HMAC-SHA256). Este
+  repositório reúne as implementações de referência em Python e C99, os vetores
+  de teste congelados da v5.2, os modelos SAT/SMT e os relatórios de
+  criptoanálise. É um protótipo de pesquisa, sem auditoria independente.

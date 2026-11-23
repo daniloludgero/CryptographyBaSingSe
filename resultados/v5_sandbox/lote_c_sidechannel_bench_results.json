@@ -1,0 +1,529 @@
+{
+  "metadata": {
+    "c_core": "implementacao/c_core/rsd_s_v5_ct.c",
+    "c_harness": "testes/lote_c_tvla_and_bench.c",
+    "tvla_n_per_group": 50000,
+    "tvla_total_samples_per_test": 100000,
+    "tvla_threshold_abs_t": 4.5
+  },
+  "assembly_inspection": {
+    "O0": {
+      "total_asm_lines": 824,
+      "conditional_jump_count": 0,
+      "cmov_count": 0
+    },
+    "O2": {
+      "total_asm_lines": 1103,
+      "conditional_jump_count": 0,
+      "cmov_count": 0
+    },
+    "O3": {
+      "total_asm_lines": 4761,
+      "conditional_jump_count": 0,
+      "cmov_count": 1
+    },
+    "O3_native": {
+      "total_asm_lines": 4767,
+      "conditional_jump_count": 0,
+      "cmov_count": 1
+    }
+  },
+  "tvla": {
+    "O0": {
+      "opt_level": "O0",
+      "n_per_group": 50000,
+      "total_samples_per_test": 100000,
+      "tvla_a_fixed_vs_random_input": {
+        "cycles": {
+          "fixed_mean": 3521083.31,
+          "fixed_std": 1941376.73,
+          "fixed_p50": 2477166,
+          "fixed_p99": 7445112,
+          "random_mean": 3517064.42,
+          "random_std": 1948851.4,
+          "random_p50": 2476398,
+          "random_p99": 7592642,
+          "abs_t_raw": 0.3267,
+          "abs_t_p99_trimmed": 0.5246
+        },
+        "ns": {
+          "fixed_mean": 1600826.95,
+          "fixed_std": 882580.49,
+          "fixed_p50": 1126134,
+          "fixed_p99": 3384359,
+          "random_mean": 1598842.71,
+          "random_std": 885893.53,
+          "random_p50": 1125793,
+          "random_p99": 3452082,
+          "abs_t_raw": 0.3548,
+          "abs_t_p99_trimmed": 0.5545
+        }
+      },
+      "tvla_b_fixed_vs_random_key_and_input": {
+        "cycles": {
+          "fixed_mean": 3619231.9,
+          "fixed_std": 1991375.97,
+          "fixed_p50": 2470500,
+          "fixed_p99": 7045674,
+          "random_mean": 3632165.19,
+          "random_std": 1989631.09,
+          "random_p50": 2471484,
+          "random_p99": 6989176,
+          "abs_t_raw": 1.0273,
+          "abs_t_p99_trimmed": 1.3912
+        },
+        "ns": {
+          "fixed_mean": 1645352.29,
+          "fixed_std": 905275.76,
+          "fixed_p50": 1123074,
+          "fixed_p99": 3203181,
+          "random_mean": 1651307.44,
+          "random_std": 904644.32,
+          "random_p50": 1123550,
+          "random_p99": 3177027,
+          "abs_t_raw": 1.0405,
+          "abs_t_p99_trimmed": 1.398
+        }
+      }
+    },
+    "O2": {
+      "opt_level": "O2",
+      "n_per_group": 50000,
+      "total_samples_per_test": 100000,
+      "tvla_a_fixed_vs_random_input": {
+        "cycles": {
+          "fixed_mean": 696634.72,
+          "fixed_std": 999912.49,
+          "fixed_p50": 465532,
+          "fixed_p99": 4897006,
+          "random_mean": 695554.18,
+          "random_std": 993323.55,
+          "random_p50": 465544,
+          "random_p99": 4897152,
+          "abs_t_raw": 0.1714,
+          "abs_t_p99_trimmed": 0.1855
+        },
+        "ns": {
+          "fixed_mean": 316761.58,
+          "fixed_std": 454567.66,
+          "fixed_p50": 211671,
+          "fixed_p99": 2226052,
+          "random_mean": 316309.71,
+          "random_std": 451652.48,
+          "random_p50": 211676,
+          "random_p99": 2226125,
+          "abs_t_raw": 0.1577,
+          "abs_t_p99_trimmed": 0.17
+        }
+      },
+      "tvla_b_fixed_vs_random_key_and_input": {
+        "cycles": {
+          "fixed_mean": 705347.89,
+          "fixed_std": 1013129.9,
+          "fixed_p50": 465646,
+          "fixed_p99": 4897746,
+          "random_mean": 700003.29,
+          "random_std": 1003642.87,
+          "random_p50": 465648,
+          "random_p99": 4897608,
+          "abs_t_raw": 0.838,
+          "abs_t_p99_trimmed": 1.1522
+        },
+        "ns": {
+          "fixed_mean": 320726.01,
+          "fixed_std": 460580.4,
+          "fixed_p50": 211725,
+          "fixed_p99": 2226419,
+          "random_mean": 318375.53,
+          "random_std": 456422.09,
+          "random_p50": 211725,
+          "random_p99": 2226333,
+          "abs_t_raw": 0.8106,
+          "abs_t_p99_trimmed": 1.1204
+        }
+      }
+    },
+    "O3": {
+      "opt_level": "O3",
+      "n_per_group": 50000,
+      "total_samples_per_test": 100000,
+      "tvla_a_fixed_vs_random_input": {
+        "cycles": {
+          "fixed_mean": 1004148.19,
+          "fixed_std": 1179397.03,
+          "fixed_p50": 675900,
+          "fixed_p99": 5115506,
+          "random_mean": 1002821.62,
+          "random_std": 1169757.01,
+          "random_p50": 675944,
+          "random_p99": 5115288,
+          "abs_t_raw": 0.1786,
+          "abs_t_p99_trimmed": 0.0982
+        },
+        "ns": {
+          "fixed_mean": 456566.39,
+          "fixed_std": 536154.93,
+          "fixed_p50": 307306,
+          "fixed_p99": 2325399,
+          "random_mean": 455991.97,
+          "random_std": 531833.44,
+          "random_p50": 307326,
+          "random_p99": 2325378,
+          "abs_t_raw": 0.1701,
+          "abs_t_p99_trimmed": 0.1076
+        }
+      },
+      "tvla_b_fixed_vs_random_key_and_input": {
+        "cycles": {
+          "fixed_mean": 863895.87,
+          "fixed_std": 921403.22,
+          "fixed_p50": 674958,
+          "fixed_p99": 5102022,
+          "random_mean": 873254.2,
+          "random_std": 943498.11,
+          "random_p50": 674914,
+          "random_p99": 5105436,
+          "abs_t_raw": 1.5868,
+          "abs_t_p99_trimmed": 1.8436
+        },
+        "ns": {
+          "fixed_mean": 392809.57,
+          "fixed_std": 418862.56,
+          "fixed_p50": 306877,
+          "fixed_p99": 2319316,
+          "random_mean": 397065.5,
+          "random_std": 428909.32,
+          "random_p50": 306858,
+          "random_p99": 2321039,
+          "abs_t_raw": 1.5874,
+          "abs_t_p99_trimmed": 1.8443
+        }
+      }
+    }
+  },
+  "c99_benchmarks": {
+    "O2": {
+      "opt_level": "O2",
+      "payloads": {
+        "64B": {
+          "bytes": 64,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.1955,
+            "cycles_per_byte": 10730.76,
+            "latency_us": 312.168
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 59.4507,
+            "cycles_per_byte": 35.29,
+            "latency_us": 1.027
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 33.2659,
+            "cycles_per_byte": 63.07,
+            "latency_us": 1.835
+          },
+          "latency_ratio_vs_aes_gcm": 304.06,
+          "latency_ratio_vs_chacha20": 170.14
+        },
+        "1KB": {
+          "bytes": 1024,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2023,
+            "cycles_per_byte": 10373.15,
+            "latency_us": 4828.234
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 482.5089,
+            "cycles_per_byte": 4.35,
+            "latency_us": 2.024
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 299.647,
+            "cycles_per_byte": 7.0,
+            "latency_us": 3.259
+          },
+          "latency_ratio_vs_aes_gcm": 2385.58,
+          "latency_ratio_vs_chacha20": 1481.49
+        },
+        "64KB": {
+          "bytes": 65536,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.1868,
+            "cycles_per_byte": 11229.91,
+            "latency_us": 334529.207
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 2579.2763,
+            "cycles_per_byte": 0.81,
+            "latency_us": 24.232
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 3238.8167,
+            "cycles_per_byte": 0.65,
+            "latency_us": 19.297
+          },
+          "latency_ratio_vs_aes_gcm": 13805.49,
+          "latency_ratio_vs_chacha20": 17335.66
+        },
+        "1MB": {
+          "bytes": 1048576,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2005,
+            "cycles_per_byte": 10464.79,
+            "latency_us": 4987788.272
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 3110.2139,
+            "cycles_per_byte": 0.67,
+            "latency_us": 321.521
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 2643.2166,
+            "cycles_per_byte": 0.79,
+            "latency_us": 378.327
+          },
+          "latency_ratio_vs_aes_gcm": 15513.09,
+          "latency_ratio_vs_chacha20": 13183.8
+        }
+      }
+    },
+    "O3": {
+      "opt_level": "O3",
+      "payloads": {
+        "64B": {
+          "bytes": 64,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2019,
+            "cycles_per_byte": 10391.33,
+            "latency_us": 302.294
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 74.9126,
+            "cycles_per_byte": 28.01,
+            "latency_us": 0.815
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 45.4779,
+            "cycles_per_byte": 46.13,
+            "latency_us": 1.342
+          },
+          "latency_ratio_vs_aes_gcm": 371.03,
+          "latency_ratio_vs_chacha20": 225.24
+        },
+        "1KB": {
+          "bytes": 1024,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2059,
+            "cycles_per_byte": 10190.1,
+            "latency_us": 4743.031
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 954.019,
+            "cycles_per_byte": 2.2,
+            "latency_us": 1.024
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 631.0788,
+            "cycles_per_byte": 3.32,
+            "latency_us": 1.547
+          },
+          "latency_ratio_vs_aes_gcm": 4633.54,
+          "latency_ratio_vs_chacha20": 3065.06
+        },
+        "64KB": {
+          "bytes": 65536,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2029,
+            "cycles_per_byte": 10338.87,
+            "latency_us": 307985.907
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 4366.6026,
+            "cycles_per_byte": 0.48,
+            "latency_us": 14.313
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 3046.6426,
+            "cycles_per_byte": 0.69,
+            "latency_us": 20.514
+          },
+          "latency_ratio_vs_aes_gcm": 21517.63,
+          "latency_ratio_vs_chacha20": 15013.17
+        },
+        "1MB": {
+          "bytes": 1048576,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2,
+            "cycles_per_byte": 10492.69,
+            "latency_us": 5001082.718
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 4577.7337,
+            "cycles_per_byte": 0.46,
+            "latency_us": 218.449
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 3256.6142,
+            "cycles_per_byte": 0.64,
+            "latency_us": 307.067
+          },
+          "latency_ratio_vs_aes_gcm": 22893.63,
+          "latency_ratio_vs_chacha20": 16286.6
+        }
+      }
+    },
+    "O3_native": {
+      "opt_level": "O3_native",
+      "payloads": {
+        "64B": {
+          "bytes": 64,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.1938,
+            "cycles_per_byte": 10825.16,
+            "latency_us": 314.914
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 73.0704,
+            "cycles_per_byte": 28.71,
+            "latency_us": 0.835
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 44.0326,
+            "cycles_per_byte": 47.65,
+            "latency_us": 1.386
+          },
+          "latency_ratio_vs_aes_gcm": 377.01,
+          "latency_ratio_vs_chacha20": 227.19
+        },
+        "1KB": {
+          "bytes": 1024,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.1952,
+            "cycles_per_byte": 10745.78,
+            "latency_us": 5001.677
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 917.6534,
+            "cycles_per_byte": 2.29,
+            "latency_us": 1.064
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 608.6573,
+            "cycles_per_byte": 3.45,
+            "latency_us": 1.604
+          },
+          "latency_ratio_vs_aes_gcm": 4699.96,
+          "latency_ratio_vs_chacha20": 3117.37
+        },
+        "64KB": {
+          "bytes": 65536,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2014,
+            "cycles_per_byte": 10416.39,
+            "latency_us": 310295.024
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 4446.6766,
+            "cycles_per_byte": 0.47,
+            "latency_us": 14.055
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 3132.6856,
+            "cycles_per_byte": 0.67,
+            "latency_us": 19.951
+          },
+          "latency_ratio_vs_aes_gcm": 22076.51,
+          "latency_ratio_vs_chacha20": 15552.91
+        },
+        "1MB": {
+          "bytes": 1048576,
+          "rsd_s_v5_c99": {
+            "mib_s": 0.2011,
+            "cycles_per_byte": 10432.24,
+            "latency_us": 4972273.428
+          },
+          "openssl_aes_256_gcm": {
+            "mib_s": 4593.0134,
+            "cycles_per_byte": 0.46,
+            "latency_us": 217.722
+          },
+          "openssl_chacha20_poly1305": {
+            "mib_s": 3280.0946,
+            "cycles_per_byte": 0.64,
+            "latency_us": 304.869
+          },
+          "latency_ratio_vs_aes_gcm": 22837.72,
+          "latency_ratio_vs_chacha20": 16309.53
+        }
+      }
+    }
+  },
+  "python_benchmarks": {
+    "64B": {
+      "bytes": 64,
+      "python_aes_256_gcm": {
+        "mib_s": 107.901,
+        "latency_us": 0.566
+      },
+      "python_chacha20_poly1305": {
+        "mib_s": 46.0907,
+        "latency_us": 1.324
+      },
+      "python_rsd_s_v5": {
+        "mib_s": 0.00179,
+        "latency_us": 34089.2,
+        "measured": true
+      }
+    },
+    "1KB": {
+      "bytes": 1024,
+      "python_aes_256_gcm": {
+        "mib_s": 1695.9142,
+        "latency_us": 0.576
+      },
+      "python_chacha20_poly1305": {
+        "mib_s": 642.6489,
+        "latency_us": 1.52
+      },
+      "python_rsd_s_v5": {
+        "mib_s": 0.001795,
+        "latency_us": 544014.4,
+        "measured": true
+      }
+    },
+    "64KB": {
+      "bytes": 65536,
+      "python_aes_256_gcm": {
+        "mib_s": 9710.7019,
+        "latency_us": 6.436
+      },
+      "python_chacha20_poly1305": {
+        "mib_s": 3020.5252,
+        "latency_us": 20.692
+      },
+      "python_rsd_s_v5": {
+        "mib_s": 0.001795,
+        "latency_us": 34816921.5,
+        "measured": false,
+        "note": "Extrapolated linearly from 1KB (16-block) measurement"
+      }
+    },
+    "1MB": {
+      "bytes": 1048576,
+      "python_aes_256_gcm": {
+        "mib_s": 7195.1515,
+        "latency_us": 138.982
+      },
+      "python_chacha20_poly1305": {
+        "mib_s": 2527.3484,
+        "latency_us": 395.672
+      },
+      "python_rsd_s_v5": {
+        "mib_s": 0.001795,
+        "latency_us": 557070743.6,
+        "measured": false,
+        "note": "Extrapolated linearly from 1KB (16-block) measurement"
+      }
+    }
+  }
+}

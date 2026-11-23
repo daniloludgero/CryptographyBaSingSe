@@ -1,0 +1,433 @@
+{
+  "metadata": {
+    "target": "implementacao/bandlimited_dual_key.py",
+    "q_mod": 65537,
+    "dim": 32,
+    "spec": {
+      "T": 1000.0,
+      "alpha": 0.5,
+      "grid_points": 256
+    }
+  },
+  "objective_1_lattice_kannan_cvp": {
+    "B_matrix_rank_mod_q": 32,
+    "B_matrix_det_mod_q": 31974,
+    "B_matrix_invertible": true,
+    "raw_mode_exact_inversion_broken": true,
+    "positive_control_small_noise_lwe": [
+      {
+        "dim_d": 6,
+        "lattice_dim": 13,
+        "lll_min_norm": 7.0,
+        "gaussian_heuristic": 145.79018824991581,
+        "recovered_exact": true,
+        "elapsed_s": 0.11828239099997973
+      },
+      {
+        "dim_d": 8,
+        "lattice_dim": 17,
+        "lll_min_norm": 7.14142842854285,
+        "gaussian_heuristic": 184.31861352225172,
+        "recovered_exact": true,
+        "elapsed_s": 0.8083339350000642
+      },
+      {
+        "dim_d": 12,
+        "lattice_dim": 25,
+        "lll_min_norm": 10.816653826391969,
+        "gaussian_heuristic": 248.11120429886824,
+        "recovered_exact": true,
+        "elapsed_s": 4.246823825999968
+      }
+    ],
+    "hardened_uniform_noise_kannan_lll": [
+      {
+        "dim_d": 6,
+        "lattice_dim": 13,
+        "true_target_norm": 58078.821613390195,
+        "lll_min_norm": 190.38382284217323,
+        "gaussian_heuristic": 145.79018824991581,
+        "true_norm_to_gh_ratio": 398.3726361189038,
+        "recovered_exact": false,
+        "elapsed_s": 0.24824181599990425
+      },
+      {
+        "dim_d": 8,
+        "lattice_dim": 17,
+        "true_target_norm": 58731.45580521566,
+        "lll_min_norm": 211.14686831681877,
+        "gaussian_heuristic": 184.31861352225172,
+        "true_norm_to_gh_ratio": 318.64093746628225,
+        "recovered_exact": false,
+        "elapsed_s": 0.6750353379999297
+      },
+      {
+        "dim_d": 12,
+        "lattice_dim": 25,
+        "true_target_norm": 76817.5372229545,
+        "lll_min_norm": 302.3259830051,
+        "gaussian_heuristic": 248.11120429886824,
+        "true_norm_to_gh_ratio": 309.60930377985716,
+        "recovered_exact": false,
+        "elapsed_s": 4.445349846999989
+      }
+    ],
+    "full_32d_true_target_norm": 141958.0571753502,
+    "full_32d_gaussian_heuristic": 458.5776509203446,
+    "full_32d_true_to_gh_ratio": 309.5616563311509,
+    "e_priv_uniformity_check": {
+      "n_elements": 32000,
+      "mean": 33154.556875,
+      "expected_mean": 32768.0,
+      "std": 18908.651114407665,
+      "expected_std": 18918.90229373787,
+      "chi2_64bins": 62.708
+    }
+  },
+  "objective_2_nist_sp800_22_y_pub": {
+    "raw_y_pub_bytes_hardened": {
+      "length_bits": 1000000,
+      "ones_proportion": 0.333352,
+      "passes": 1,
+      "total": 10,
+      "pass_rate": 0.1,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 333.296,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 117188.09375,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 0.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 3656.013483520867,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 0.9121551808059112,
+          "p_value": 0.6337646611353458,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 175.29197393581885,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 843305.9656565685,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 190189.22315751552,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 333298.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 320405.6264000002,
+          "p_value": 0.0,
+          "passed": false
+        }
+      ]
+    },
+    "raw_y_pub_bytes_linear": {
+      "length_bits": 1000000,
+      "ones_proportion": 0.334182,
+      "passes": 1,
+      "total": 10,
+      "pass_rate": 0.1,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 331.636,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 115997.15625,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 0.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 3440.8763966741094,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 4.5326870383931235,
+          "p_value": 0.10369063056314093,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 175.67739236872137,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 840989.1979798016,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 190015.6818690746,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 331636.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 319221.29648,
+          "p_value": 0.0,
+          "passed": false
+        }
+      ]
+    },
+    "y_pub_16bit_unpadded_hardened": {
+      "length_bits": 1000000,
+      "ones_proportion": 0.500056,
+      "passes": 10,
+      "total": 10,
+      "pass_rate": 1.0,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 0.112,
+          "p_value": 0.9108234065714687,
+          "passed": true
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 7826.59375,
+          "p_value": 0.45144403700204744,
+          "passed": true
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 500286.0,
+          "p_value": 0.5673134715822399,
+          "passed": true
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 1.8043003348133295,
+          "p_value": 0.875506517843342,
+          "passed": true
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 4.315605109657172,
+          "p_value": 0.11557882031146417,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": -0.4404782090314786,
+          "p_value": 0.6595907914274038,
+          "passed": true
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 1006.1676767676831,
+          "p_value": 0.24479726564637658,
+          "passed": true
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 21.936807271805137,
+          "p_value": 0.14524368507113064,
+          "passed": true
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 634.0,
+          "p_value": 0.9408499771878662,
+          "passed": true
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 0.7792800000170246,
+          "p_value": 0.802698582298168,
+          "passed": true
+        }
+      ]
+    },
+    "y_pub_digest_256_hardened": {
+      "length_bits": 1000000,
+      "ones_proportion": 0.501,
+      "passes": 10,
+      "total": 10,
+      "pass_rate": 1.0,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 2.0,
+          "p_value": 0.04550026389635844,
+          "passed": true
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 7989.4375,
+          "p_value": 0.07864256310121731,
+          "passed": true
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 499668.0,
+          "p_value": 0.5092521351764877,
+          "passed": true
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 6.031597756829532,
+          "p_value": 0.30315645235596855,
+          "passed": true
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 2.849258478637839,
+          "p_value": 0.2405976508225755,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 1.9821519406416537,
+          "p_value": 0.0474622377130231,
+          "passed": true
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 1038.9595959596015,
+          "p_value": 0.07919663151688403,
+          "passed": true
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 22.847645863910415,
+          "p_value": 0.11786839113311874,
+          "passed": true
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 2516.0,
+          "p_value": 0.023739036563092508,
+          "passed": true
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 4.5323520000092685,
+          "p_value": 0.3387285877574312,
+          "passed": true
+        }
+      ]
+    }
+  },
+  "objective_3_related_key_and_nonce_reuse": {
+    "related_key_bitflip_hd1": {
+      "n_pairs": 500,
+      "e_priv_bit_hd_mean": 0.49862890625,
+      "y_pub_bit_hd_mean": 0.49987109375
+    },
+    "related_key_arith_plus1": {
+      "n_pairs": 500,
+      "e_priv_bit_hd_mean": 0.49717578125,
+      "y_pub_bit_hd_mean": 0.50138671875
+    },
+    "nonce_reuse_differential_cancellation": {
+      "trials": 20,
+      "exact_delta_s_priv_recovered": 20,
+      "recovery_rate": 1.0,
+      "root_cause": "_derive_dual_key_noise(s, n_sess) is independent of (x, y); reusing (s, n_sess) cancels e_priv in Y_pub(x1,y1) - Y_pub(x2,y2) mod q."
+    },
+    "spectral_matrix_diff_rank_mod_q": 32
+  },
+  "objective_4_kem_pke_refutation": {
+    "regev_style_kem_decapsulation_accuracy": 0.504,
+    "supports_kem_or_pke": false,
+    "supported_primitives": [
+      "Keyed PRF (with fixed/unique n_sess)",
+      "Symmetric Verifiable Commitment"
+    ],
+    "impossibility_reason": "e_priv is uniform in Z_65537^32, so I(S_priv; Y_pub | B) = 0 (exact OTP mask in Z_q^32). There is no small-noise region for rounding/decapsulation, and B_{K_j} is a public invertible matrix with no trapdoor."
+  }
+}

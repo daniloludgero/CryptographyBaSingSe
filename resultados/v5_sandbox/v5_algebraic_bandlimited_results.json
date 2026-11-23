@@ -1,0 +1,21 @@
+{
+  "gates": [
+    "GATE_M4_ALGEBRAIC",
+    "GATE_M5_BANDLIMITED_ABLATION"
+  ],
+  "sbox_v5_fixed_points": 0,
+  "sbox_v5_opposite_fixed_points": 0,
+  "bilinear_1r_solver_recovered": false,
+  "lote_b_m2_off_diagonal_nonzeros": 992,
+  "lote_b_scalar_involution_broken": true,
+  "lote_a_siv_nonce_reuse_leaks_out_of_20": 0,
+  "lote_a_unpadded_y_pub_bytes_len": 64,
+  "ablation_raw_linear_exact_inversion_broken": true,
+  "ablation_hardened_exact_inversion_broken": false,
+  "ols_r2_raw": 0.0,
+  "ols_r2_hardened": 0.0,
+  "hardened_fft_peak_to_avg": 3.67599653168832,
+  "dual_key_verify_valid": true,
+  "dual_key_reject_wrong_key": true,
+  "all_gates_passed": true
+}

@@ -1,0 +1,2469 @@
+{
+  "metric_id": "R3_METRIC_4_AVX2_ASSEMBLY_ALIGNMENT_CACHE_EXTENDED_TVLA",
+  "date": "2026-11-22",
+  "target_primitive": "RSD-S v5.1 C99 Constant-Time & AVX2 Core (implementacao/c_core/rsd_s_v5_ct.c)",
+  "verdict": "CONCLUIDA_100_PORCENTO_APROVADA",
+  "1_multi_optimization_compilation_and_parity": {
+    "compilations": {
+      "O0": {
+        "profile": "O0",
+        "label": "-O0",
+        "flags": [
+          "-O0",
+          "-Wall",
+          "-Wextra",
+          "-Werror"
+        ],
+        "obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O0.o",
+        "so_path": "/tmp/r3_metric4_avx2_tvla_build/lib_rsd_s_v5_ct_O0.so",
+        "noinline_obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O0_noinline.o",
+        "obj_returncode": 0,
+        "so_returncode": 0,
+        "noinline_returncode": 0,
+        "warnings_count": 0,
+        "errors_count": 0,
+        "stderr": "",
+        "stdout": "",
+        "passed": true
+      },
+      "O2": {
+        "profile": "O2",
+        "label": "-O2",
+        "flags": [
+          "-O2",
+          "-Wall",
+          "-Wextra",
+          "-Werror"
+        ],
+        "obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O2.o",
+        "so_path": "/tmp/r3_metric4_avx2_tvla_build/lib_rsd_s_v5_ct_O2.so",
+        "noinline_obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O2_noinline.o",
+        "obj_returncode": 0,
+        "so_returncode": 0,
+        "noinline_returncode": 0,
+        "warnings_count": 0,
+        "errors_count": 0,
+        "stderr": "",
+        "stdout": "",
+        "passed": true
+      },
+      "O3_avx2": {
+        "profile": "O3_avx2",
+        "label": "-O3 -mavx2",
+        "flags": [
+          "-O3",
+          "-mavx2",
+          "-Wall",
+          "-Wextra",
+          "-Werror"
+        ],
+        "obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O3_avx2.o",
+        "so_path": "/tmp/r3_metric4_avx2_tvla_build/lib_rsd_s_v5_ct_O3_avx2.so",
+        "noinline_obj_path": "/tmp/r3_metric4_avx2_tvla_build/rsd_s_v5_ct_O3_avx2_noinline.o",
+        "obj_returncode": 0,
+        "so_returncode": 0,
+        "noinline_returncode": 0,
+        "warnings_count": 0,
+        "errors_count": 0,
+        "stderr": "",
+        "stdout": "",
+        "passed": true
+      }
+    },
+    "parity": {
+      "total_vectors_tested": 232,
+      "category_counts": {
+        "api_edge_cases": 10,
+        "api_random_vectors": 120,
+        "raw_word_edge_cases_including_0xFFFF_and_single_active": 70,
+        "dfa_fault_injection_vectors": 32
+      },
+      "mismatches_across_O0_O2_O3avx2_and_python": 0,
+      "dfa_fault_vectors_tested": 32,
+      "dfa_fault_vectors_detected_rc_minus_2": 32,
+      "dfa_fault_vectors_zeroed_output": 32,
+      "bit_exact_parity_100_percent": true
+    }
+  },
+  "2_disassembly_inspection_objdump": {
+    "symbol_alias_map": {
+      "gf16_mul_ct": "gf16_mul_ct",
+      "gf16_inv_ct": "gf16_inv_ct",
+      "sbox_v5_ct": "sbox_v5_ct",
+      "gf16_mul_avx2": "gf16_mul_avx2",
+      "sbox_v5_avx2": "sbox_v5_avx2",
+      "mds_diffuse_v5_ct (mds_mult_ct)": "mds_mult_ct",
+      "single_round_ct": "single_round_ct",
+      "rsd_s_v5_diffuse_rounds_ct (rsd_s_v5_core_ct)": "rsd_s_v5_core_ct"
+    },
+    "zero_secret_dependent_branches_across_all_profiles": true,
+    "zero_secret_dependent_memory_addresses_across_all_profiles": true,
+    "zero_gather_instructions_across_all_profiles": true,
+    "per_function_audit": {
+      "gf16_mul_ct": {
+        "O0_instructions": 39,
+        "O0_conditional_branches": 1,
+        "O0_branch_justification": "1 fixed loop-counter branch (jle 68 for i = 0..15); bit masks use arithmetic neg %eax",
+        "O3_avx2_noinline_instructions": 187,
+        "O3_avx2_noinline_conditional_branches": 0,
+        "O3_avx2_noinline_branch_justification": "0 branches (16-bit loop completely unrolled into 118 straight-line instructions)",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "gf16_inv_ct": {
+        "O0_instructions": 68,
+        "O0_conditional_branches": 0,
+        "O3_avx2_noinline_instructions": 36,
+        "O3_avx2_noinline_conditional_branches": 0,
+        "branch_justification": "0 conditional branches (straight-line Itoh-Tsujii addition chain: 15 squarings + 5 multiplications)",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "sbox_v5_ct": {
+        "O0_instructions": 57,
+        "O0_conditional_branches": 0,
+        "branch_justification": "0 conditional branches (calls gf16_inv_ct + 8 fixed rotl16 XORs + xor $0x63a9)",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "gf16_mul_avx2": {
+        "O3_avx2_noinline_instructions": 183,
+        "O3_avx2_noinline_conditional_branches": 0,
+        "O3_avx2_noinline_instruction_mix": {
+          "vpand": 47,
+          "vpxor": 31,
+          "vpsllw": 15,
+          "vpsrlw": 15,
+          "vpcmpeqw": 16,
+          "vpcmpgtw": 15,
+          "vpbroadcastw": 1,
+          "vpbroadcastq": 2,
+          "vmovdqa": 28,
+          "vmovd": 1,
+          "vmovq": 2
+        },
+        "branch_justification": "0 conditional branches (16-step loop completely unrolled into 215 straight-line AVX2 instructions using vpand, vpcmpeqw, vpcmpgtw, vpsllw, vpsrlw, vpxor)",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "sbox_v5_avx2": {
+        "O3_avx2_inlined_instructions": 1957,
+        "O3_avx2_inlined_conditional_branches": 2,
+        "O3_avx2_inlined_instruction_mix": {
+          "vpand": 547,
+          "vpxor": 404,
+          "vpor": 8,
+          "vpsllw": 203,
+          "vpsrlw": 143,
+          "vpcmpeqw": 144,
+          "vpcmpgtw": 195,
+          "vpbroadcastw": 3,
+          "vpbroadcastq": 7,
+          "vmovdqa": 267,
+          "vmovd": 3,
+          "vmovq": 7
+        },
+        "O3_avx2_noinline_instructions": 74,
+        "O3_avx2_noinline_conditional_branches": 0,
+        "branch_justification": "In -O3 -mavx2 production build, 2 conditional branches (jne 3e0, jne a98) are strictly the fixed public loop counters for gf16_sqn_avx2(a3, 3) and gf16_sqn_avx2(a7, 7). In -fno-inline build, sbox_v5_avx2 has 0 branches inside its body.",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "mds_diffuse_v5_ct (mds_mult_ct)": {
+        "O0_instructions": 78,
+        "O0_conditional_branches": 4,
+        "O3_avx2_noinline_instructions": 190,
+        "O3_avx2_noinline_conditional_branches": 1,
+        "O3_avx2_noinline_instruction_mix": {
+          "vpand": 32,
+          "vpxor": 33,
+          "vpbroadcastw": 16,
+          "vmovdqa": 14,
+          "vmovd": 16,
+          "vzeroupper": 1
+        },
+        "branch_justification": "In -O3 -mavx2, the inner bit=0..15 loop is completely unrolled; the only branch is 1 public outer loop counter branch (jne 250 for j = 0..31). Secret bit extraction uses sar + and $1 + neg + vmovd + vpbroadcastw + vpand.",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "single_round_ct": {
+        "O0_instructions": 66,
+        "O0_conditional_branches": 2,
+        "O2_instructions": 356,
+        "O2_conditional_branches": 22,
+        "O3_avx2_inlined_instructions": 245,
+        "O3_avx2_inlined_conditional_branches": 5,
+        "O3_avx2_inlined_instruction_mix": {
+          "vpand": 32,
+          "vpxor": 37,
+          "vpbroadcastw": 17,
+          "vmovdqa": 21,
+          "vmovdqu": 4,
+          "vmovd": 17,
+          "vzeroupper": 1
+        },
+        "branch_justification": "In -O3 -mavx2 production build, single_round_ct has 3 public branches: 1 for the j=0..31 loop of inlined mds_mult_ct, and 2 for the fixed 64-byte secure_wipe loops.",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      },
+      "rsd_s_v5_diffuse_rounds_ct (rsd_s_v5_core_ct)": {
+        "O0_instructions": 218,
+        "O0_conditional_branches": 15,
+        "O2_instructions": 536,
+        "O2_conditional_branches": 40,
+        "O3_avx2_inlined_instructions": 2121,
+        "O3_avx2_inlined_conditional_branches": 22,
+        "O3_avx2_inlined_instruction_mix": {
+          "vpand": 2,
+          "vpxor": 4,
+          "vpor": 5,
+          "vpbroadcastw": 1,
+          "vmovdqa": 20,
+          "vmovdqu": 4,
+          "vmovd": 1,
+          "vextracti128": 1,
+          "vpsrldq": 3,
+          "vpextrw": 1,
+          "vzeroupper": 3
+        },
+        "O3_avx2_noinline_instructions": 156,
+        "O3_avx2_noinline_conditional_branches": 8,
+        "branch_justification": "All branches in rsd_s_v5_core_ct are strictly public: API null-pointer/rounds guards, CAUCHY_INIT one-time check, public round counter r=1..rounds-1, public fault_word parameter check, and fixed 64-byte secure_wipe loops. The Anti-DFA output zeroing and status=-2 computation in -O3 -mavx2 is 100% branchless via horizontal vpor + vpextrw + sbb + vpbroadcastw + vpand!",
+        "secret_dependent_branches": 0,
+        "secret_dependent_memory_accesses": 0
+      }
+    },
+    "profiles": {
+      "O0": {
+        "label": "-O0",
+        "production_inlined_object": {
+          "total_instructions": 729,
+          "gather_instructions_count": 0,
+          "total_avx2_instruction_mix": {},
+          "functions_present": [
+            "secure_wipe",
+            "gf16_mul_ct",
+            "gf16_sq_ct",
+            "gf16_sqn_ct",
+            "gf16_inv_ct",
+            "rotl16",
+            "sbox_v5_ct",
+            "init_cauchy_mds",
+            "mds_mult_ct",
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "secure_wipe": {
+              "total_instructions": 20,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "34",
+                  "mnemonic": "jne",
+                  "operands": "16 <secure_wipe+0x16>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_mul_ct": {
+              "total_instructions": 39,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "ad",
+                  "mnemonic": "jle",
+                  "operands": "68 <gf16_mul_ct+0x2e>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sq_ct": {
+              "total_instructions": 12,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_ct": {
+              "total_instructions": 19,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "108",
+                  "mnemonic": "jl",
+                  "operands": "ef <gf16_sqn_ct+0x1a>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_inv_ct": {
+              "total_instructions": 68,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rotl16": {
+              "total_instructions": 20,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "sbox_v5_ct": {
+              "total_instructions": 57,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "init_cauchy_mds": {
+              "total_instructions": 99,
+              "conditional_branches_count": 6,
+              "conditional_branches_detail": [
+                {
+                  "addr": "2fa",
+                  "mnemonic": "jne",
+                  "operands": "448 <init_cauchy_mds+0x15e>"
+                },
+                {
+                  "addr": "377",
+                  "mnemonic": "jle",
+                  "operands": "312 <init_cauchy_mds+0x28>"
+                },
+                {
+                  "addr": "381",
+                  "mnemonic": "jle",
+                  "operands": "309 <init_cauchy_mds+0x1f>"
+                },
+                {
+                  "addr": "41e",
+                  "mnemonic": "jle",
+                  "operands": "3b6 <init_cauchy_mds+0xcc>"
+                },
+                {
+                  "addr": "428",
+                  "mnemonic": "jle",
+                  "operands": "39b <init_cauchy_mds+0xb1>"
+                },
+                {
+                  "addr": "436",
+                  "mnemonic": "jle",
+                  "operands": "38f <init_cauchy_mds+0xa5>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "mds_mult_ct": {
+              "total_instructions": 78,
+              "conditional_branches_count": 4,
+              "conditional_branches_detail": [
+                {
+                  "addr": "47d",
+                  "mnemonic": "jle",
+                  "operands": "460 <mds_mult_ct+0x15>"
+                },
+                {
+                  "addr": "533",
+                  "mnemonic": "jle",
+                  "operands": "4cd <mds_mult_ct+0x82>"
+                },
+                {
+                  "addr": "53d",
+                  "mnemonic": "jle",
+                  "operands": "4ae <mds_mult_ct+0x63>"
+                },
+                {
+                  "addr": "54b",
+                  "mnemonic": "jle",
+                  "operands": "48b <mds_mult_ct+0x40>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "single_round_ct": {
+              "total_instructions": 66,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "5cd",
+                  "mnemonic": "jle",
+                  "operands": "586 <single_round_ct+0x31>"
+                },
+                {
+                  "addr": "642",
+                  "mnemonic": "jle",
+                  "operands": "5f1 <single_round_ct+0x9c>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 218,
+              "conditional_branches_count": 15,
+              "conditional_branches_detail": [
+                {
+                  "addr": "6aa",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6b4",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6be",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6c5",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6ce",
+                  "mnemonic": "jle",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6da",
+                  "mnemonic": "jle",
+                  "operands": "6e6 <rsd_s_v5_core_ct+0x7b>"
+                },
+                {
+                  "addr": "736",
+                  "mnemonic": "jle",
+                  "operands": "6f4 <rsd_s_v5_core_ct+0x89>"
+                },
+                {
+                  "addr": "7b5",
+                  "mnemonic": "jle",
+                  "operands": "796 <rsd_s_v5_core_ct+0x12b>"
+                },
+                {
+                  "addr": "7c4",
+                  "mnemonic": "jl",
+                  "operands": "741 <rsd_s_v5_core_ct+0xd6>"
+                },
+                {
+                  "addr": "809",
+                  "mnemonic": "jle",
+                  "operands": "7d3 <rsd_s_v5_core_ct+0x168>"
+                },
+                {
+                  "addr": "812",
+                  "mnemonic": "js",
+                  "operands": "846 <rsd_s_v5_core_ct+0x1db>"
+                },
+                {
+                  "addr": "81b",
+                  "mnemonic": "jg",
+                  "operands": "846 <rsd_s_v5_core_ct+0x1db>"
+                },
+                {
+                  "addr": "927",
+                  "mnemonic": "jle",
+                  "operands": "8ff <rsd_s_v5_core_ct+0x294>"
+                },
+                {
+                  "addr": "977",
+                  "mnemonic": "jle",
+                  "operands": "94a <rsd_s_v5_core_ct+0x2df>"
+                },
+                {
+                  "addr": "97e",
+                  "mnemonic": "je",
+                  "operands": "987 <rsd_s_v5_core_ct+0x31c>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 33,
+              "conditional_branches_count": 3,
+              "conditional_branches_detail": [
+                {
+                  "addr": "a16",
+                  "mnemonic": "je",
+                  "operands": "a1f <rsd_s_v5_verify_wipe_ct+0x1e>"
+                },
+                {
+                  "addr": "a1d",
+                  "mnemonic": "jne",
+                  "operands": "a26 <rsd_s_v5_verify_wipe_ct+0x25>"
+                },
+                {
+                  "addr": "a65",
+                  "mnemonic": "jb",
+                  "operands": "a47 <rsd_s_v5_verify_wipe_ct+0x46>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            }
+          }
+        },
+        "noinline_per_function_object": {
+          "functions_present": [
+            "secure_wipe",
+            "gf16_mul_ct",
+            "gf16_sq_ct",
+            "gf16_sqn_ct",
+            "gf16_inv_ct",
+            "rotl16",
+            "sbox_v5_ct",
+            "init_cauchy_mds",
+            "mds_mult_ct",
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "secure_wipe": {
+              "total_instructions": 20,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "34",
+                  "mnemonic": "jne",
+                  "operands": "16 <secure_wipe+0x16>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_mul_ct": {
+              "total_instructions": 39,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "ad",
+                  "mnemonic": "jle",
+                  "operands": "68 <gf16_mul_ct+0x2e>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sq_ct": {
+              "total_instructions": 12,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_ct": {
+              "total_instructions": 19,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "108",
+                  "mnemonic": "jl",
+                  "operands": "ef <gf16_sqn_ct+0x1a>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_inv_ct": {
+              "total_instructions": 68,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rotl16": {
+              "total_instructions": 20,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "sbox_v5_ct": {
+              "total_instructions": 57,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "init_cauchy_mds": {
+              "total_instructions": 99,
+              "conditional_branches_count": 6,
+              "conditional_branches_detail": [
+                {
+                  "addr": "2fa",
+                  "mnemonic": "jne",
+                  "operands": "448 <init_cauchy_mds+0x15e>"
+                },
+                {
+                  "addr": "377",
+                  "mnemonic": "jle",
+                  "operands": "312 <init_cauchy_mds+0x28>"
+                },
+                {
+                  "addr": "381",
+                  "mnemonic": "jle",
+                  "operands": "309 <init_cauchy_mds+0x1f>"
+                },
+                {
+                  "addr": "41e",
+                  "mnemonic": "jle",
+                  "operands": "3b6 <init_cauchy_mds+0xcc>"
+                },
+                {
+                  "addr": "428",
+                  "mnemonic": "jle",
+                  "operands": "39b <init_cauchy_mds+0xb1>"
+                },
+                {
+                  "addr": "436",
+                  "mnemonic": "jle",
+                  "operands": "38f <init_cauchy_mds+0xa5>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "mds_mult_ct": {
+              "total_instructions": 78,
+              "conditional_branches_count": 4,
+              "conditional_branches_detail": [
+                {
+                  "addr": "47d",
+                  "mnemonic": "jle",
+                  "operands": "460 <mds_mult_ct+0x15>"
+                },
+                {
+                  "addr": "533",
+                  "mnemonic": "jle",
+                  "operands": "4cd <mds_mult_ct+0x82>"
+                },
+                {
+                  "addr": "53d",
+                  "mnemonic": "jle",
+                  "operands": "4ae <mds_mult_ct+0x63>"
+                },
+                {
+                  "addr": "54b",
+                  "mnemonic": "jle",
+                  "operands": "48b <mds_mult_ct+0x40>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "single_round_ct": {
+              "total_instructions": 66,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "5cd",
+                  "mnemonic": "jle",
+                  "operands": "586 <single_round_ct+0x31>"
+                },
+                {
+                  "addr": "642",
+                  "mnemonic": "jle",
+                  "operands": "5f1 <single_round_ct+0x9c>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 218,
+              "conditional_branches_count": 15,
+              "conditional_branches_detail": [
+                {
+                  "addr": "6aa",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6b4",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6be",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6c5",
+                  "mnemonic": "je",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6ce",
+                  "mnemonic": "jle",
+                  "operands": "6dc <rsd_s_v5_core_ct+0x71>"
+                },
+                {
+                  "addr": "6da",
+                  "mnemonic": "jle",
+                  "operands": "6e6 <rsd_s_v5_core_ct+0x7b>"
+                },
+                {
+                  "addr": "736",
+                  "mnemonic": "jle",
+                  "operands": "6f4 <rsd_s_v5_core_ct+0x89>"
+                },
+                {
+                  "addr": "7b5",
+                  "mnemonic": "jle",
+                  "operands": "796 <rsd_s_v5_core_ct+0x12b>"
+                },
+                {
+                  "addr": "7c4",
+                  "mnemonic": "jl",
+                  "operands": "741 <rsd_s_v5_core_ct+0xd6>"
+                },
+                {
+                  "addr": "809",
+                  "mnemonic": "jle",
+                  "operands": "7d3 <rsd_s_v5_core_ct+0x168>"
+                },
+                {
+                  "addr": "812",
+                  "mnemonic": "js",
+                  "operands": "846 <rsd_s_v5_core_ct+0x1db>"
+                },
+                {
+                  "addr": "81b",
+                  "mnemonic": "jg",
+                  "operands": "846 <rsd_s_v5_core_ct+0x1db>"
+                },
+                {
+                  "addr": "927",
+                  "mnemonic": "jle",
+                  "operands": "8ff <rsd_s_v5_core_ct+0x294>"
+                },
+                {
+                  "addr": "977",
+                  "mnemonic": "jle",
+                  "operands": "94a <rsd_s_v5_core_ct+0x2df>"
+                },
+                {
+                  "addr": "97e",
+                  "mnemonic": "je",
+                  "operands": "987 <rsd_s_v5_core_ct+0x31c>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 33,
+              "conditional_branches_count": 3,
+              "conditional_branches_detail": [
+                {
+                  "addr": "a16",
+                  "mnemonic": "je",
+                  "operands": "a1f <rsd_s_v5_verify_wipe_ct+0x1e>"
+                },
+                {
+                  "addr": "a1d",
+                  "mnemonic": "jne",
+                  "operands": "a26 <rsd_s_v5_verify_wipe_ct+0x25>"
+                },
+                {
+                  "addr": "a65",
+                  "mnemonic": "jb",
+                  "operands": "a47 <rsd_s_v5_verify_wipe_ct+0x46>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            }
+          }
+        }
+      },
+      "O2": {
+        "label": "-O2",
+        "production_inlined_object": {
+          "total_instructions": 918,
+          "gather_instructions_count": 0,
+          "total_avx2_instruction_mix": {},
+          "functions_present": [
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "single_round_ct": {
+              "total_instructions": 356,
+              "conditional_branches_count": 22,
+              "conditional_branches_detail": [
+                {
+                  "addr": "64",
+                  "mnemonic": "jne",
+                  "operands": "40 <single_round_ct+0x40>"
+                },
+                {
+                  "addr": "94",
+                  "mnemonic": "jne",
+                  "operands": "70 <single_round_ct+0x70>"
+                },
+                {
+                  "addr": "c5",
+                  "mnemonic": "jne",
+                  "operands": "a0 <single_round_ct+0xa0>"
+                },
+                {
+                  "addr": "f4",
+                  "mnemonic": "jne",
+                  "operands": "d0 <single_round_ct+0xd0>"
+                },
+                {
+                  "addr": "134",
+                  "mnemonic": "jne",
+                  "operands": "110 <single_round_ct+0x110>"
+                },
+                {
+                  "addr": "13d",
+                  "mnemonic": "jne",
+                  "operands": "100 <single_round_ct+0x100>"
+                },
+                {
+                  "addr": "16f",
+                  "mnemonic": "jne",
+                  "operands": "148 <single_round_ct+0x148>"
+                },
+                {
+                  "addr": "1aa",
+                  "mnemonic": "jne",
+                  "operands": "180 <single_round_ct+0x180>"
+                },
+                {
+                  "addr": "1dd",
+                  "mnemonic": "jne",
+                  "operands": "1b8 <single_round_ct+0x1b8>"
+                },
+                {
+                  "addr": "224",
+                  "mnemonic": "jne",
+                  "operands": "200 <single_round_ct+0x200>"
+                },
+                {
+                  "addr": "22d",
+                  "mnemonic": "jne",
+                  "operands": "1f0 <single_round_ct+0x1f0>"
+                },
+                {
+                  "addr": "25e",
+                  "mnemonic": "jne",
+                  "operands": "238 <single_round_ct+0x238>"
+                },
+                {
+                  "addr": "299",
+                  "mnemonic": "jne",
+                  "operands": "270 <single_round_ct+0x270>"
+                },
+                {
+                  "addr": "2c6",
+                  "mnemonic": "jne",
+                  "operands": "2a0 <single_round_ct+0x2a0>"
+                },
+                {
+                  "addr": "2f4",
+                  "mnemonic": "jne",
+                  "operands": "2d0 <single_round_ct+0x2d0>"
+                },
+                {
+                  "addr": "347",
+                  "mnemonic": "jne",
+                  "operands": "29 <single_round_ct+0x29>"
+                },
+                {
+                  "addr": "3ca",
+                  "mnemonic": "jne",
+                  "operands": "3ad <single_round_ct+0x3ad>"
+                },
+                {
+                  "addr": "3d6",
+                  "mnemonic": "jne",
+                  "operands": "390 <single_round_ct+0x390>"
+                },
+                {
+                  "addr": "3e6",
+                  "mnemonic": "jne",
+                  "operands": "380 <single_round_ct+0x380>"
+                },
+                {
+                  "addr": "401",
+                  "mnemonic": "jne",
+                  "operands": "3ea <single_round_ct+0x3ea>"
+                },
+                {
+                  "addr": "410",
+                  "mnemonic": "jne",
+                  "operands": "403 <single_round_ct+0x403>"
+                },
+                {
+                  "addr": "424",
+                  "mnemonic": "jne",
+                  "operands": "412 <single_round_ct+0x412>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 536,
+              "conditional_branches_count": 40,
+              "conditional_branches_detail": [
+                {
+                  "addr": "443",
+                  "mnemonic": "je",
+                  "operands": "ba3 <rsd_s_v5_core_ct+0x763>"
+                },
+                {
+                  "addr": "460",
+                  "mnemonic": "je",
+                  "operands": "bb0 <rsd_s_v5_core_ct+0x770>"
+                },
+                {
+                  "addr": "46c",
+                  "mnemonic": "je",
+                  "operands": "bb0 <rsd_s_v5_core_ct+0x770>"
+                },
+                {
+                  "addr": "47b",
+                  "mnemonic": "je",
+                  "operands": "bb0 <rsd_s_v5_core_ct+0x770>"
+                },
+                {
+                  "addr": "48d",
+                  "mnemonic": "ja",
+                  "operands": "bb0 <rsd_s_v5_core_ct+0x770>"
+                },
+                {
+                  "addr": "4a4",
+                  "mnemonic": "jne",
+                  "operands": "914 <rsd_s_v5_core_ct+0x4d4>"
+                },
+                {
+                  "addr": "516",
+                  "mnemonic": "jne",
+                  "operands": "4f0 <rsd_s_v5_core_ct+0xb0>"
+                },
+                {
+                  "addr": "546",
+                  "mnemonic": "jne",
+                  "operands": "520 <rsd_s_v5_core_ct+0xe0>"
+                },
+                {
+                  "addr": "576",
+                  "mnemonic": "jne",
+                  "operands": "550 <rsd_s_v5_core_ct+0x110>"
+                },
+                {
+                  "addr": "5a6",
+                  "mnemonic": "jne",
+                  "operands": "580 <rsd_s_v5_core_ct+0x140>"
+                },
+                {
+                  "addr": "5f7",
+                  "mnemonic": "jne",
+                  "operands": "5d0 <rsd_s_v5_core_ct+0x190>"
+                },
+                {
+                  "addr": "5fe",
+                  "mnemonic": "jne",
+                  "operands": "5c0 <rsd_s_v5_core_ct+0x180>"
+                },
+                {
+                  "addr": "63e",
+                  "mnemonic": "jne",
+                  "operands": "610 <rsd_s_v5_core_ct+0x1d0>"
+                },
+                {
+                  "addr": "676",
+                  "mnemonic": "jne",
+                  "operands": "650 <rsd_s_v5_core_ct+0x210>"
+                },
+                {
+                  "addr": "6a6",
+                  "mnemonic": "jne",
+                  "operands": "680 <rsd_s_v5_core_ct+0x240>"
+                },
+                {
+                  "addr": "6f7",
+                  "mnemonic": "jne",
+                  "operands": "6d0 <rsd_s_v5_core_ct+0x290>"
+                },
+                {
+                  "addr": "6fe",
+                  "mnemonic": "jne",
+                  "operands": "6c0 <rsd_s_v5_core_ct+0x280>"
+                },
+                {
+                  "addr": "735",
+                  "mnemonic": "jne",
+                  "operands": "710 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "765",
+                  "mnemonic": "jne",
+                  "operands": "740 <rsd_s_v5_core_ct+0x300>"
+                },
+                {
+                  "addr": "79b",
+                  "mnemonic": "jne",
+                  "operands": "770 <rsd_s_v5_core_ct+0x330>"
+                },
+                {
+                  "addr": "7d6",
+                  "mnemonic": "jne",
+                  "operands": "7b0 <rsd_s_v5_core_ct+0x370>"
+                },
+                {
+                  "addr": "7ea",
+                  "mnemonic": "jne",
+                  "operands": "4d0 <rsd_s_v5_core_ct+0x90>"
+                },
+                {
+                  "addr": "806",
+                  "mnemonic": "jne",
+                  "operands": "4ba <rsd_s_v5_core_ct+0x7a>"
+                },
+                {
+                  "addr": "8b0",
+                  "mnemonic": "jne",
+                  "operands": "880 <rsd_s_v5_core_ct+0x440>"
+                },
+                {
+                  "addr": "8c0",
+                  "mnemonic": "jne",
+                  "operands": "868 <rsd_s_v5_core_ct+0x428>"
+                },
+                {
+                  "addr": "8df",
+                  "mnemonic": "jne",
+                  "operands": "844 <rsd_s_v5_core_ct+0x404>"
+                },
+                {
+                  "addr": "900",
+                  "mnemonic": "jne",
+                  "operands": "82c <rsd_s_v5_core_ct+0x3ec>"
+                },
+                {
+                  "addr": "937",
+                  "mnemonic": "jne",
+                  "operands": "91b <rsd_s_v5_core_ct+0x4db>"
+                },
+                {
+                  "addr": "93c",
+                  "mnemonic": "je",
+                  "operands": "b99 <rsd_s_v5_core_ct+0x759>"
+                },
+                {
+                  "addr": "9a2",
+                  "mnemonic": "jne",
+                  "operands": "98f <rsd_s_v5_core_ct+0x54f>"
+                },
+                {
+                  "addr": "9af",
+                  "mnemonic": "jne",
+                  "operands": "97b <rsd_s_v5_core_ct+0x53b>"
+                },
+                {
+                  "addr": "a26",
+                  "mnemonic": "jbe",
+                  "operands": "b8b <rsd_s_v5_core_ct+0x74b>"
+                },
+                {
+                  "addr": "aa9",
+                  "mnemonic": "jne",
+                  "operands": "a92 <rsd_s_v5_core_ct+0x652>"
+                },
+                {
+                  "addr": "b09",
+                  "mnemonic": "jne",
+                  "operands": "aec <rsd_s_v5_core_ct+0x6ac>"
+                },
+                {
+                  "addr": "b22",
+                  "mnemonic": "jne",
+                  "operands": "b15 <rsd_s_v5_core_ct+0x6d5>"
+                },
+                {
+                  "addr": "b31",
+                  "mnemonic": "jne",
+                  "operands": "b24 <rsd_s_v5_core_ct+0x6e4>"
+                },
+                {
+                  "addr": "b40",
+                  "mnemonic": "jne",
+                  "operands": "b33 <rsd_s_v5_core_ct+0x6f3>"
+                },
+                {
+                  "addr": "b4f",
+                  "mnemonic": "jne",
+                  "operands": "b42 <rsd_s_v5_core_ct+0x702>"
+                },
+                {
+                  "addr": "b5e",
+                  "mnemonic": "jne",
+                  "operands": "b51 <rsd_s_v5_core_ct+0x711>"
+                },
+                {
+                  "addr": "b75",
+                  "mnemonic": "jne",
+                  "operands": "b60 <rsd_s_v5_core_ct+0x720>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 26,
+              "conditional_branches_count": 4,
+              "conditional_branches_detail": [
+                {
+                  "addr": "bc3",
+                  "mnemonic": "je",
+                  "operands": "c08 <rsd_s_v5_verify_wipe_ct+0x48>"
+                },
+                {
+                  "addr": "bc8",
+                  "mnemonic": "je",
+                  "operands": "c08 <rsd_s_v5_verify_wipe_ct+0x48>"
+                },
+                {
+                  "addr": "be5",
+                  "mnemonic": "jne",
+                  "operands": "bd8 <rsd_s_v5_verify_wipe_ct+0x18>"
+                },
+                {
+                  "addr": "bfa",
+                  "mnemonic": "jb",
+                  "operands": "bf0 <rsd_s_v5_verify_wipe_ct+0x30>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            }
+          }
+        },
+        "noinline_per_function_object": {
+          "functions_present": [
+            "secure_wipe",
+            "gf16_mul_ct",
+            "gf16_sq_ct",
+            "gf16_sqn_ct",
+            "gf16_inv_ct",
+            "rotl16",
+            "sbox_v5_ct",
+            "init_cauchy_mds",
+            "mds_mult_ct",
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "secure_wipe": {
+              "total_instructions": 10,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "3",
+                  "mnemonic": "je",
+                  "operands": "1f <secure_wipe+0x1f>"
+                },
+                {
+                  "addr": "1d",
+                  "mnemonic": "jne",
+                  "operands": "10 <secure_wipe+0x10>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_mul_ct": {
+              "total_instructions": 22,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "55",
+                  "mnemonic": "jne",
+                  "operands": "30 <gf16_mul_ct+0x10>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sq_ct": {
+              "total_instructions": 4,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_ct": {
+              "total_instructions": 12,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "8f",
+                  "mnemonic": "jne",
+                  "operands": "80 <gf16_sqn_ct+0x10>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_inv_ct": {
+              "total_instructions": 40,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rotl16": {
+              "total_instructions": 5,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "sbox_v5_ct": {
+              "total_instructions": 42,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "init_cauchy_mds": {
+              "total_instructions": 74,
+              "conditional_branches_count": 6,
+              "conditional_branches_detail": [
+                {
+                  "addr": "1d8",
+                  "mnemonic": "jne",
+                  "operands": "2d0 <init_cauchy_mds+0x100>"
+                },
+                {
+                  "addr": "227",
+                  "mnemonic": "jne",
+                  "operands": "200 <init_cauchy_mds+0x30>"
+                },
+                {
+                  "addr": "233",
+                  "mnemonic": "jne",
+                  "operands": "1f1 <init_cauchy_mds+0x21>"
+                },
+                {
+                  "addr": "29d",
+                  "mnemonic": "jne",
+                  "operands": "280 <init_cauchy_mds+0xb0>"
+                },
+                {
+                  "addr": "2ab",
+                  "mnemonic": "jne",
+                  "operands": "268 <init_cauchy_mds+0x98>"
+                },
+                {
+                  "addr": "2b9",
+                  "mnemonic": "jne",
+                  "operands": "244 <init_cauchy_mds+0x74>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "mds_mult_ct": {
+              "total_instructions": 38,
+              "conditional_branches_count": 3,
+              "conditional_branches_detail": [
+                {
+                  "addr": "333",
+                  "mnemonic": "jne",
+                  "operands": "320 <mds_mult_ct+0x40>"
+                },
+                {
+                  "addr": "33f",
+                  "mnemonic": "jne",
+                  "operands": "310 <mds_mult_ct+0x30>"
+                },
+                {
+                  "addr": "357",
+                  "mnemonic": "jne",
+                  "operands": "304 <mds_mult_ct+0x24>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "single_round_ct": {
+              "total_instructions": 51,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "3aa",
+                  "mnemonic": "jne",
+                  "operands": "390 <single_round_ct+0x30>"
+                },
+                {
+                  "addr": "3dc",
+                  "mnemonic": "jne",
+                  "operands": "3c0 <single_round_ct+0x60>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 164,
+              "conditional_branches_count": 12,
+              "conditional_branches_detail": [
+                {
+                  "addr": "437",
+                  "mnemonic": "je",
+                  "operands": "6cb <rsd_s_v5_core_ct+0x2bb>"
+                },
+                {
+                  "addr": "443",
+                  "mnemonic": "je",
+                  "operands": "6cb <rsd_s_v5_core_ct+0x2bb>"
+                },
+                {
+                  "addr": "44c",
+                  "mnemonic": "je",
+                  "operands": "6cb <rsd_s_v5_core_ct+0x2bb>"
+                },
+                {
+                  "addr": "45b",
+                  "mnemonic": "je",
+                  "operands": "6cb <rsd_s_v5_core_ct+0x2bb>"
+                },
+                {
+                  "addr": "469",
+                  "mnemonic": "ja",
+                  "operands": "6cb <rsd_s_v5_core_ct+0x2bb>"
+                },
+                {
+                  "addr": "49a",
+                  "mnemonic": "jne",
+                  "operands": "47e <rsd_s_v5_core_ct+0x6e>"
+                },
+                {
+                  "addr": "4a6",
+                  "mnemonic": "je",
+                  "operands": "508 <rsd_s_v5_core_ct+0xf8>"
+                },
+                {
+                  "addr": "4f9",
+                  "mnemonic": "jne",
+                  "operands": "4e5 <rsd_s_v5_core_ct+0xd5>"
+                },
+                {
+                  "addr": "506",
+                  "mnemonic": "jne",
+                  "operands": "4d0 <rsd_s_v5_core_ct+0xc0>"
+                },
+                {
+                  "addr": "568",
+                  "mnemonic": "jbe",
+                  "operands": "6b9 <rsd_s_v5_core_ct+0x2a9>"
+                },
+                {
+                  "addr": "5ed",
+                  "mnemonic": "jne",
+                  "operands": "5d5 <rsd_s_v5_core_ct+0x1c5>"
+                },
+                {
+                  "addr": "64e",
+                  "mnemonic": "jne",
+                  "operands": "630 <rsd_s_v5_core_ct+0x220>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 21,
+              "conditional_branches_count": 3,
+              "conditional_branches_detail": [
+                {
+                  "addr": "6e9",
+                  "mnemonic": "je",
+                  "operands": "718 <rsd_s_v5_verify_wipe_ct+0x38>"
+                },
+                {
+                  "addr": "6ee",
+                  "mnemonic": "je",
+                  "operands": "718 <rsd_s_v5_verify_wipe_ct+0x38>"
+                },
+                {
+                  "addr": "70a",
+                  "mnemonic": "jb",
+                  "operands": "700 <rsd_s_v5_verify_wipe_ct+0x20>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            }
+          }
+        }
+      },
+      "O3_avx2": {
+        "label": "-O3 -mavx2",
+        "production_inlined_object": {
+          "total_instructions": 4457,
+          "gather_instructions_count": 0,
+          "total_avx2_instruction_mix": {
+            "vpand": 581,
+            "vpxor": 447,
+            "vpor": 24,
+            "vpsllw": 203,
+            "vpsrlw": 143,
+            "vpcmpeqw": 144,
+            "vpcmpgtw": 195,
+            "vpbroadcastw": 21,
+            "vpbroadcastq": 7,
+            "vmovdqa": 309,
+            "vmovdqu": 8,
+            "vmovd": 21,
+            "vmovq": 7,
+            "vextracti128": 2,
+            "vpsrldq": 11,
+            "vpextrw": 1,
+            "vpextrb": 2,
+            "vzeroupper": 6
+          },
+          "functions_present": [
+            "sbox_v5_avx2",
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "sbox_v5_avx2": {
+              "total_instructions": 1957,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "1006",
+                  "mnemonic": "jne",
+                  "operands": "c48 <sbox_v5_avx2+0xc48>"
+                },
+                {
+                  "addr": "1dda",
+                  "mnemonic": "jne",
+                  "operands": "1a20 <sbox_v5_avx2+0x1a20>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 547,
+                "vpxor": 404,
+                "vpor": 8,
+                "vpsllw": 203,
+                "vpsrlw": 143,
+                "vpcmpeqw": 144,
+                "vpcmpgtw": 195,
+                "vpbroadcastw": 3,
+                "vpbroadcastq": 7,
+                "vmovdqa": 267,
+                "vmovd": 3,
+                "vmovq": 7
+              }
+            },
+            "single_round_ct": {
+              "total_instructions": 245,
+              "conditional_branches_count": 5,
+              "conditional_branches_detail": [
+                {
+                  "addr": "2fdf",
+                  "mnemonic": "jne",
+                  "operands": "2cd8 <single_round_ct+0xa8>"
+                },
+                {
+                  "addr": "2ffd",
+                  "mnemonic": "jbe",
+                  "operands": "3050 <single_round_ct+0x420>"
+                },
+                {
+                  "addr": "302d",
+                  "mnemonic": "jne",
+                  "operands": "3020 <single_round_ct+0x3f0>"
+                },
+                {
+                  "addr": "3041",
+                  "mnemonic": "jne",
+                  "operands": "3030 <single_round_ct+0x400>"
+                },
+                {
+                  "addr": "3076",
+                  "mnemonic": "jne",
+                  "operands": "3060 <single_round_ct+0x430>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 32,
+                "vpxor": 37,
+                "vpbroadcastw": 17,
+                "vmovdqa": 21,
+                "vmovdqu": 4,
+                "vmovd": 17,
+                "vzeroupper": 1
+              }
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 2121,
+              "conditional_branches_count": 22,
+              "conditional_branches_detail": [
+                {
+                  "addr": "3083",
+                  "mnemonic": "je",
+                  "operands": "4975 <rsd_s_v5_core_ct+0x18f5>"
+                },
+                {
+                  "addr": "30a7",
+                  "mnemonic": "je",
+                  "operands": "4980 <rsd_s_v5_core_ct+0x1900>"
+                },
+                {
+                  "addr": "30b3",
+                  "mnemonic": "je",
+                  "operands": "4980 <rsd_s_v5_core_ct+0x1900>"
+                },
+                {
+                  "addr": "30be",
+                  "mnemonic": "je",
+                  "operands": "4980 <rsd_s_v5_core_ct+0x1900>"
+                },
+                {
+                  "addr": "30d0",
+                  "mnemonic": "ja",
+                  "operands": "4980 <rsd_s_v5_core_ct+0x1900>"
+                },
+                {
+                  "addr": "30e4",
+                  "mnemonic": "jne",
+                  "operands": "46ba <rsd_s_v5_core_ct+0x163a>"
+                },
+                {
+                  "addr": "3629",
+                  "mnemonic": "jne",
+                  "operands": "3440 <rsd_s_v5_core_ct+0x3c0>"
+                },
+                {
+                  "addr": "3c99",
+                  "mnemonic": "jne",
+                  "operands": "3ab0 <rsd_s_v5_core_ct+0xa30>"
+                },
+                {
+                  "addr": "4324",
+                  "mnemonic": "jne",
+                  "operands": "312b <rsd_s_v5_core_ct+0xab>"
+                },
+                {
+                  "addr": "4340",
+                  "mnemonic": "jne",
+                  "operands": "3112 <rsd_s_v5_core_ct+0x92>"
+                },
+                {
+                  "addr": "464e",
+                  "mnemonic": "jne",
+                  "operands": "4480 <rsd_s_v5_core_ct+0x1400>"
+                },
+                {
+                  "addr": "4667",
+                  "mnemonic": "jne",
+                  "operands": "43b7 <rsd_s_v5_core_ct+0x1337>"
+                },
+                {
+                  "addr": "46a5",
+                  "mnemonic": "jne",
+                  "operands": "437c <rsd_s_v5_core_ct+0x12fc>"
+                },
+                {
+                  "addr": "46e7",
+                  "mnemonic": "je",
+                  "operands": "4960 <rsd_s_v5_core_ct+0x18e0>"
+                },
+                {
+                  "addr": "477b",
+                  "mnemonic": "jne",
+                  "operands": "4721 <rsd_s_v5_core_ct+0x16a1>"
+                },
+                {
+                  "addr": "47f5",
+                  "mnemonic": "jbe",
+                  "operands": "4952 <rsd_s_v5_core_ct+0x18d2>"
+                },
+                {
+                  "addr": "48e3",
+                  "mnemonic": "jne",
+                  "operands": "48d6 <rsd_s_v5_core_ct+0x1856>"
+                },
+                {
+                  "addr": "48f2",
+                  "mnemonic": "jne",
+                  "operands": "48e5 <rsd_s_v5_core_ct+0x1865>"
+                },
+                {
+                  "addr": "4904",
+                  "mnemonic": "jne",
+                  "operands": "48f7 <rsd_s_v5_core_ct+0x1877>"
+                },
+                {
+                  "addr": "491b",
+                  "mnemonic": "jne",
+                  "operands": "4906 <rsd_s_v5_core_ct+0x1886>"
+                },
+                {
+                  "addr": "492d",
+                  "mnemonic": "jne",
+                  "operands": "4920 <rsd_s_v5_core_ct+0x18a0>"
+                },
+                {
+                  "addr": "493c",
+                  "mnemonic": "jne",
+                  "operands": "492f <rsd_s_v5_core_ct+0x18af>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 2,
+                "vpxor": 4,
+                "vpor": 5,
+                "vpbroadcastw": 1,
+                "vmovdqa": 20,
+                "vmovdqu": 4,
+                "vmovd": 1,
+                "vextracti128": 1,
+                "vpsrldq": 3,
+                "vpextrw": 1,
+                "vzeroupper": 3
+              }
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 134,
+              "conditional_branches_count": 22,
+              "conditional_branches_detail": [
+                {
+                  "addr": "4996",
+                  "mnemonic": "je",
+                  "operands": "4b70 <rsd_s_v5_verify_wipe_ct+0x1e0>"
+                },
+                {
+                  "addr": "499f",
+                  "mnemonic": "je",
+                  "operands": "4b70 <rsd_s_v5_verify_wipe_ct+0x1e0>"
+                },
+                {
+                  "addr": "49bd",
+                  "mnemonic": "jne",
+                  "operands": "49b0 <rsd_s_v5_verify_wipe_ct+0x20>"
+                },
+                {
+                  "addr": "49cf",
+                  "mnemonic": "jbe",
+                  "operands": "4b76 <rsd_s_v5_verify_wipe_ct+0x1e6>"
+                },
+                {
+                  "addr": "49fb",
+                  "mnemonic": "jne",
+                  "operands": "49f0 <rsd_s_v5_verify_wipe_ct+0x60>"
+                },
+                {
+                  "addr": "4a40",
+                  "mnemonic": "je",
+                  "operands": "4b83 <rsd_s_v5_verify_wipe_ct+0x1f3>"
+                },
+                {
+                  "addr": "4a54",
+                  "mnemonic": "jbe",
+                  "operands": "4a98 <rsd_s_v5_verify_wipe_ct+0x108>"
+                },
+                {
+                  "addr": "4a92",
+                  "mnemonic": "je",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4aa2",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4ab3",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4ac4",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4ad5",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4ae6",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4af3",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b00",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b0d",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b1a",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b27",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b34",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b41",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b4e",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                },
+                {
+                  "addr": "4b5b",
+                  "mnemonic": "jae",
+                  "operands": "4b61 <rsd_s_v5_verify_wipe_ct+0x1d1>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 1,
+              "avx2_instruction_mix": {
+                "vpxor": 2,
+                "vpor": 11,
+                "vmovdqa": 1,
+                "vextracti128": 1,
+                "vpsrldq": 8,
+                "vpextrb": 2,
+                "vzeroupper": 2
+              }
+            }
+          }
+        },
+        "noinline_per_function_object": {
+          "functions_present": [
+            "secure_wipe",
+            "gf16_mul_ct",
+            "gf16_sq_ct",
+            "mds_mult_ct",
+            "gf16_mul_avx2",
+            "gf16_sq_avx2",
+            "rotl16_avx2",
+            "gf16_sqn_ct.constprop.0",
+            "gf16_sqn_ct.constprop.1",
+            "gf16_inv_ct",
+            "init_cauchy_mds",
+            "gf16_sqn_avx2.constprop.0",
+            "gf16_sqn_avx2.constprop.1",
+            "sbox_v5_avx2",
+            "secure_wipe.constprop.0",
+            "single_round_ct",
+            "rsd_s_v5_core_ct",
+            "rsd_s_v5_verify_wipe_ct"
+          ],
+          "functions": {
+            "secure_wipe": {
+              "total_instructions": 10,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "3",
+                  "mnemonic": "je",
+                  "operands": "1f <secure_wipe+0x1f>"
+                },
+                {
+                  "addr": "1d",
+                  "mnemonic": "jne",
+                  "operands": "10 <secure_wipe+0x10>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_mul_ct": {
+              "total_instructions": 187,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sq_ct": {
+              "total_instructions": 4,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "mds_mult_ct": {
+              "total_instructions": 190,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "543",
+                  "mnemonic": "jne",
+                  "operands": "250 <mds_mult_ct+0x30>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 32,
+                "vpxor": 33,
+                "vpbroadcastw": 16,
+                "vmovdqa": 14,
+                "vmovd": 16,
+                "vzeroupper": 1
+              }
+            },
+            "gf16_mul_avx2": {
+              "total_instructions": 183,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 47,
+                "vpxor": 31,
+                "vpsllw": 15,
+                "vpsrlw": 15,
+                "vpcmpeqw": 16,
+                "vpcmpgtw": 15,
+                "vpbroadcastw": 1,
+                "vpbroadcastq": 2,
+                "vmovdqa": 28,
+                "vmovd": 1,
+                "vmovq": 2
+              }
+            },
+            "gf16_sq_avx2": {
+              "total_instructions": 3,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vmovdqa": 1
+              }
+            },
+            "rotl16_avx2": {
+              "total_instructions": 9,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpor": 1,
+                "vpsllw": 1,
+                "vpsrlw": 1,
+                "vmovd": 1,
+                "vmovq": 1
+              }
+            },
+            "gf16_sqn_ct.constprop.0": {
+              "total_instructions": 9,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "97c",
+                  "mnemonic": "jne",
+                  "operands": "970 <gf16_sqn_ct.constprop.0+0x10>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_ct.constprop.1": {
+              "total_instructions": 7,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_inv_ct": {
+              "total_instructions": 36,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "init_cauchy_mds": {
+              "total_instructions": 116,
+              "conditional_branches_count": 5,
+              "conditional_branches_detail": [
+                {
+                  "addr": "a4a",
+                  "mnemonic": "jne",
+                  "operands": "c2a <init_cauchy_mds+0x1fa>"
+                },
+                {
+                  "addr": "a88",
+                  "mnemonic": "jne",
+                  "operands": "a60 <init_cauchy_mds+0x30>"
+                },
+                {
+                  "addr": "a94",
+                  "mnemonic": "jne",
+                  "operands": "a50 <init_cauchy_mds+0x20>"
+                },
+                {
+                  "addr": "c06",
+                  "mnemonic": "jne",
+                  "operands": "ab0 <init_cauchy_mds+0x80>"
+                },
+                {
+                  "addr": "c1a",
+                  "mnemonic": "jne",
+                  "operands": "aa4 <init_cauchy_mds+0x74>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_avx2.constprop.0": {
+              "total_instructions": 18,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "c68",
+                  "mnemonic": "jne",
+                  "operands": "c60 <gf16_sqn_avx2.constprop.0+0x20>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "gf16_sqn_avx2.constprop.1": {
+              "total_instructions": 17,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "sbox_v5_avx2": {
+              "total_instructions": 74,
+              "conditional_branches_count": 0,
+              "conditional_branches_detail": [],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpxor": 9,
+                "vpbroadcastq": 1,
+                "vmovdqa": 20,
+                "vmovq": 1
+              }
+            },
+            "secure_wipe.constprop.0": {
+              "total_instructions": 9,
+              "conditional_branches_count": 1,
+              "conditional_branches_detail": [
+                {
+                  "addr": "e25",
+                  "mnemonic": "jne",
+                  "operands": "e18 <secure_wipe.constprop.0+0x8>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {}
+            },
+            "single_round_ct": {
+              "total_instructions": 62,
+              "conditional_branches_count": 2,
+              "conditional_branches_detail": [
+                {
+                  "addr": "ed5",
+                  "mnemonic": "jbe",
+                  "operands": "f17 <single_round_ct+0xe7>"
+                },
+                {
+                  "addr": "f37",
+                  "mnemonic": "jne",
+                  "operands": "f20 <single_round_ct+0xf0>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpxor": 4,
+                "vpbroadcastw": 1,
+                "vmovdqa": 7,
+                "vmovdqu": 6,
+                "vmovd": 1,
+                "vzeroupper": 1
+              }
+            },
+            "rsd_s_v5_core_ct": {
+              "total_instructions": 156,
+              "conditional_branches_count": 8,
+              "conditional_branches_detail": [
+                {
+                  "addr": "f73",
+                  "mnemonic": "je",
+                  "operands": "1210 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "f7f",
+                  "mnemonic": "je",
+                  "operands": "1210 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "f88",
+                  "mnemonic": "je",
+                  "operands": "1210 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "f93",
+                  "mnemonic": "je",
+                  "operands": "1210 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "fa4",
+                  "mnemonic": "ja",
+                  "operands": "1210 <rsd_s_v5_core_ct+0x2d0>"
+                },
+                {
+                  "addr": "fe8",
+                  "mnemonic": "je",
+                  "operands": "1060 <rsd_s_v5_core_ct+0x120>"
+                },
+                {
+                  "addr": "105e",
+                  "mnemonic": "jne",
+                  "operands": "1020 <rsd_s_v5_core_ct+0xe0>"
+                },
+                {
+                  "addr": "10c8",
+                  "mnemonic": "jbe",
+                  "operands": "11fe <rsd_s_v5_core_ct+0x2be>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 0,
+              "avx2_instruction_mix": {
+                "vpand": 2,
+                "vpxor": 4,
+                "vpor": 5,
+                "vpbroadcastw": 1,
+                "vmovdqa": 21,
+                "vmovdqu": 4,
+                "vmovd": 1,
+                "vextracti128": 1,
+                "vpsrldq": 3,
+                "vpextrw": 1,
+                "vzeroupper": 2
+              }
+            },
+            "rsd_s_v5_verify_wipe_ct": {
+              "total_instructions": 133,
+              "conditional_branches_count": 21,
+              "conditional_branches_detail": [
+                {
+                  "addr": "1223",
+                  "mnemonic": "je",
+                  "operands": "1400 <rsd_s_v5_verify_wipe_ct+0x1e0>"
+                },
+                {
+                  "addr": "122f",
+                  "mnemonic": "je",
+                  "operands": "1400 <rsd_s_v5_verify_wipe_ct+0x1e0>"
+                },
+                {
+                  "addr": "1255",
+                  "mnemonic": "jbe",
+                  "operands": "1410 <rsd_s_v5_verify_wipe_ct+0x1f0>"
+                },
+                {
+                  "addr": "127b",
+                  "mnemonic": "jne",
+                  "operands": "1270 <rsd_s_v5_verify_wipe_ct+0x50>"
+                },
+                {
+                  "addr": "12c0",
+                  "mnemonic": "je",
+                  "operands": "141d <rsd_s_v5_verify_wipe_ct+0x1fd>"
+                },
+                {
+                  "addr": "12d4",
+                  "mnemonic": "jbe",
+                  "operands": "1318 <rsd_s_v5_verify_wipe_ct+0xf8>"
+                },
+                {
+                  "addr": "1312",
+                  "mnemonic": "je",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "1323",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "1335",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "1347",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "1359",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "136b",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "137d",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "138b",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "1399",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13a7",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13b5",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13c3",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13d1",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13df",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                },
+                {
+                  "addr": "13ed",
+                  "mnemonic": "jae",
+                  "operands": "13f4 <rsd_s_v5_verify_wipe_ct+0x1d4>"
+                }
+              ],
+              "gather_instructions_count": 0,
+              "cmov_instructions_count": 1,
+              "avx2_instruction_mix": {
+                "vpxor": 2,
+                "vpor": 11,
+                "vmovdqa": 1,
+                "vextracti128": 1,
+                "vpsrldq": 8,
+                "vpextrb": 2,
+                "vzeroupper": 2
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "3_memory_alignment_and_cache_timing_audit": {
+    "table_dimensions": [
+      32,
+      16,
+      32
+    ],
+    "element_type": "uint16_t (2 bytes)",
+    "total_size_bytes": 32768,
+    "attribute_declaration": "static uint16_t CAUCHY_BIT_BASIS[RSD_W][16][RSD_W] __attribute__((aligned(32)));",
+    "elf_symbol_and_section_checks": {
+      "O0": {
+        "symbol_name": "CAUCHY_BIT_BASIS",
+        "bss_offset_hex": "0x800",
+        "bss_offset_mod_32": 0,
+        "symbol_size_bytes": 32768,
+        "bss_section_alignment": 32,
+        "is_32_byte_aligned_in_elf": true,
+        "nm_excerpt": [
+          "0000000000000000 b CAUCHY_MDS",
+          "0000000000000800 b CAUCHY_BIT_BASIS",
+          "0000000000008800 b CAUCHY_INIT"
+        ]
+      },
+      "O2": {
+        "symbol_name": "CAUCHY_BIT_BASIS",
+        "bss_offset_hex": "0x20",
+        "bss_offset_mod_32": 0,
+        "symbol_size_bytes": 32768,
+        "bss_section_alignment": 32,
+        "is_32_byte_aligned_in_elf": true,
+        "nm_excerpt": [
+          "0000000000000000 b CAUCHY_INIT",
+          "0000000000000020 b CAUCHY_BIT_BASIS",
+          "0000000000008020 b CAUCHY_MDS"
+        ]
+      },
+      "O3_avx2": {
+        "symbol_name": "CAUCHY_BIT_BASIS",
+        "bss_offset_hex": "0x20",
+        "bss_offset_mod_32": 0,
+        "symbol_size_bytes": 32768,
+        "bss_section_alignment": 32,
+        "is_32_byte_aligned_in_elf": true,
+        "nm_excerpt": [
+          "0000000000000000 b CAUCHY_INIT",
+          "0000000000000020 b CAUCHY_BIT_BASIS",
+          "0000000000008020 b CAUCHY_MDS"
+        ]
+      }
+    },
+    "runtime_alignment_and_cache_trace_verification": {
+      "runtime_base_address_hex": "0x592cfaab6060",
+      "runtime_base_address_mod_32": 0,
+      "sizeof_cauchy_bit_basis_bytes": 32768,
+      "all_512_lo_vectors_32b_aligned": true,
+      "all_512_hi_vectors_32b_aligned": true,
+      "strictly_sequential_64b_cache_lines": true,
+      "cache_lines_touched_per_mds_call": 512,
+      "runtime_base_address_mod_64": 32
+    },
+    "cache_timing_invariance_proof": {
+      "index_variables": [
+        "j (0..31)",
+        "bit (0..15)"
+      ],
+      "secret_value_handling": "uint16_t m = (uint16_t)(-(int16_t)((vj >> bit) & 1u)); __m256i vmask = _mm256_set1_epi16((short)m); acc_lo = _mm256_xor_si256(acc_lo, _mm256_and_si256(b_lo, vmask));",
+      "memory_access_pattern": "Every call to mds_mult_ct executes exactly 512 pairs of 32-byte aligned vector loads (_mm256_load_si256 / vpand with 32-byte aligned memory operand) in identical monotonic address order [base + 0x0000 .. base + 0x7FE0], touching all 512 cache lines (32 KiB = L1d resident) regardless of the secret input state or key.",
+      "secret_dependent_cache_misses": 0
+    },
+    "reconciliation_of_v5_1_final_hardening_results_json": {
+      "stale_field_in_v5_1_final_hardening_results_json": {
+        "avx2_tvla_abs_t": 8.6422,
+        "avx2_tvla_passed": false
+      },
+      "internal_readiness_and_notebook_result": {
+        "tvla_abs_t": 0.35436104043479016,
+        "tvla_passed": true
+      },
+      "root_cause_analysis": "In an early exploratory micro-script that generated resultados/v5_sandbox/v5_1_final_hardening_results.json during commit e9b1e6d, the two trace groups were collected in non-interleaved (sequential batch) order without sufficient warm-up after AVX2 frequency/turbo licensing and L1d population of the 32 KiB CAUCHY_BIT_BASIS table (where group 0 paid the one-time cold/turbo transition drift before group 1 ran). Standard ISO/IEC 17825 / Goodwill et al. TVLA methodology requires randomized or alternating interleaved acquisition with a warm cache so environmental CPU frequency drift is common-mode across both populations. When acquired with proper interleaved sampling and warm cache (as in caderno de execução interno (não incluído neste repositório) giving |t| = 0.3544, and in our extended N = 100,000-pair C99 RDTSC/RDTSCP harness across -O0, -O2, and -O3 -mavx2), |t| is consistently well below the 4.5 threshold across all tests."
+    }
+  },
+  "4_extended_welch_tvla_100k_pairs": {
+    "n_pairs_per_test": 100000,
+    "traces_per_test": 200000,
+    "total_traces_across_all_3_profiles": 1200000,
+    "threshold_abs_t": 4.5,
+    "max_abs_t_observed": 2.4969,
+    "all_profiles_passed": true,
+    "profiles": {
+      "O0": {
+        "opt_label": "-O0",
+        "n_pairs": 100000,
+        "total_traces_per_test": 200000,
+        "fixed_vs_random": {
+          "fixed_mean_cycles": 2041746.79,
+          "random_mean_cycles": 2041085.33,
+          "fixed_std_cycles": 58549.46,
+          "random_std_cycles": 53742.15,
+          "fixed_p50_cycles": 2049502,
+          "random_p50_cycles": 2049470,
+          "fixed_p99_cycles": 6481496,
+          "random_p99_cycles": 6479624,
+          "abs_t_raw": 0.7444,
+          "abs_t_p99_trimmed": 0.6964,
+          "abs_t_quantile_trimmed": 2.4969,
+          "passed": true
+        },
+        "all_zero_vs_all_ones": {
+          "all_zero_mean_cycles": 2031274.09,
+          "all_ones_mean_cycles": 2031205.19,
+          "all_zero_std_cycles": 34306.52,
+          "all_ones_std_cycles": 34225.02,
+          "all_zero_p50_cycles": 2044162,
+          "all_ones_p50_cycles": 2044220,
+          "all_zero_p99_cycles": 2602832,
+          "all_ones_p99_cycles": 2601246,
+          "abs_t_raw": 0.8819,
+          "abs_t_p99_trimmed": 0.0145,
+          "abs_t_quantile_trimmed": 0.4266,
+          "passed": true
+        },
+        "elapsed_seconds": 392.969
+      },
+      "O2": {
+        "opt_label": "-O2",
+        "n_pairs": 100000,
+        "total_traces_per_test": 200000,
+        "fixed_vs_random": {
+          "fixed_mean_cycles": 413682.77,
+          "random_mean_cycles": 413655.12,
+          "fixed_std_cycles": 8382.98,
+          "random_std_cycles": 8442.38,
+          "fixed_p50_cycles": 414454,
+          "random_p50_cycles": 414360,
+          "fixed_p99_cycles": 440876,
+          "random_p99_cycles": 441058,
+          "abs_t_raw": 0.3625,
+          "abs_t_p99_trimmed": 0.4891,
+          "abs_t_quantile_trimmed": 0.6973,
+          "passed": true
+        },
+        "all_zero_vs_all_ones": {
+          "all_zero_mean_cycles": 413245.99,
+          "all_ones_mean_cycles": 413233.3,
+          "all_zero_std_cycles": 8779.85,
+          "all_ones_std_cycles": 8781.17,
+          "all_zero_p50_cycles": 413790,
+          "all_ones_p50_cycles": 413754,
+          "all_zero_p99_cycles": 440534,
+          "all_ones_p99_cycles": 440550,
+          "abs_t_raw": 0.7017,
+          "abs_t_p99_trimmed": 0.3043,
+          "abs_t_quantile_trimmed": 0.3067,
+          "passed": true
+        },
+        "elapsed_seconds": 75.852
+      },
+      "O3_avx2": {
+        "opt_label": "-O3 -mavx2",
+        "n_pairs": 100000,
+        "total_traces_per_test": 200000,
+        "fixed_vs_random": {
+          "fixed_mean_cycles": 35048.21,
+          "random_mean_cycles": 35046.72,
+          "fixed_std_cycles": 997.7,
+          "random_std_cycles": 979.43,
+          "fixed_p50_cycles": 34816,
+          "random_p50_cycles": 34820,
+          "fixed_p99_cycles": 46820,
+          "random_p99_cycles": 46756,
+          "abs_t_raw": 1.0333,
+          "abs_t_p99_trimmed": 0.4503,
+          "abs_t_quantile_trimmed": 0.3194,
+          "passed": true
+        },
+        "all_zero_vs_all_ones": {
+          "all_zero_mean_cycles": 35171.88,
+          "all_ones_mean_cycles": 35171.75,
+          "all_zero_std_cycles": 634.52,
+          "all_ones_std_cycles": 634.72,
+          "all_zero_p50_cycles": 35620,
+          "all_ones_p50_cycles": 35620,
+          "all_zero_p99_cycles": 47400,
+          "all_ones_p99_cycles": 47352,
+          "abs_t_raw": 0.8087,
+          "abs_t_p99_trimmed": 0.5234,
+          "abs_t_quantile_trimmed": 0.0441,
+          "passed": true
+        },
+        "elapsed_seconds": 6.555
+      }
+    }
+  }
+}

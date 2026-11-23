@@ -1,0 +1,2373 @@
+{
+  "metadata": {
+    "round": "Round 3",
+    "metric": "Metric 2 \u2014 NIST SP 800-22 10/10 on Unpadded 64B y_pub_bytes & Boundary Folding Bias (65536 -> {0..65535})",
+    "date": "2026-11-22",
+    "target_file": "implementacao/bandlimited_dual_key.py",
+    "target_function": "_unpadded_z65537_to_bytes64",
+    "q_mod": 65537,
+    "word_count": 32,
+    "serialized_bytes_v51": 64,
+    "serialized_bytes_v50": 96
+  },
+  "part1_and_2_mathematical_folding_proof": {
+    "v51_folding_exact_pmf": {
+      "p_direct_str": "1/65537",
+      "p_boundary_hit_str": "1/65537",
+      "p_fold_target_given_hit_str": "1/65536",
+      "p_w_total_str": "1/65536",
+      "p_ideal_uniform_str": "1/65536",
+      "exact_equality_verified": true,
+      "tvd_unconditional_exact": 0.0,
+      "kl_divergence_unconditional_exact_bits": 0.0,
+      "shannon_entropy_bits_per_word": 16.0,
+      "min_entropy_bits_per_word": 16.0,
+      "expected_ones_proportion": 0.5
+    },
+    "v50_3byte_padded_contrast": {
+      "encoded_bytes_per_output": 96,
+      "encoded_bits_per_output": 768,
+      "prob_every_3rd_msb_byte_is_0x00_str": "65536/65537",
+      "prob_every_3rd_msb_byte_is_0x00_float": 0.9999847414437646,
+      "expected_ones_per_24bit_word_str": "524289/65537",
+      "expected_ones_proportion_str": "174763/524296",
+      "expected_ones_proportion_float": 0.333328882921098,
+      "monobit_z_score_at_1M_bits": 333.34223415780394
+    },
+    "naive_mod65536_vs_prf_folding": {
+      "naive_mod_p_zero_str": "2/65537",
+      "naive_mod_tvd_str": "65535/4295032832",
+      "naive_mod_tvd_float": 1.5258323408318011e-05,
+      "naive_mod_kl_divergence_nats": 5.894177819615801e-06,
+      "conditional_fixed_tuple_tvd_float": 1.5258323408318011e-05,
+      "marginal_varying_session_tvd_float": 0.0
+    }
+  },
+  "part2_empirical_boundary_folding_analysis": {
+    "n_synthetic_boundary_hits": 262144,
+    "elapsed_s": 0.3189349530000527,
+    "min_folded_word": 0,
+    "max_folded_word": 65535,
+    "mean_folded_word": 32793.25579071045,
+    "expected_mean_word": 32767.5,
+    "std_folded_word": 18930.112148416818,
+    "expected_std_word": 18918.61361860324,
+    "word_65536_bin_uniformity": {
+      "df": 65535,
+      "expected_per_bin": 4.0,
+      "chi2_statistic": 65212.5,
+      "p_value": 0.8133794845579276,
+      "passed_alpha_001": true,
+      "empirical_tvd": 0.19479751586914062,
+      "expected_finite_sample_tvd_poisson": 0.19536681481316434,
+      "empirical_kl_divergence_bits": 0.1904826089054966
+    },
+    "word_256_subrange_uniformity": {
+      "df": 255,
+      "expected_per_bin": 1024.0,
+      "msb_chi2_statistic": 263.83203125,
+      "msb_p_value": 0.3386667151031658,
+      "lsb_chi2_statistic": 259.751953125,
+      "lsb_p_value": 0.4057049782116597,
+      "chi2_statistic": 263.83203125,
+      "p_value": 0.3386667151031658,
+      "passed_alpha_001": true
+    },
+    "byte_256_bin_uniformity": {
+      "total_bytes": 524288,
+      "df": 255,
+      "expected_per_bin": 2048.0,
+      "chi2_statistic": 263.0546875,
+      "p_value": 0.35107156290090613,
+      "passed_alpha_001": true,
+      "empirical_tvd": 0.008836746215820312,
+      "empirical_kl_divergence_bits": 0.00036167211255148154
+    },
+    "bit_position_balance_16bits": {
+      "overall_ones_proportion": 0.5003159046173096,
+      "max_abs_bit_bias": 0.001712799072265625,
+      "min_bit_p_value": 0.07944657249196982,
+      "all_16_bits_passed_alpha_001": true,
+      "per_bit": [
+        {
+          "bit_position": 0,
+          "label": "LSB",
+          "ones_count": 131118,
+          "ones_proportion": 0.5001754760742188,
+          "abs_bias_from_half": 0.00017547607421875,
+          "z_statistic": 0.1796875,
+          "p_value": 0.8573979072712525,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 1,
+          "label": "bit_1",
+          "ones_count": 130990,
+          "ones_proportion": 0.49968719482421875,
+          "abs_bias_from_half": 0.00031280517578125,
+          "z_statistic": 0.3203125,
+          "p_value": 0.748731448322679,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 2,
+          "label": "bit_2",
+          "ones_count": 131095,
+          "ones_proportion": 0.5000877380371094,
+          "abs_bias_from_half": 8.7738037109375e-05,
+          "z_statistic": 0.08984375,
+          "p_value": 0.9284113812745621,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 3,
+          "label": "bit_3",
+          "ones_count": 131423,
+          "ones_proportion": 0.5013389587402344,
+          "abs_bias_from_half": 0.001338958740234375,
+          "z_statistic": 1.37109375,
+          "p_value": 0.17034573305168588,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 4,
+          "label": "bit_4",
+          "ones_count": 131203,
+          "ones_proportion": 0.5004997253417969,
+          "abs_bias_from_half": 0.000499725341796875,
+          "z_statistic": 0.51171875,
+          "p_value": 0.6088478616475532,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 5,
+          "label": "bit_5",
+          "ones_count": 131185,
+          "ones_proportion": 0.5004310607910156,
+          "abs_bias_from_half": 0.000431060791015625,
+          "z_statistic": 0.44140625,
+          "p_value": 0.6589189183347395,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 6,
+          "label": "bit_6",
+          "ones_count": 130957,
+          "ones_proportion": 0.4995613098144531,
+          "abs_bias_from_half": 0.000438690185546875,
+          "z_statistic": 0.44921875,
+          "p_value": 0.6532738629306599,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 7,
+          "label": "bit_7",
+          "ones_count": 131059,
+          "ones_proportion": 0.4999504089355469,
+          "abs_bias_from_half": 4.9591064453125e-05,
+          "z_statistic": 0.05078125,
+          "p_value": 0.9594998319301961,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 8,
+          "label": "bit_8",
+          "ones_count": 131282,
+          "ones_proportion": 0.5008010864257812,
+          "abs_bias_from_half": 0.00080108642578125,
+          "z_statistic": 0.8203125,
+          "p_value": 0.4120379822736972,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 9,
+          "label": "bit_9",
+          "ones_count": 131415,
+          "ones_proportion": 0.5013084411621094,
+          "abs_bias_from_half": 0.001308441162109375,
+          "z_statistic": 1.33984375,
+          "p_value": 0.1802961487017906,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 10,
+          "label": "bit_10",
+          "ones_count": 131284,
+          "ones_proportion": 0.5008087158203125,
+          "abs_bias_from_half": 0.0008087158203125,
+          "z_statistic": 0.828125,
+          "p_value": 0.4075997126637061,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 11,
+          "label": "bit_11",
+          "ones_count": 130905,
+          "ones_proportion": 0.4993629455566406,
+          "abs_bias_from_half": 0.000637054443359375,
+          "z_statistic": 0.65234375,
+          "p_value": 0.5141794426659709,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 12,
+          "label": "bit_12",
+          "ones_count": 131357,
+          "ones_proportion": 0.5010871887207031,
+          "abs_bias_from_half": 0.001087188720703125,
+          "z_statistic": 1.11328125,
+          "p_value": 0.2655876566308273,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 13,
+          "label": "bit_13",
+          "ones_count": 130623,
+          "ones_proportion": 0.4982872009277344,
+          "abs_bias_from_half": 0.001712799072265625,
+          "z_statistic": 1.75390625,
+          "p_value": 0.07944657249196982,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 14,
+          "label": "bit_14",
+          "ones_count": 131387,
+          "ones_proportion": 0.5012016296386719,
+          "abs_bias_from_half": 0.001201629638671875,
+          "z_statistic": 1.23046875,
+          "p_value": 0.21852162224648208,
+          "passed_alpha_001": true
+        },
+        {
+          "bit_position": 15,
+          "label": "MSB",
+          "ones_count": 131194,
+          "ones_proportion": 0.5004653930664062,
+          "abs_bias_from_half": 0.00046539306640625,
+          "z_statistic": 0.4765625,
+          "p_value": 0.6336736919918045,
+          "passed_alpha_001": true
+        }
+      ]
+    },
+    "conditional_fixed_vs_varying_seed": {
+      "deterministic_on_fixed_tuple": true,
+      "distinct_words_across_32_indices_on_single_hit_vector": 32
+    },
+    "full_z65537_1M_elements_simulation": {
+      "n_elements_z65537": 1024000,
+      "natural_boundary_65536_hits": 12,
+      "expected_boundary_65536_hits": 15.624761585058822,
+      "byte_chi2_256bins": 299.4845,
+      "byte_chi2_p_value": 0.029060185884522905,
+      "passed_alpha_001": true
+    }
+  },
+  "part3_nist_sp800_22_raw_y_pub_bytes": {
+    "n_blocks_total": 2000,
+    "n_independent_streams": 5,
+    "blocks_per_stream": 400,
+    "total_bytes_v51": 128000,
+    "total_bits_v51": 1024000,
+    "total_z65537_coords_generated": 64000,
+    "natural_boundary_65536_hits_observed": 0,
+    "expected_natural_boundary_65536_hits": 0.9765475990661764,
+    "generation_elapsed_s": 72.86604844800013,
+    "nist_evaluation_elapsed_s": 12.705990107999924,
+    "composite_1024000_bits_v51_unpadded_64B": {
+      "length_bytes": 128000,
+      "length_words16": 64000,
+      "length_bits": 1024000,
+      "ones_count": 512006,
+      "ones_proportion": 0.500005859375,
+      "abs_ones_bias": 5.8593749999724665e-06,
+      "byte_level_chi2_256bins": {
+        "df": 255,
+        "expected_per_bin": 500.0,
+        "chi2_statistic": 267.688,
+        "p_value": 0.28022179054429874,
+        "passed_alpha_001": true,
+        "empirical_byte_tvd": 0.018468750000000013,
+        "shannon_entropy_bits_per_byte": 7.998492474685657
+      },
+      "word16_bit_position_balance": {
+        "max_abs_bit_bias": 0.004046875000000005,
+        "min_bit_p_value": 0.040601682135224984,
+        "all_16_bits_passed_alpha_001": true,
+        "per_bit": [
+          {
+            "bit_position": 0,
+            "ones_count": 31831,
+            "ones_proportion": 0.497359375,
+            "abs_bias_from_half": 0.0026406250000000075,
+            "z_statistic": 1.3360623114211403,
+            "p_value": 0.18152890736736618,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 1,
+            "ones_count": 31967,
+            "ones_proportion": 0.499484375,
+            "abs_bias_from_half": 0.0005156250000000195,
+            "z_statistic": 0.2608879069638913,
+            "p_value": 0.7941789508384405,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 2,
+            "ones_count": 32020,
+            "ones_proportion": 0.5003125,
+            "abs_bias_from_half": 0.00031250000000004885,
+            "z_statistic": 0.15811388300841897,
+            "p_value": 0.8743670611628919,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 3,
+            "ones_count": 32054,
+            "ones_proportion": 0.50084375,
+            "abs_bias_from_half": 0.000843750000000032,
+            "z_statistic": 0.4269074841227312,
+            "p_value": 0.6694467141581395,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 4,
+            "ones_count": 32076,
+            "ones_proportion": 0.5011875,
+            "abs_bias_from_half": 0.001187500000000008,
+            "z_statistic": 0.6008327554319921,
+            "p_value": 0.5479513849959966,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 5,
+            "ones_count": 32070,
+            "ones_proportion": 0.50109375,
+            "abs_bias_from_half": 0.0010937500000000044,
+            "z_statistic": 0.5533985905294664,
+            "p_value": 0.5799905038550084,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 6,
+            "ones_count": 32014,
+            "ones_proportion": 0.50021875,
+            "abs_bias_from_half": 0.0002187500000000453,
+            "z_statistic": 0.11067971810589328,
+            "p_value": 0.9118703297575395,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 7,
+            "ones_count": 31993,
+            "ones_proportion": 0.499890625,
+            "abs_bias_from_half": 0.00010937500000002265,
+            "z_statistic": 0.05533985905294664,
+            "p_value": 0.9558677078709232,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 8,
+            "ones_count": 32044,
+            "ones_proportion": 0.5006875,
+            "abs_bias_from_half": 0.000687499999999952,
+            "z_statistic": 0.3478505426185217,
+            "p_value": 0.7279524296106983,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 9,
+            "ones_count": 32054,
+            "ones_proportion": 0.50084375,
+            "abs_bias_from_half": 0.000843750000000032,
+            "z_statistic": 0.4269074841227312,
+            "p_value": 0.6694467141581395,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 10,
+            "ones_count": 32259,
+            "ones_proportion": 0.504046875,
+            "abs_bias_from_half": 0.004046875000000005,
+            "z_statistic": 2.047574784959026,
+            "p_value": 0.040601682135224984,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 11,
+            "ones_count": 31981,
+            "ones_proportion": 0.499703125,
+            "abs_bias_from_half": 0.00029687499999997424,
+            "z_statistic": 0.15020818885799803,
+            "p_value": 0.8806003654225277,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 12,
+            "ones_count": 31761,
+            "ones_proportion": 0.496265625,
+            "abs_bias_from_half": 0.003734375000000012,
+            "z_statistic": 1.8894609019506068,
+            "p_value": 0.05883009697010298,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 13,
+            "ones_count": 31994,
+            "ones_proportion": 0.49990625,
+            "abs_bias_from_half": 9.375000000000355e-05,
+            "z_statistic": 0.047434164902525694,
+            "p_value": 0.9621672000014073,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 14,
+            "ones_count": 31914,
+            "ones_proportion": 0.49865625,
+            "abs_bias_from_half": 0.001343749999999977,
+            "z_statistic": 0.6798896969362016,
+            "p_value": 0.4965743058617597,
+            "passed_alpha_001": true
+          },
+          {
+            "bit_position": 15,
+            "ones_count": 31974,
+            "ones_proportion": 0.49959375,
+            "abs_bias_from_half": 0.0004062499999999969,
+            "z_statistic": 0.20554804791094466,
+            "p_value": 0.8371439625943169,
+            "passed_alpha_001": true
+          }
+        ]
+      },
+      "nist_10_core_passes": 10,
+      "nist_10_core_total": 10,
+      "nist_10_core_pass_rate": 1.0,
+      "nist_12_extended_passes": 12,
+      "nist_12_extended_total": 12,
+      "nist_tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 0.011858541225631423,
+          "p_value": 0.9905384747974411,
+          "passed": true
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 7905.625,
+          "p_value": 0.7714947340955755,
+          "passed": true
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 511950.0,
+          "p_value": 0.921280364402561,
+          "passed": true
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 8.283724756151486,
+          "p_value": 0.1412766821085442,
+          "passed": true
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 2.4134556372020484,
+          "p_value": 0.2991746331881995,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 1.2514465314397702,
+          "p_value": 0.21077160967184239,
+          "passed": true
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 984.5787878787932,
+          "p_value": 0.6299384677564317,
+          "passed": true
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 31.041367142961462,
+          "p_value": 0.5149104211105535,
+          "passed": true,
+          "p_value_audit_helper_s8": 0.013293510416915188,
+          "p_value_nist_sp800_22_s16": 0.5149104211105535,
+          "passed_audit_helper_s8": true
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 1295.0,
+          "p_value": 0.40103036738983133,
+          "passed": true
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 8.566734375082888,
+          "p_value": 0.01386463310008508,
+          "passed": true
+        },
+        {
+          "test_id": 11,
+          "name": "Random Excursions",
+          "statistic": 10.296583850931677,
+          "p_value": 0.06725481481560862,
+          "passed": true
+        },
+        {
+          "test_id": 12,
+          "name": "Random Excursions Variant",
+          "statistic": 1288.0,
+          "p_value": 0.1246507358685977,
+          "passed": true
+        }
+      ],
+      "nist_10_core_passes_audit_helper_s8": 10
+    },
+    "composite_1024000_bits_v50_padded_96B_ablation": {
+      "length_bytes": 128000,
+      "length_words16": 64000,
+      "length_bits": 1024000,
+      "ones_count": 341916,
+      "ones_proportion": 0.33390234375,
+      "abs_ones_bias": 0.16609765625,
+      "byte_level_chi2_256bins": {
+        "df": 255,
+        "expected_per_bin": 500.0,
+        "chi2_statistic": 3622587.5439999993,
+        "p_value": 0.0,
+        "passed_alpha_001": false,
+        "empirical_byte_tvd": 0.33183593749999996,
+        "shannon_entropy_bits_per_byte": 6.229424299637484
+      },
+      "word16_bit_position_balance": {
+        "max_abs_bit_bias": 0.16957812500000002,
+        "min_bit_p_value": 0.0,
+        "all_16_bits_passed_alpha_001": false,
+        "per_bit": [
+          {
+            "bit_position": 0,
+            "ones_count": 21435,
+            "ones_proportion": 0.334921875,
+            "abs_bias_from_half": 0.16507812500000002,
+            "z_statistic": 83.52365869919733,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 1,
+            "ones_count": 21358,
+            "ones_proportion": 0.33371875,
+            "abs_bias_from_half": 0.16628125,
+            "z_statistic": 84.13239714877973,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 2,
+            "ones_count": 21637,
+            "ones_proportion": 0.338078125,
+            "abs_bias_from_half": 0.161921875,
+            "z_statistic": 81.9267084808123,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 3,
+            "ones_count": 21421,
+            "ones_proportion": 0.334703125,
+            "abs_bias_from_half": 0.165296875,
+            "z_statistic": 83.63433841730321,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 4,
+            "ones_count": 21147,
+            "ones_proportion": 0.330421875,
+            "abs_bias_from_half": 0.16957812500000002,
+            "z_statistic": 85.80049861451856,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 5,
+            "ones_count": 21326,
+            "ones_proportion": 0.33321875,
+            "abs_bias_from_half": 0.16678125,
+            "z_statistic": 84.38537936159321,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 6,
+            "ones_count": 21192,
+            "ones_proportion": 0.331125,
+            "abs_bias_from_half": 0.168875,
+            "z_statistic": 85.4447423777496,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 7,
+            "ones_count": 21345,
+            "ones_proportion": 0.333515625,
+            "abs_bias_from_half": 0.16648437500000002,
+            "z_statistic": 84.2351711727352,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 8,
+            "ones_count": 21254,
+            "ones_proportion": 0.33209375,
+            "abs_bias_from_half": 0.16790624999999998,
+            "z_statistic": 84.95458934042351,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 9,
+            "ones_count": 21362,
+            "ones_proportion": 0.33378125,
+            "abs_bias_from_half": 0.16621875000000003,
+            "z_statistic": 84.10077437217805,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 10,
+            "ones_count": 21528,
+            "ones_proportion": 0.336375,
+            "abs_bias_from_half": 0.16362500000000002,
+            "z_statistic": 82.78842914320818,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 11,
+            "ones_count": 21150,
+            "ones_proportion": 0.33046875,
+            "abs_bias_from_half": 0.16953125000000002,
+            "z_statistic": 85.77678153206729,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 12,
+            "ones_count": 21422,
+            "ones_proportion": 0.33471875,
+            "abs_bias_from_half": 0.16528125,
+            "z_statistic": 83.62643272315279,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 13,
+            "ones_count": 21473,
+            "ones_proportion": 0.335515625,
+            "abs_bias_from_half": 0.16448437500000002,
+            "z_statistic": 83.22324232148132,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 14,
+            "ones_count": 21514,
+            "ones_proportion": 0.33615625,
+            "abs_bias_from_half": 0.16384375,
+            "z_statistic": 82.89910886131406,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          },
+          {
+            "bit_position": 15,
+            "ones_count": 21352,
+            "ones_proportion": 0.333625,
+            "abs_bias_from_half": 0.166375,
+            "z_statistic": 84.17983131368226,
+            "p_value": 0.0,
+            "passed_alpha_001": false
+          }
+        ]
+      },
+      "nist_10_core_passes": 1,
+      "nist_10_core_total": 10,
+      "nist_10_core_pass_rate": 0.1,
+      "nist_12_extended_passes": 3,
+      "nist_12_extended_total": 12,
+      "nist_tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 336.15802097004917,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 119080.6875,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 0.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 3572.5088675848274,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 7.2612669398046,
+          "p_value": 0.026499392523285897,
+          "passed": true
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 176.50837165176586,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 864769.209090913,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 194869.6029340879,
+          "p_value": 0.0,
+          "passed": false,
+          "p_value_audit_helper_s8": 0.0,
+          "p_value_nist_sp800_22_s16": 0.0,
+          "passed_audit_helper_s8": false
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 340170.0,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 328306.96609375,
+          "p_value": 0.0,
+          "passed": false
+        },
+        {
+          "test_id": 11,
+          "name": "Random Excursions",
+          "statistic": 1.0,
+          "p_value": 1.0,
+          "passed": true
+        },
+        {
+          "test_id": 12,
+          "name": "Random Excursions Variant",
+          "statistic": 1.0,
+          "p_value": 0.43276758066778465,
+          "passed": true
+        }
+      ],
+      "nist_10_core_passes_audit_helper_s8": 1
+    },
+    "independent_streams": [
+      {
+        "stream_id": 1,
+        "label": "Session_Stream_1",
+        "key_hex": "cabe10bee62785409c5eb1ff9507f7c387ea7ca93daf23aec5cbe4c4521e569b",
+        "n_sess_range": [
+          100001,
+          100400
+        ],
+        "evaluation": {
+          "length_bytes": 25600,
+          "length_words16": 12800,
+          "length_bits": 204800,
+          "ones_count": 102440,
+          "ones_proportion": 0.5001953125,
+          "abs_ones_bias": 0.0001953125000000444,
+          "byte_level_chi2_256bins": {
+            "df": 255,
+            "expected_per_bin": 100.0,
+            "chi2_statistic": 300.98,
+            "p_value": 0.025338123777625496,
+            "passed_alpha_001": true,
+            "empirical_byte_tvd": 0.04320312500000001,
+            "shannon_entropy_bits_per_byte": 7.991566537539834
+          },
+          "word16_bit_position_balance": {
+            "max_abs_bit_bias": 0.013984375000000049,
+            "min_bit_p_value": 0.0015545494459229187,
+            "all_16_bits_passed_alpha_001": false,
+            "per_bit": [
+              {
+                "bit_position": 0,
+                "ones_count": 6270,
+                "ones_proportion": 0.48984375,
+                "abs_bias_from_half": 0.010156249999999978,
+                "z_statistic": 2.2980970388562794,
+                "p_value": 0.021556266760016356,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 1,
+                "ones_count": 6427,
+                "ones_proportion": 0.502109375,
+                "abs_bias_from_half": 0.002109374999999969,
+                "z_statistic": 0.4772970773009196,
+                "p_value": 0.6331505918866888,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 2,
+                "ones_count": 6485,
+                "ones_proportion": 0.506640625,
+                "abs_bias_from_half": 0.006640624999999956,
+                "z_statistic": 1.5026019100214134,
+                "p_value": 0.13294173056504732,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 3,
+                "ones_count": 6466,
+                "ones_proportion": 0.50515625,
+                "abs_bias_from_half": 0.005156249999999973,
+                "z_statistic": 1.1667261889578033,
+                "p_value": 0.24332096313455465,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 4,
+                "ones_count": 6404,
+                "ones_proportion": 0.5003125,
+                "abs_bias_from_half": 0.00031250000000004885,
+                "z_statistic": 0.07071067811865475,
+                "p_value": 0.9436280222029834,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 5,
+                "ones_count": 6440,
+                "ones_proportion": 0.503125,
+                "abs_bias_from_half": 0.0031250000000000444,
+                "z_statistic": 0.7071067811865475,
+                "p_value": 0.47950012218695354,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 6,
+                "ones_count": 6323,
+                "ones_proportion": 0.493984375,
+                "abs_bias_from_half": 0.006015625000000024,
+                "z_statistic": 1.361180553784104,
+                "p_value": 0.17345663797626987,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 7,
+                "ones_count": 6480,
+                "ones_proportion": 0.50625,
+                "abs_bias_from_half": 0.006249999999999978,
+                "z_statistic": 1.414213562373095,
+                "p_value": 0.1572992070502852,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 8,
+                "ones_count": 6405,
+                "ones_proportion": 0.500390625,
+                "abs_bias_from_half": 0.0003906249999999778,
+                "z_statistic": 0.08838834764831843,
+                "p_value": 0.9295680222776129,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 9,
+                "ones_count": 6390,
+                "ones_proportion": 0.49921875,
+                "abs_bias_from_half": 0.0007812500000000111,
+                "z_statistic": 0.17677669529663687,
+                "p_value": 0.8596837951986662,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 10,
+                "ones_count": 6579,
+                "ones_proportion": 0.513984375,
+                "abs_bias_from_half": 0.013984375000000049,
+                "z_statistic": 3.1643028458098,
+                "p_value": 0.0015545494459229187,
+                "passed_alpha_001": false
+              },
+              {
+                "bit_position": 11,
+                "ones_count": 6382,
+                "ones_proportion": 0.49859375,
+                "abs_bias_from_half": 0.0014062499999999978,
+                "z_statistic": 0.31819805153394637,
+                "p_value": 0.750334710669989,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 12,
+                "ones_count": 6336,
+                "ones_proportion": 0.495,
+                "abs_bias_from_half": 0.0050000000000000044,
+                "z_statistic": 1.131370849898476,
+                "p_value": 0.2578990352923396,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 13,
+                "ones_count": 6332,
+                "ones_proportion": 0.4946875,
+                "abs_bias_from_half": 0.005312499999999998,
+                "z_statistic": 1.2020815280171306,
+                "p_value": 0.22933194239164756,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 14,
+                "ones_count": 6372,
+                "ones_proportion": 0.4978125,
+                "abs_bias_from_half": 0.002187500000000009,
+                "z_statistic": 0.49497474683058323,
+                "p_value": 0.6206179464376897,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 15,
+                "ones_count": 6349,
+                "ones_proportion": 0.496015625,
+                "abs_bias_from_half": 0.0039843749999999845,
+                "z_statistic": 0.9015611460128481,
+                "p_value": 0.36729003855059944,
+                "passed_alpha_001": true
+              }
+            ]
+          },
+          "nist_10_core_passes": 9,
+          "nist_10_core_total": 10,
+          "nist_10_core_pass_rate": 0.9,
+          "nist_12_extended_passes": 11,
+          "nist_12_extended_total": 12,
+          "nist_tests": [
+            {
+              "test_id": 1,
+              "name": "Frequency (Monobit)",
+              "statistic": 0.17677669529663687,
+              "p_value": 0.8596837951986662,
+              "passed": true
+            },
+            {
+              "test_id": 2,
+              "name": "Block Frequency",
+              "statistic": 1536.3125,
+              "p_value": 0.8706177803892928,
+              "passed": true
+            },
+            {
+              "test_id": 3,
+              "name": "Runs",
+              "statistic": 102578.0,
+              "p_value": 0.4314425922759336,
+              "passed": true
+            },
+            {
+              "test_id": 4,
+              "name": "Longest Run of Ones",
+              "statistic": 5.895506079118604,
+              "p_value": 0.31651981007984875,
+              "passed": true
+            },
+            {
+              "test_id": 5,
+              "name": "Binary Matrix Rank",
+              "statistic": 9.21570985452917,
+              "p_value": 0.009973188594183353,
+              "passed": false
+            },
+            {
+              "test_id": 6,
+              "name": "Spectral (DFT)",
+              "statistic": 0.3041651646201798,
+              "p_value": 0.7610020628652123,
+              "passed": true
+            },
+            {
+              "test_id": 7,
+              "name": "Non-overlapping Template",
+              "statistic": 171.25757575757527,
+              "p_value": 0.9303797379300277,
+              "passed": true
+            },
+            {
+              "test_id": 8,
+              "name": "Approximate Entropy",
+              "statistic": 25.347104918500918,
+              "p_value": 0.7917318402793525,
+              "passed": true,
+              "p_value_audit_helper_s8": 0.06393543138803756,
+              "p_value_nist_sp800_22_s16": 0.7917318402793525,
+              "passed_audit_helper_s8": true
+            },
+            {
+              "test_id": 9,
+              "name": "Cumulative Sums",
+              "statistic": 431.0,
+              "p_value": 0.673258739126172,
+              "passed": true
+            },
+            {
+              "test_id": 10,
+              "name": "Serial Test",
+              "statistic": 0.6977343749895226,
+              "p_value": 0.9516080247587203,
+              "passed": true
+            },
+            {
+              "test_id": 11,
+              "name": "Random Excursions",
+              "statistic": 12.925630313014826,
+              "p_value": 0.02408574968113053,
+              "passed": true
+            },
+            {
+              "test_id": 12,
+              "name": "Random Excursions Variant",
+              "statistic": 607.0,
+              "p_value": 0.21395203968371865,
+              "passed": true
+            }
+          ],
+          "nist_10_core_passes_audit_helper_s8": 9
+        }
+      },
+      {
+        "stream_id": 2,
+        "label": "Session_Stream_2",
+        "key_hex": "25f24023f4bc7b3de1b9065b76356f8bcbffb196141b3cd879e27796bd9b8b74",
+        "n_sess_range": [
+          200001,
+          200400
+        ],
+        "evaluation": {
+          "length_bytes": 25600,
+          "length_words16": 12800,
+          "length_bits": 204800,
+          "ones_count": 102504,
+          "ones_proportion": 0.5005078125,
+          "abs_ones_bias": 0.0005078124999999822,
+          "byte_level_chi2_256bins": {
+            "df": 255,
+            "expected_per_bin": 100.0,
+            "chi2_statistic": 280.90000000000003,
+            "p_value": 0.12725229869087631,
+            "passed_alpha_001": true,
+            "empirical_byte_tvd": 0.04097656250000001,
+            "shannon_entropy_bits_per_byte": 7.991995784379399
+          },
+          "word16_bit_position_balance": {
+            "max_abs_bit_bias": 0.0067187499999999956,
+            "min_bit_p_value": 0.12844072404145612,
+            "all_16_bits_passed_alpha_001": true,
+            "per_bit": [
+              {
+                "bit_position": 0,
+                "ones_count": 6410,
+                "ones_proportion": 0.50078125,
+                "abs_bias_from_half": 0.0007812499999999556,
+                "z_statistic": 0.17677669529663687,
+                "p_value": 0.8596837951986662,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 1,
+                "ones_count": 6399,
+                "ones_proportion": 0.499921875,
+                "abs_bias_from_half": 7.812499999998446e-05,
+                "z_statistic": 0.017677669529663688,
+                "p_value": 0.9858959949987256,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 2,
+                "ones_count": 6465,
+                "ones_proportion": 0.505078125,
+                "abs_bias_from_half": 0.005078125000000044,
+                "z_statistic": 1.1490485194281397,
+                "p_value": 0.25053597441363795,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 3,
+                "ones_count": 6374,
+                "ones_proportion": 0.49796875,
+                "abs_bias_from_half": 0.0020312499999999845,
+                "z_statistic": 0.4596194077712559,
+                "p_value": 0.6457894261202657,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 4,
+                "ones_count": 6381,
+                "ones_proportion": 0.498515625,
+                "abs_bias_from_half": 0.0014843749999999822,
+                "z_statistic": 0.3358757210636101,
+                "p_value": 0.736964586326164,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 5,
+                "ones_count": 6367,
+                "ones_proportion": 0.497421875,
+                "abs_bias_from_half": 0.0025781249999999867,
+                "z_statistic": 0.5833630944789017,
+                "p_value": 0.5596488965257692,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 6,
+                "ones_count": 6469,
+                "ones_proportion": 0.505390625,
+                "abs_bias_from_half": 0.005390624999999982,
+                "z_statistic": 1.2197591975467945,
+                "p_value": 0.22255617321980878,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 7,
+                "ones_count": 6456,
+                "ones_proportion": 0.504375,
+                "abs_bias_from_half": 0.004375000000000018,
+                "z_statistic": 0.9899494936611665,
+                "p_value": 0.32219880616258156,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 8,
+                "ones_count": 6397,
+                "ones_proportion": 0.499765625,
+                "abs_bias_from_half": 0.00023437500000000888,
+                "z_statistic": 0.053033008588991064,
+                "p_value": 0.9577056076589637,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 9,
+                "ones_count": 6390,
+                "ones_proportion": 0.49921875,
+                "abs_bias_from_half": 0.0007812500000000111,
+                "z_statistic": 0.17677669529663687,
+                "p_value": 0.8596837951986662,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 10,
+                "ones_count": 6362,
+                "ones_proportion": 0.49703125,
+                "abs_bias_from_half": 0.00296875000000002,
+                "z_statistic": 0.6717514421272202,
+                "p_value": 0.5017419462882124,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 11,
+                "ones_count": 6372,
+                "ones_proportion": 0.4978125,
+                "abs_bias_from_half": 0.002187500000000009,
+                "z_statistic": 0.49497474683058323,
+                "p_value": 0.6206179464376897,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 12,
+                "ones_count": 6365,
+                "ones_proportion": 0.497265625,
+                "abs_bias_from_half": 0.002734375000000011,
+                "z_statistic": 0.6187184335382291,
+                "p_value": 0.5361018642500671,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 13,
+                "ones_count": 6486,
+                "ones_proportion": 0.50671875,
+                "abs_bias_from_half": 0.0067187499999999956,
+                "z_statistic": 1.520279579551077,
+                "p_value": 0.12844072404145612,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 14,
+                "ones_count": 6441,
+                "ones_proportion": 0.503203125,
+                "abs_bias_from_half": 0.0032031249999999734,
+                "z_statistic": 0.7247844507162112,
+                "p_value": 0.4685842764295136,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 15,
+                "ones_count": 6370,
+                "ones_proportion": 0.49765625,
+                "abs_bias_from_half": 0.002343749999999978,
+                "z_statistic": 0.5303300858899106,
+                "p_value": 0.5958830905651777,
+                "passed_alpha_001": true
+              }
+            ]
+          },
+          "nist_10_core_passes": 10,
+          "nist_10_core_total": 10,
+          "nist_10_core_pass_rate": 1.0,
+          "nist_12_extended_passes": 12,
+          "nist_12_extended_total": 12,
+          "nist_tests": [
+            {
+              "test_id": 1,
+              "name": "Frequency (Monobit)",
+              "statistic": 0.4596194077712559,
+              "p_value": 0.6457894261202657,
+              "passed": true
+            },
+            {
+              "test_id": 2,
+              "name": "Block Frequency",
+              "statistic": 1664.25,
+              "p_value": 0.1286742803190495,
+              "passed": true
+            },
+            {
+              "test_id": 3,
+              "name": "Runs",
+              "statistic": 102295.0,
+              "p_value": 0.6429540589680907,
+              "passed": true
+            },
+            {
+              "test_id": 4,
+              "name": "Longest Run of Ones",
+              "statistic": 4.20562487224457,
+              "p_value": 0.5202068516205514,
+              "passed": true
+            },
+            {
+              "test_id": 5,
+              "name": "Binary Matrix Rank",
+              "statistic": 0.9572959344468956,
+              "p_value": 0.6196205730541624,
+              "passed": true
+            },
+            {
+              "test_id": 6,
+              "name": "Spectral (DFT)",
+              "statistic": 0.18249909877210788,
+              "p_value": 0.8551910615582035,
+              "passed": true
+            },
+            {
+              "test_id": 7,
+              "name": "Non-overlapping Template",
+              "statistic": 205.26161616161593,
+              "p_value": 0.384349364666767,
+              "passed": true
+            },
+            {
+              "test_id": 8,
+              "name": "Approximate Entropy",
+              "statistic": 27.720225810799093,
+              "p_value": 0.6831256477460841,
+              "passed": true,
+              "p_value_audit_helper_s8": 0.03413933603481087,
+              "p_value_nist_sp800_22_s16": 0.6831256477460841,
+              "passed_audit_helper_s8": true
+            },
+            {
+              "test_id": 9,
+              "name": "Cumulative Sums",
+              "statistic": 510.0,
+              "p_value": 0.5180808498449561,
+              "passed": true
+            },
+            {
+              "test_id": 10,
+              "name": "Serial Test",
+              "statistic": 4.06898437498603,
+              "p_value": 0.16216505166362938,
+              "passed": true
+            },
+            {
+              "test_id": 11,
+              "name": "Random Excursions",
+              "statistic": 189.0,
+              "p_value": 1.0,
+              "passed": true
+            },
+            {
+              "test_id": 12,
+              "name": "Random Excursions Variant",
+              "statistic": 189.0,
+              "p_value": 0.17391195388664035,
+              "passed": true
+            }
+          ],
+          "nist_10_core_passes_audit_helper_s8": 10
+        }
+      },
+      {
+        "stream_id": 3,
+        "label": "Session_Stream_3",
+        "key_hex": "772f74c862aa40e5f8f6b435c4ef58cf401e104a4a2fe0364d6eb5399756c548",
+        "n_sess_range": [
+          300001,
+          300400
+        ],
+        "evaluation": {
+          "length_bytes": 25600,
+          "length_words16": 12800,
+          "length_bits": 204800,
+          "ones_count": 102673,
+          "ones_proportion": 0.5013330078125,
+          "abs_ones_bias": 0.0013330078125000089,
+          "byte_level_chi2_256bins": {
+            "df": 255,
+            "expected_per_bin": 100.0,
+            "chi2_statistic": 240.23999999999995,
+            "p_value": 0.7379267881561518,
+            "passed_alpha_001": true,
+            "empirical_byte_tvd": 0.03800781250000001,
+            "shannon_entropy_bits_per_byte": 7.993216741008972
+          },
+          "word16_bit_position_balance": {
+            "max_abs_bit_bias": 0.00593750000000004,
+            "min_bit_p_value": 0.17910919272672207,
+            "all_16_bits_passed_alpha_001": true,
+            "per_bit": [
+              {
+                "bit_position": 0,
+                "ones_count": 6400,
+                "ones_proportion": 0.5,
+                "abs_bias_from_half": 0.0,
+                "z_statistic": 0.0,
+                "p_value": 1.0,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 1,
+                "ones_count": 6385,
+                "ones_proportion": 0.498828125,
+                "abs_bias_from_half": 0.001171874999999989,
+                "z_statistic": 0.2651650429449553,
+                "p_value": 0.7908823229406242,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 2,
+                "ones_count": 6476,
+                "ones_proportion": 0.5059375,
+                "abs_bias_from_half": 0.00593750000000004,
+                "z_statistic": 1.3435028842544403,
+                "p_value": 0.17910919272672207,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 3,
+                "ones_count": 6360,
+                "ones_proportion": 0.496875,
+                "abs_bias_from_half": 0.003124999999999989,
+                "z_statistic": 0.7071067811865475,
+                "p_value": 0.47950012218695354,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 4,
+                "ones_count": 6444,
+                "ones_proportion": 0.5034375,
+                "abs_bias_from_half": 0.0034374999999999822,
+                "z_statistic": 0.7778174593052023,
+                "p_value": 0.4366766336748911,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 5,
+                "ones_count": 6448,
+                "ones_proportion": 0.50375,
+                "abs_bias_from_half": 0.003750000000000031,
+                "z_statistic": 0.848528137423857,
+                "p_value": 0.3961439091520741,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 6,
+                "ones_count": 6452,
+                "ones_proportion": 0.5040625,
+                "abs_bias_from_half": 0.004062499999999969,
+                "z_statistic": 0.9192388155425117,
+                "p_value": 0.35797067264432825,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 7,
+                "ones_count": 6367,
+                "ones_proportion": 0.497421875,
+                "abs_bias_from_half": 0.0025781249999999867,
+                "z_statistic": 0.5833630944789017,
+                "p_value": 0.5596488965257692,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 8,
+                "ones_count": 6470,
+                "ones_proportion": 0.50546875,
+                "abs_bias_from_half": 0.005468750000000022,
+                "z_statistic": 1.2374368670764582,
+                "p_value": 0.21592493894014042,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 9,
+                "ones_count": 6421,
+                "ones_proportion": 0.501640625,
+                "abs_bias_from_half": 0.0016406249999999512,
+                "z_statistic": 0.37123106012293744,
+                "p_value": 0.7104654407412917,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 10,
+                "ones_count": 6471,
+                "ones_proportion": 0.505546875,
+                "abs_bias_from_half": 0.005546874999999951,
+                "z_statistic": 1.2551145366061218,
+                "p_value": 0.20943718414575918,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 11,
+                "ones_count": 6385,
+                "ones_proportion": 0.498828125,
+                "abs_bias_from_half": 0.001171874999999989,
+                "z_statistic": 0.2651650429449553,
+                "p_value": 0.7908823229406242,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 12,
+                "ones_count": 6388,
+                "ones_proportion": 0.4990625,
+                "abs_bias_from_half": 0.00093749999999998,
+                "z_statistic": 0.21213203435596426,
+                "p_value": 0.8320040285726364,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 13,
+                "ones_count": 6433,
+                "ones_proportion": 0.502578125,
+                "abs_bias_from_half": 0.0025781249999999867,
+                "z_statistic": 0.5833630944789017,
+                "p_value": 0.5596488965257692,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 14,
+                "ones_count": 6402,
+                "ones_proportion": 0.50015625,
+                "abs_bias_from_half": 0.00015624999999996891,
+                "z_statistic": 0.035355339059327376,
+                "p_value": 0.971796396695672,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 15,
+                "ones_count": 6371,
+                "ones_proportion": 0.497734375,
+                "abs_bias_from_half": 0.0022656249999999933,
+                "z_statistic": 0.5126524163602469,
+                "p_value": 0.6081944804364612,
+                "passed_alpha_001": true
+              }
+            ]
+          },
+          "nist_10_core_passes": 10,
+          "nist_10_core_total": 10,
+          "nist_10_core_pass_rate": 1.0,
+          "nist_12_extended_passes": 12,
+          "nist_12_extended_total": 12,
+          "nist_tests": [
+            {
+              "test_id": 1,
+              "name": "Frequency (Monobit)",
+              "statistic": 1.2065009453995468,
+              "p_value": 0.2276243947800389,
+              "passed": true
+            },
+            {
+              "test_id": 2,
+              "name": "Block Frequency",
+              "statistic": 1487.46875,
+              "p_value": 0.978621877050936,
+              "passed": true
+            },
+            {
+              "test_id": 3,
+              "name": "Runs",
+              "statistic": 102304.0,
+              "p_value": 0.6737181981903033,
+              "passed": true
+            },
+            {
+              "test_id": 4,
+              "name": "Longest Run of Ones",
+              "statistic": 2.116296320309281,
+              "p_value": 0.8328305015192924,
+              "passed": true
+            },
+            {
+              "test_id": 5,
+              "name": "Binary Matrix Rank",
+              "statistic": 4.314829482309619,
+              "p_value": 0.11562365205099881,
+              "passed": true
+            },
+            {
+              "test_id": 6,
+              "name": "Spectral (DFT)",
+              "statistic": 0.2838874869788345,
+              "p_value": 0.7764966061101714,
+              "passed": true
+            },
+            {
+              "test_id": 7,
+              "name": "Non-overlapping Template",
+              "statistic": 189.6171717171712,
+              "p_value": 0.6896715409928275,
+              "passed": true
+            },
+            {
+              "test_id": 8,
+              "name": "Approximate Entropy",
+              "statistic": 32.91848373733046,
+              "p_value": 0.4219181399996208,
+              "passed": true,
+              "p_value_audit_helper_s8": 0.007576149423071341,
+              "p_value_nist_sp800_22_s16": 0.4219181399996208,
+              "passed_audit_helper_s8": false
+            },
+            {
+              "test_id": 9,
+              "name": "Cumulative Sums",
+              "statistic": 695.0,
+              "p_value": 0.249192459951886,
+              "passed": true
+            },
+            {
+              "test_id": 10,
+              "name": "Serial Test",
+              "statistic": 3.8816796874743886,
+              "p_value": 0.3252967038798201,
+              "passed": true
+            },
+            {
+              "test_id": 11,
+              "name": "Random Excursions",
+              "statistic": 177.0,
+              "p_value": 1.0,
+              "passed": true
+            },
+            {
+              "test_id": 12,
+              "name": "Random Excursions Variant",
+              "statistic": 177.0,
+              "p_value": 0.1584768130421659,
+              "passed": true
+            }
+          ],
+          "nist_10_core_passes_audit_helper_s8": 9
+        }
+      },
+      {
+        "stream_id": 4,
+        "label": "Session_Stream_4",
+        "key_hex": "174baa9a650757bc4b457c174a743ab224547a7b96973cfdb6230f69a6bde8e6",
+        "n_sess_range": [
+          400001,
+          400400
+        ],
+        "evaluation": {
+          "length_bytes": 25600,
+          "length_words16": 12800,
+          "length_bits": 204800,
+          "ones_count": 102306,
+          "ones_proportion": 0.499541015625,
+          "abs_ones_bias": 0.00045898437500002665,
+          "byte_level_chi2_256bins": {
+            "df": 255,
+            "expected_per_bin": 100.0,
+            "chi2_statistic": 249.57999999999998,
+            "p_value": 0.5840029639093329,
+            "passed_alpha_001": true,
+            "empirical_byte_tvd": 0.03886718750000001,
+            "shannon_entropy_bits_per_byte": 7.992940281836469
+          },
+          "word16_bit_position_balance": {
+            "max_abs_bit_bias": 0.005312499999999998,
+            "min_bit_p_value": 0.22933194239164756,
+            "all_16_bits_passed_alpha_001": true,
+            "per_bit": [
+              {
+                "bit_position": 0,
+                "ones_count": 6382,
+                "ones_proportion": 0.49859375,
+                "abs_bias_from_half": 0.0014062499999999978,
+                "z_statistic": 0.31819805153394637,
+                "p_value": 0.750334710669989,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 1,
+                "ones_count": 6417,
+                "ones_proportion": 0.501328125,
+                "abs_bias_from_half": 0.0013281250000000133,
+                "z_statistic": 0.30052038200428266,
+                "p_value": 0.7637802519104107,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 2,
+                "ones_count": 6334,
+                "ones_proportion": 0.49484375,
+                "abs_bias_from_half": 0.005156249999999973,
+                "z_statistic": 1.1667261889578033,
+                "p_value": 0.24332096313455465,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 3,
+                "ones_count": 6461,
+                "ones_proportion": 0.504765625,
+                "abs_bias_from_half": 0.0047656249999999956,
+                "z_statistic": 1.0783378413094848,
+                "p_value": 0.28088301548182076,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 4,
+                "ones_count": 6414,
+                "ones_proportion": 0.50109375,
+                "abs_bias_from_half": 0.0010937500000000044,
+                "z_statistic": 0.24748737341529162,
+                "p_value": 0.8045310621831235,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 5,
+                "ones_count": 6450,
+                "ones_proportion": 0.50390625,
+                "abs_bias_from_half": 0.00390625,
+                "z_statistic": 0.8838834764831843,
+                "p_value": 0.3767591178115821,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 6,
+                "ones_count": 6332,
+                "ones_proportion": 0.4946875,
+                "abs_bias_from_half": 0.005312499999999998,
+                "z_statistic": 1.2020815280171306,
+                "p_value": 0.22933194239164756,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 7,
+                "ones_count": 6335,
+                "ones_proportion": 0.494921875,
+                "abs_bias_from_half": 0.005078124999999989,
+                "z_statistic": 1.1490485194281397,
+                "p_value": 0.25053597441363795,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 8,
+                "ones_count": 6416,
+                "ones_proportion": 0.50125,
+                "abs_bias_from_half": 0.0012499999999999734,
+                "z_statistic": 0.282842712474619,
+                "p_value": 0.7772974107895215,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 9,
+                "ones_count": 6408,
+                "ones_proportion": 0.500625,
+                "abs_bias_from_half": 0.0006249999999999867,
+                "z_statistic": 0.1414213562373095,
+                "p_value": 0.8875370839817152,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 10,
+                "ones_count": 6395,
+                "ones_proportion": 0.499609375,
+                "abs_bias_from_half": 0.0003906249999999778,
+                "z_statistic": 0.08838834764831843,
+                "p_value": 0.9295680222776129,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 11,
+                "ones_count": 6419,
+                "ones_proportion": 0.501484375,
+                "abs_bias_from_half": 0.0014843749999999822,
+                "z_statistic": 0.3358757210636101,
+                "p_value": 0.736964586326164,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 12,
+                "ones_count": 6369,
+                "ones_proportion": 0.497578125,
+                "abs_bias_from_half": 0.0024218750000000178,
+                "z_statistic": 0.5480077554195744,
+                "p_value": 0.5836865776551907,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 13,
+                "ones_count": 6367,
+                "ones_proportion": 0.497421875,
+                "abs_bias_from_half": 0.0025781249999999867,
+                "z_statistic": 0.5833630944789017,
+                "p_value": 0.5596488965257692,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 14,
+                "ones_count": 6394,
+                "ones_proportion": 0.49953125,
+                "abs_bias_from_half": 0.00046875000000001776,
+                "z_statistic": 0.10606601717798213,
+                "p_value": 0.9155299733767719,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 15,
+                "ones_count": 6413,
+                "ones_proportion": 0.501015625,
+                "abs_bias_from_half": 0.0010156249999999645,
+                "z_statistic": 0.22980970388562794,
+                "p_value": 0.818239643911375,
+                "passed_alpha_001": true
+              }
+            ]
+          },
+          "nist_10_core_passes": 10,
+          "nist_10_core_total": 10,
+          "nist_10_core_pass_rate": 1.0,
+          "nist_12_extended_passes": 12,
+          "nist_12_extended_total": 12,
+          "nist_tests": [
+            {
+              "test_id": 1,
+              "name": "Frequency (Monobit)",
+              "statistic": 0.41542523394709663,
+              "p_value": 0.6778306372756772,
+              "passed": true
+            },
+            {
+              "test_id": 2,
+              "name": "Block Frequency",
+              "statistic": 1583.25,
+              "p_value": 0.6123100067042468,
+              "passed": true
+            },
+            {
+              "test_id": 3,
+              "name": "Runs",
+              "statistic": 102271.0,
+              "p_value": 0.5688649263710693,
+              "passed": true
+            },
+            {
+              "test_id": 4,
+              "name": "Longest Run of Ones",
+              "statistic": 5.7938698560734165,
+              "p_value": 0.3267958153728019,
+              "passed": true
+            },
+            {
+              "test_id": 5,
+              "name": "Binary Matrix Rank",
+              "statistic": 2.4307168212052352,
+              "p_value": 0.29660368933415415,
+              "passed": true
+            },
+            {
+              "test_id": 6,
+              "name": "Spectral (DFT)",
+              "statistic": 0.3244428422615251,
+              "p_value": 0.7456027889274615,
+              "passed": true
+            },
+            {
+              "test_id": 7,
+              "name": "Non-overlapping Template",
+              "statistic": 187.83939393939366,
+              "p_value": 0.7214978127101089,
+              "passed": true
+            },
+            {
+              "test_id": 8,
+              "name": "Approximate Entropy",
+              "statistic": 17.421656956821607,
+              "p_value": 0.9830619941938855,
+              "passed": true,
+              "p_value_audit_helper_s8": 0.3588319791053437,
+              "p_value_nist_sp800_22_s16": 0.9830619941938855,
+              "passed_audit_helper_s8": true
+            },
+            {
+              "test_id": 9,
+              "name": "Cumulative Sums",
+              "statistic": 649.0,
+              "p_value": 0.30305311265958107,
+              "passed": true
+            },
+            {
+              "test_id": 10,
+              "name": "Serial Test",
+              "statistic": 1.358046875015134,
+              "p_value": 0.6520100438422225,
+              "passed": true
+            },
+            {
+              "test_id": 11,
+              "name": "Random Excursions",
+              "statistic": 247.0,
+              "p_value": 1.0,
+              "passed": true
+            },
+            {
+              "test_id": 12,
+              "name": "Random Excursions Variant",
+              "statistic": 247.0,
+              "p_value": 0.2420833540293309,
+              "passed": true
+            }
+          ],
+          "nist_10_core_passes_audit_helper_s8": 10
+        }
+      },
+      {
+        "stream_id": 5,
+        "label": "Session_Stream_5",
+        "key_hex": "c2901f2675e540a1e3f9039a0845f5296fa1793d9b098d4dea0ce489b1e868ab",
+        "n_sess_range": [
+          500001,
+          500400
+        ],
+        "evaluation": {
+          "length_bytes": 25600,
+          "length_words16": 12800,
+          "length_bits": 204800,
+          "ones_count": 102083,
+          "ones_proportion": 0.4984521484375,
+          "abs_ones_bias": 0.00154785156249998,
+          "byte_level_chi2_256bins": {
+            "df": 255,
+            "expected_per_bin": 100.0,
+            "chi2_statistic": 221.14,
+            "p_value": 0.9384037569696537,
+            "passed_alpha_001": true,
+            "empirical_byte_tvd": 0.036875000000000005,
+            "shannon_entropy_bits_per_byte": 7.993775402613215
+          },
+          "word16_bit_position_balance": {
+            "max_abs_bit_bias": 0.010937499999999989,
+            "min_bit_p_value": 0.013328328780817567,
+            "all_16_bits_passed_alpha_001": true,
+            "per_bit": [
+              {
+                "bit_position": 0,
+                "ones_count": 6369,
+                "ones_proportion": 0.497578125,
+                "abs_bias_from_half": 0.0024218750000000178,
+                "z_statistic": 0.5480077554195744,
+                "p_value": 0.5836865776551907,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 1,
+                "ones_count": 6339,
+                "ones_proportion": 0.495234375,
+                "abs_bias_from_half": 0.0047656249999999956,
+                "z_statistic": 1.0783378413094848,
+                "p_value": 0.28088301548182076,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 2,
+                "ones_count": 6260,
+                "ones_proportion": 0.4890625,
+                "abs_bias_from_half": 0.010937499999999989,
+                "z_statistic": 2.4748737341529163,
+                "p_value": 0.013328328780817567,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 3,
+                "ones_count": 6393,
+                "ones_proportion": 0.499453125,
+                "abs_bias_from_half": 0.0005468750000000022,
+                "z_statistic": 0.12374368670764581,
+                "p_value": 0.9015182204726172,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 4,
+                "ones_count": 6433,
+                "ones_proportion": 0.502578125,
+                "abs_bias_from_half": 0.0025781249999999867,
+                "z_statistic": 0.5833630944789017,
+                "p_value": 0.5596488965257692,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 5,
+                "ones_count": 6365,
+                "ones_proportion": 0.497265625,
+                "abs_bias_from_half": 0.002734375000000011,
+                "z_statistic": 0.6187184335382291,
+                "p_value": 0.5361018642500671,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 6,
+                "ones_count": 6438,
+                "ones_proportion": 0.50296875,
+                "abs_bias_from_half": 0.0029687499999999645,
+                "z_statistic": 0.6717514421272202,
+                "p_value": 0.5017419462882124,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 7,
+                "ones_count": 6355,
+                "ones_proportion": 0.496484375,
+                "abs_bias_from_half": 0.003515625000000022,
+                "z_statistic": 0.795495128834866,
+                "p_value": 0.42632554338440803,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 8,
+                "ones_count": 6356,
+                "ones_proportion": 0.4965625,
+                "abs_bias_from_half": 0.0034374999999999822,
+                "z_statistic": 0.7778174593052023,
+                "p_value": 0.4366766336748911,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 9,
+                "ones_count": 6445,
+                "ones_proportion": 0.503515625,
+                "abs_bias_from_half": 0.003515625000000022,
+                "z_statistic": 0.795495128834866,
+                "p_value": 0.42632554338440803,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 10,
+                "ones_count": 6452,
+                "ones_proportion": 0.5040625,
+                "abs_bias_from_half": 0.004062499999999969,
+                "z_statistic": 0.9192388155425117,
+                "p_value": 0.35797067264432825,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 11,
+                "ones_count": 6423,
+                "ones_proportion": 0.501796875,
+                "abs_bias_from_half": 0.001796875000000031,
+                "z_statistic": 0.4065863991822648,
+                "p_value": 0.6843117881939743,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 12,
+                "ones_count": 6303,
+                "ones_proportion": 0.492421875,
+                "abs_bias_from_half": 0.007578124999999991,
+                "z_statistic": 1.7147339443773777,
+                "p_value": 0.0863940171390982,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 13,
+                "ones_count": 6376,
+                "ones_proportion": 0.498125,
+                "abs_bias_from_half": 0.0018750000000000155,
+                "z_statistic": 0.4242640687119285,
+                "p_value": 0.6713732405408726,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 14,
+                "ones_count": 6305,
+                "ones_proportion": 0.492578125,
+                "abs_bias_from_half": 0.007421875000000022,
+                "z_statistic": 1.6793786053180504,
+                "p_value": 0.0930782802183135,
+                "passed_alpha_001": true
+              },
+              {
+                "bit_position": 15,
+                "ones_count": 6471,
+                "ones_proportion": 0.505546875,
+                "abs_bias_from_half": 0.005546874999999951,
+                "z_statistic": 1.2551145366061218,
+                "p_value": 0.20943718414575918,
+                "passed_alpha_001": true
+              }
+            ]
+          },
+          "nist_10_core_passes": 10,
+          "nist_10_core_total": 10,
+          "nist_10_core_pass_rate": 1.0,
+          "nist_12_extended_passes": 12,
+          "nist_12_extended_total": 12,
+          "nist_tests": [
+            {
+              "test_id": 1,
+              "name": "Frequency (Monobit)",
+              "statistic": 1.4009553102258472,
+              "p_value": 0.1612274373692253,
+              "passed": true
+            },
+            {
+              "test_id": 2,
+              "name": "Block Frequency",
+              "statistic": 1634.34375,
+              "p_value": 0.26941220178341246,
+              "passed": true
+            },
+            {
+              "test_id": 3,
+              "name": "Runs",
+              "statistic": 102503.0,
+              "p_value": 0.645845475278177,
+              "passed": true
+            },
+            {
+              "test_id": 4,
+              "name": "Longest Run of Ones",
+              "statistic": 6.58050028700072,
+              "p_value": 0.2537541319596599,
+              "passed": true
+            },
+            {
+              "test_id": 5,
+              "name": "Binary Matrix Rank",
+              "statistic": 0.17395956010416838,
+              "p_value": 0.9166956309836729,
+              "passed": true
+            },
+            {
+              "test_id": 6,
+              "name": "Spectral (DFT)",
+              "statistic": -0.38527587518556106,
+              "p_value": 0.7000330333722489,
+              "passed": true
+            },
+            {
+              "test_id": 7,
+              "name": "Non-overlapping Template",
+              "statistic": 230.6030303030298,
+              "p_value": 0.06793565018342229,
+              "passed": true
+            },
+            {
+              "test_id": 8,
+              "name": "Approximate Entropy",
+              "statistic": 35.88559163504215,
+              "p_value": 0.29116911694542447,
+              "passed": true,
+              "p_value_audit_helper_s8": 0.0030011641997068498,
+              "p_value_nist_sp800_22_s16": 0.29116911694542447,
+              "passed_audit_helper_s8": false
+            },
+            {
+              "test_id": 9,
+              "name": "Cumulative Sums",
+              "statistic": 811.0,
+              "p_value": 0.14624215456235534,
+              "passed": true
+            },
+            {
+              "test_id": 10,
+              "name": "Serial Test",
+              "statistic": 11.268867187493015,
+              "p_value": 0.01055142728413865,
+              "passed": true
+            },
+            {
+              "test_id": 11,
+              "name": "Random Excursions",
+              "statistic": 345.0,
+              "p_value": 1.0,
+              "passed": true
+            },
+            {
+              "test_id": 12,
+              "name": "Random Excursions Variant",
+              "statistic": 345.0,
+              "p_value": 0.1634000633472388,
+              "passed": true
+            }
+          ],
+          "nist_10_core_passes_audit_helper_s8": 9
+        }
+      }
+    ],
+    "per_test_summary_across_independent_streams": [
+      {
+        "test_id": 1,
+        "name": "Frequency (Monobit)",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.1612274373692253,
+        "max_p_value": 0.8596837951986662,
+        "mean_p_value": 0.5144311381487746,
+        "stream_p_values": [
+          0.8596837951986662,
+          0.6457894261202657,
+          0.2276243947800389,
+          0.6778306372756772,
+          0.1612274373692253
+        ]
+      },
+      {
+        "test_id": 2,
+        "name": "Block Frequency",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.1286742803190495,
+        "max_p_value": 0.978621877050936,
+        "mean_p_value": 0.5719272292493875,
+        "stream_p_values": [
+          0.8706177803892928,
+          0.1286742803190495,
+          0.978621877050936,
+          0.6123100067042468,
+          0.26941220178341246
+        ]
+      },
+      {
+        "test_id": 3,
+        "name": "Runs",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.4314425922759336,
+        "max_p_value": 0.6737181981903033,
+        "mean_p_value": 0.5925650502167148,
+        "stream_p_values": [
+          0.4314425922759336,
+          0.6429540589680907,
+          0.6737181981903033,
+          0.5688649263710693,
+          0.645845475278177
+        ]
+      },
+      {
+        "test_id": 4,
+        "name": "Longest Run of Ones",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.2537541319596599,
+        "max_p_value": 0.8328305015192924,
+        "mean_p_value": 0.4500214221104309,
+        "stream_p_values": [
+          0.31651981007984875,
+          0.5202068516205514,
+          0.8328305015192924,
+          0.3267958153728019,
+          0.2537541319596599
+        ]
+      },
+      {
+        "test_id": 5,
+        "name": "Binary Matrix Rank",
+        "streams_passed": 4,
+        "streams_total": 5,
+        "pass_rate": 0.8,
+        "min_p_value": 0.009973188594183353,
+        "max_p_value": 0.9166956309836729,
+        "mean_p_value": 0.3917033468034343,
+        "stream_p_values": [
+          0.009973188594183353,
+          0.6196205730541624,
+          0.11562365205099881,
+          0.29660368933415415,
+          0.9166956309836729
+        ]
+      },
+      {
+        "test_id": 6,
+        "name": "Spectral (DFT)",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.7000330333722489,
+        "max_p_value": 0.8551910615582035,
+        "mean_p_value": 0.7676651105666595,
+        "stream_p_values": [
+          0.7610020628652123,
+          0.8551910615582035,
+          0.7764966061101714,
+          0.7456027889274615,
+          0.7000330333722489
+        ]
+      },
+      {
+        "test_id": 7,
+        "name": "Non-overlapping Template",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.06793565018342229,
+        "max_p_value": 0.9303797379300277,
+        "mean_p_value": 0.5587668212966307,
+        "stream_p_values": [
+          0.9303797379300277,
+          0.384349364666767,
+          0.6896715409928275,
+          0.7214978127101089,
+          0.06793565018342229
+        ]
+      },
+      {
+        "test_id": 8,
+        "name": "Approximate Entropy",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.29116911694542447,
+        "max_p_value": 0.9830619941938855,
+        "mean_p_value": 0.6342013478328734,
+        "stream_p_values": [
+          0.7917318402793525,
+          0.6831256477460841,
+          0.4219181399996208,
+          0.9830619941938855,
+          0.29116911694542447
+        ]
+      },
+      {
+        "test_id": 9,
+        "name": "Cumulative Sums",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.14624215456235534,
+        "max_p_value": 0.673258739126172,
+        "mean_p_value": 0.37796546322899005,
+        "stream_p_values": [
+          0.673258739126172,
+          0.5180808498449561,
+          0.249192459951886,
+          0.30305311265958107,
+          0.14624215456235534
+        ]
+      },
+      {
+        "test_id": 10,
+        "name": "Serial Test",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.01055142728413865,
+        "max_p_value": 0.9516080247587203,
+        "mean_p_value": 0.42032625028570625,
+        "stream_p_values": [
+          0.9516080247587203,
+          0.16216505166362938,
+          0.3252967038798201,
+          0.6520100438422225,
+          0.01055142728413865
+        ]
+      },
+      {
+        "test_id": 11,
+        "name": "Random Excursions",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.02408574968113053,
+        "max_p_value": 1.0,
+        "mean_p_value": 0.8048171499362262,
+        "stream_p_values": [
+          0.02408574968113053,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ]
+      },
+      {
+        "test_id": 12,
+        "name": "Random Excursions Variant",
+        "streams_passed": 5,
+        "streams_total": 5,
+        "pass_rate": 1.0,
+        "min_p_value": 0.1584768130421659,
+        "max_p_value": 0.2420833540293309,
+        "mean_p_value": 0.19036484479781893,
+        "stream_p_values": [
+          0.21395203968371865,
+          0.17391195388664035,
+          0.1584768130421659,
+          0.2420833540293309,
+          0.1634000633472388
+        ]
+      }
+    ]
+  }
+}

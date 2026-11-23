@@ -1,0 +1,778 @@
+{
+ "date": "2026-11-22",
+ "scope": "proxy emp\u00edrico, N\u00c3O \u00e9 prova QROM",
+ "bench": {
+  "RSD-S v5.1 (8R + SHA-256)": {
+   "us_per_call_py_loop": 31.26
+  },
+  "RSD-S v5.1 core cru (8R, sem SHA)": {
+   "us_per_call_py_loop": 30.58
+  },
+  "CONTROLE RSD-S 1R cru": {
+   "us_per_call_py_loop": 17.48
+  },
+  "CONTROLE RSD-S 2R cru": {
+   "us_per_call_py_loop": 19.07
+  },
+  "HMAC-SHA256": {
+   "us_per_call_py_loop": 2.06
+  },
+  "HMAC-SHA3-256": {
+   "us_per_call_py_loop": 3.35
+  },
+  "BLAKE2b (keyed)": {
+   "us_per_call_py_loop": 1.05
+  },
+  "SHAKE256(k||m)": {
+   "us_per_call_py_loop": 1.15
+  },
+  "SHA3-256(k||m)": {
+   "us_per_call_py_loop": 1.11
+  },
+  "CONTROLE linear GF(2)": {
+   "us_per_call_py_loop": 3.33
+  }
+ },
+ "avalanche": {
+  "RSD-S v5.1 core cru (8R, sem SHA)": {
+   "mean_flip_fraction": 0.49947,
+   "std": 0.02246
+  },
+  "CONTROLE RSD-S 1R cru": {
+   "mean_flip_fraction": 0.49932,
+   "std": 0.02488
+  },
+  "CONTROLE RSD-S 2R cru": {
+   "mean_flip_fraction": 0.49783,
+   "std": 0.02238
+  },
+  "HMAC-SHA256": {
+   "mean_flip_fraction": 0.49932,
+   "std": 0.031
+  }
+ },
+ "uniformity": {
+  "RSD-S v5.1 core cru (8R, sem SHA)": {
+   "chi2": 221.45,
+   "p_value": 0.9366
+  },
+  "RSD-S v5.1 (8R + SHA-256)": {
+   "chi2": 262.91,
+   "p_value": 0.3533
+  },
+  "CONTROLE RSD-S 1R cru": {
+   "chi2": 0.0,
+   "p_value": 1.0
+  },
+  "HMAC-SHA256": {
+   "chi2": 239.94,
+   "p_value": 0.7424
+  },
+  "CONTROLE linear GF(2)": {
+   "chi2": 0.0,
+   "p_value": 1.0
+  }
+ },
+ "tables": {
+  "n=10": {
+   "RO_ensemble_mean": {
+    "collisions_N_minus_image": 375.025,
+    "preimage_multiplicity": 2.125,
+    "simon_max_xor_period_matches": 7.85
+   },
+   "RO_ensemble_std": {
+    "collisions_N_minus_image": 9.838405905900126,
+    "preimage_multiplicity": 1.136515141416488,
+    "simon_max_xor_period_matches": 1.051250781274529
+   },
+   "primitives": {
+    "RSD-S v5.1 (8R + SHA-256)": {
+     "mean": {
+      "collisions_N_minus_image": 376.25,
+      "preimage_multiplicity": 1.5,
+      "simon_max_xor_period_matches": 8.25
+     },
+     "z": {
+      "collisions_N_minus_image": 0.35,
+      "preimage_multiplicity": -1.56,
+      "simon_max_xor_period_matches": 1.08
+     },
+     "flagged": []
+    },
+    "RSD-S v5.1 core cru (8R, sem SHA)": {
+     "mean": {
+      "collisions_N_minus_image": 376.625,
+      "preimage_multiplicity": 1.75,
+      "simon_max_xor_period_matches": 7.75
+     },
+     "z": {
+      "collisions_N_minus_image": 0.46,
+      "preimage_multiplicity": -0.93,
+      "simon_max_xor_period_matches": -0.27
+     },
+     "flagged": []
+    },
+    "CONTROLE RSD-S 1R cru": {
+     "mean": {
+      "collisions_N_minus_image": 378.375,
+      "preimage_multiplicity": 2.25,
+      "simon_max_xor_period_matches": 8.5
+     },
+     "z": {
+      "collisions_N_minus_image": 0.96,
+      "preimage_multiplicity": 0.31,
+      "simon_max_xor_period_matches": 1.75
+     },
+     "flagged": []
+    },
+    "CONTROLE RSD-S 2R cru": {
+     "mean": {
+      "collisions_N_minus_image": 377.5,
+      "preimage_multiplicity": 1.75,
+      "simon_max_xor_period_matches": 7.75
+     },
+     "z": {
+      "collisions_N_minus_image": 0.71,
+      "preimage_multiplicity": -0.93,
+      "simon_max_xor_period_matches": -0.27
+     },
+     "flagged": []
+    },
+    "HMAC-SHA256": {
+     "mean": {
+      "collisions_N_minus_image": 374.25,
+      "preimage_multiplicity": 2.125,
+      "simon_max_xor_period_matches": 8.75
+     },
+     "z": {
+      "collisions_N_minus_image": -0.22,
+      "preimage_multiplicity": 0.0,
+      "simon_max_xor_period_matches": 2.42
+     },
+     "flagged": []
+    },
+    "HMAC-SHA3-256": {
+     "mean": {
+      "collisions_N_minus_image": 378.625,
+      "preimage_multiplicity": 1.5,
+      "simon_max_xor_period_matches": 8.25
+     },
+     "z": {
+      "collisions_N_minus_image": 1.03,
+      "preimage_multiplicity": -1.56,
+      "simon_max_xor_period_matches": 1.08
+     },
+     "flagged": []
+    },
+    "BLAKE2b (keyed)": {
+     "mean": {
+      "collisions_N_minus_image": 380.125,
+      "preimage_multiplicity": 1.625,
+      "simon_max_xor_period_matches": 7.75
+     },
+     "z": {
+      "collisions_N_minus_image": 1.47,
+      "preimage_multiplicity": -1.24,
+      "simon_max_xor_period_matches": -0.27
+     },
+     "flagged": []
+    },
+    "SHAKE256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 379.75,
+      "preimage_multiplicity": 2.0,
+      "simon_max_xor_period_matches": 8.5
+     },
+     "z": {
+      "collisions_N_minus_image": 1.36,
+      "preimage_multiplicity": -0.31,
+      "simon_max_xor_period_matches": 1.75
+     },
+     "flagged": []
+    },
+    "SHA3-256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 374.25,
+      "preimage_multiplicity": 2.125,
+      "simon_max_xor_period_matches": 8.0
+     },
+     "z": {
+      "collisions_N_minus_image": -0.22,
+      "preimage_multiplicity": 0.0,
+      "simon_max_xor_period_matches": 0.4
+     },
+     "flagged": []
+    },
+    "CONTROLE linear GF(2)": {
+     "mean": {
+      "collisions_N_minus_image": 384.0,
+      "preimage_multiplicity": 1.75,
+      "simon_max_xor_period_matches": 768.0
+     },
+     "z": {
+      "collisions_N_minus_image": 2.58,
+      "preimage_multiplicity": -0.93,
+      "simon_max_xor_period_matches": 2045.21
+     },
+     "flagged": [
+      "simon_max_xor_period_matches"
+     ]
+    }
+   }
+  },
+  "n=12": {
+   "RO_ensemble_mean": {
+    "collisions_N_minus_image": 1501.5,
+    "preimage_multiplicity": 2.15,
+    "simon_max_xor_period_matches": 9.4
+   },
+   "RO_ensemble_std": {
+    "collisions_N_minus_image": 19.239382686403548,
+    "preimage_multiplicity": 1.1446643220869164,
+    "simon_max_xor_period_matches": 1.2969391975161657
+   },
+   "primitives": {
+    "RSD-S v5.1 (8R + SHA-256)": {
+     "mean": {
+      "collisions_N_minus_image": 1516.0,
+      "preimage_multiplicity": 2.125,
+      "simon_max_xor_period_matches": 9.25
+     },
+     "z": {
+      "collisions_N_minus_image": 2.13,
+      "preimage_multiplicity": -0.06,
+      "simon_max_xor_period_matches": -0.33
+     },
+     "flagged": []
+    },
+    "RSD-S v5.1 core cru (8R, sem SHA)": {
+     "mean": {
+      "collisions_N_minus_image": 1510.5,
+      "preimage_multiplicity": 2.0,
+      "simon_max_xor_period_matches": 9.5
+     },
+     "z": {
+      "collisions_N_minus_image": 1.32,
+      "preimage_multiplicity": -0.37,
+      "simon_max_xor_period_matches": 0.22
+     },
+     "flagged": []
+    },
+    "CONTROLE RSD-S 1R cru": {
+     "mean": {
+      "collisions_N_minus_image": 1458.0,
+      "preimage_multiplicity": 1.5,
+      "simon_max_xor_period_matches": 9.0
+     },
+     "z": {
+      "collisions_N_minus_image": -6.4,
+      "preimage_multiplicity": -1.61,
+      "simon_max_xor_period_matches": -0.87
+     },
+     "flagged": [
+      "collisions_N_minus_image"
+     ]
+    },
+    "CONTROLE RSD-S 2R cru": {
+     "mean": {
+      "collisions_N_minus_image": 1508.5,
+      "preimage_multiplicity": 2.0,
+      "simon_max_xor_period_matches": 9.5
+     },
+     "z": {
+      "collisions_N_minus_image": 1.03,
+      "preimage_multiplicity": -0.37,
+      "simon_max_xor_period_matches": 0.22
+     },
+     "flagged": []
+    },
+    "HMAC-SHA256": {
+     "mean": {
+      "collisions_N_minus_image": 1502.75,
+      "preimage_multiplicity": 1.875,
+      "simon_max_xor_period_matches": 8.75
+     },
+     "z": {
+      "collisions_N_minus_image": 0.18,
+      "preimage_multiplicity": -0.68,
+      "simon_max_xor_period_matches": -1.42
+     },
+     "flagged": []
+    },
+    "HMAC-SHA3-256": {
+     "mean": {
+      "collisions_N_minus_image": 1520.75,
+      "preimage_multiplicity": 2.125,
+      "simon_max_xor_period_matches": 9.25
+     },
+     "z": {
+      "collisions_N_minus_image": 2.83,
+      "preimage_multiplicity": -0.06,
+      "simon_max_xor_period_matches": -0.33
+     },
+     "flagged": []
+    },
+    "BLAKE2b (keyed)": {
+     "mean": {
+      "collisions_N_minus_image": 1497.125,
+      "preimage_multiplicity": 1.5,
+      "simon_max_xor_period_matches": 9.5
+     },
+     "z": {
+      "collisions_N_minus_image": -0.64,
+      "preimage_multiplicity": -1.61,
+      "simon_max_xor_period_matches": 0.22
+     },
+     "flagged": []
+    },
+    "SHAKE256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 1514.0,
+      "preimage_multiplicity": 2.125,
+      "simon_max_xor_period_matches": 9.5
+     },
+     "z": {
+      "collisions_N_minus_image": 1.84,
+      "preimage_multiplicity": -0.06,
+      "simon_max_xor_period_matches": 0.22
+     },
+     "flagged": []
+    },
+    "SHA3-256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 1493.125,
+      "preimage_multiplicity": 1.75,
+      "simon_max_xor_period_matches": 9.75
+     },
+     "z": {
+      "collisions_N_minus_image": -1.23,
+      "preimage_multiplicity": -0.99,
+      "simon_max_xor_period_matches": 0.76
+     },
+     "flagged": []
+    },
+    "CONTROLE linear GF(2)": {
+     "mean": {
+      "collisions_N_minus_image": 1792.0,
+      "preimage_multiplicity": 2.25,
+      "simon_max_xor_period_matches": 3072.0
+     },
+     "z": {
+      "collisions_N_minus_image": 42.71,
+      "preimage_multiplicity": 0.25,
+      "simon_max_xor_period_matches": 6679.06
+     },
+     "flagged": [
+      "collisions_N_minus_image",
+      "simon_max_xor_period_matches"
+     ]
+    }
+   }
+  },
+  "n=14": {
+   "RO_ensemble_mean": {
+    "collisions_N_minus_image": 6040.6,
+    "preimage_multiplicity": 2.375
+   },
+   "RO_ensemble_std": {
+    "collisions_N_minus_image": 41.06392764758671,
+    "preimage_multiplicity": 1.314368328348919
+   },
+   "primitives": {
+    "RSD-S v5.1 (8R + SHA-256)": {
+     "mean": {
+      "collisions_N_minus_image": 6021.25,
+      "preimage_multiplicity": 2.0
+     },
+     "z": {
+      "collisions_N_minus_image": -1.33,
+      "preimage_multiplicity": -0.81
+     },
+     "flagged": []
+    },
+    "RSD-S v5.1 core cru (8R, sem SHA)": {
+     "mean": {
+      "collisions_N_minus_image": 6037.75,
+      "preimage_multiplicity": 1.875
+     },
+     "z": {
+      "collisions_N_minus_image": -0.2,
+      "preimage_multiplicity": -1.08
+     },
+     "flagged": []
+    },
+    "CONTROLE RSD-S 1R cru": {
+     "mean": {
+      "collisions_N_minus_image": 5185.375,
+      "preimage_multiplicity": 2.0
+     },
+     "z": {
+      "collisions_N_minus_image": -58.91,
+      "preimage_multiplicity": -0.81
+     },
+     "flagged": [
+      "collisions_N_minus_image"
+     ]
+    },
+    "CONTROLE RSD-S 2R cru": {
+     "mean": {
+      "collisions_N_minus_image": 6032.25,
+      "preimage_multiplicity": 1.875
+     },
+     "z": {
+      "collisions_N_minus_image": -0.58,
+      "preimage_multiplicity": -1.08
+     },
+     "flagged": []
+    },
+    "HMAC-SHA256": {
+     "mean": {
+      "collisions_N_minus_image": 6006.375,
+      "preimage_multiplicity": 2.125
+     },
+     "z": {
+      "collisions_N_minus_image": -2.36,
+      "preimage_multiplicity": -0.54
+     },
+     "flagged": []
+    },
+    "HMAC-SHA3-256": {
+     "mean": {
+      "collisions_N_minus_image": 6022.25,
+      "preimage_multiplicity": 1.5
+     },
+     "z": {
+      "collisions_N_minus_image": -1.26,
+      "preimage_multiplicity": -1.88
+     },
+     "flagged": []
+    },
+    "BLAKE2b (keyed)": {
+     "mean": {
+      "collisions_N_minus_image": 6038.125,
+      "preimage_multiplicity": 2.375
+     },
+     "z": {
+      "collisions_N_minus_image": -0.17,
+      "preimage_multiplicity": 0.0
+     },
+     "flagged": []
+    },
+    "SHAKE256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 6017.5,
+      "preimage_multiplicity": 2.0
+     },
+     "z": {
+      "collisions_N_minus_image": -1.59,
+      "preimage_multiplicity": -0.81
+     },
+     "flagged": []
+    },
+    "SHA3-256(k||m)": {
+     "mean": {
+      "collisions_N_minus_image": 6046.625,
+      "preimage_multiplicity": 1.375
+     },
+     "z": {
+      "collisions_N_minus_image": 0.41,
+      "preimage_multiplicity": -2.15
+     },
+     "flagged": []
+    },
+    "CONTROLE linear GF(2)": {
+     "mean": {
+      "collisions_N_minus_image": 5120.0,
+      "preimage_multiplicity": 1.625
+     },
+     "z": {
+      "collisions_N_minus_image": -63.41,
+      "preimage_multiplicity": -1.61
+     },
+     "flagged": [
+      "collisions_N_minus_image"
+     ]
+    }
+   }
+  }
+ },
+ "grover": {
+  "RSD-S v5.1 (8R + SHA-256)": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766196,
+    "max_dev_vs_theory": 6.328271240363392e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766201,
+    "max_dev_vs_theory": 5.440092820663267e-15
+   }
+  ],
+  "RSD-S v5.1 core cru (8R, sem SHA)": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 3,
+    "k_opt": 29,
+    "k_theory": 29,
+    "p_max": 0.9993172223082903,
+    "max_dev_vs_theory": 1.5543122344752192e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766201,
+    "max_dev_vs_theory": 5.440092820663267e-15
+   }
+  ],
+  "CONTROLE RSD-S 1R cru": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.881784197001252e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766198,
+    "max_dev_vs_theory": 6.5503158452884236e-15
+   }
+  ],
+  "CONTROLE RSD-S 2R cru": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 3,
+    "k_opt": 29,
+    "k_theory": 29,
+    "p_max": 0.9993172223082916,
+    "max_dev_vs_theory": 7.771561172376096e-16
+   },
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   }
+  ],
+  "HMAC-SHA256": [
+   {
+    "M": 3,
+    "k_opt": 29,
+    "k_theory": 29,
+    "p_max": 0.9993172223082883,
+    "max_dev_vs_theory": 4.218847493575595e-15
+   },
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 3,
+    "k_opt": 29,
+    "k_theory": 29,
+    "p_max": 0.9993172223082903,
+    "max_dev_vs_theory": 1.5543122344752192e-15
+   }
+  ],
+  "HMAC-SHA3-256": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.881784197001252e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766198,
+    "max_dev_vs_theory": 6.217248937900877e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766198,
+    "max_dev_vs_theory": 6.5503158452884236e-15
+   }
+  ],
+  "BLAKE2b (keyed)": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766198,
+    "max_dev_vs_theory": 5.995204332975845e-15
+   },
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   }
+  ],
+  "SHAKE256(k||m)": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.881784197001252e-15
+   },
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.881784197001252e-15
+   },
+   {
+    "M": 5,
+    "k_opt": 22,
+    "k_theory": 22,
+    "p_max": 0.9999969058595272,
+    "max_dev_vs_theory": 4.773959005888173e-15
+   }
+  ],
+  "SHA3-256(k||m)": [
+   {
+    "M": 1,
+    "k_opt": 50,
+    "k_theory": 50,
+    "p_max": 0.9999453461091229,
+    "max_dev_vs_theory": 8.992806499463768e-15
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766201,
+    "max_dev_vs_theory": 5.440092820663267e-15
+   },
+   {
+    "M": 4,
+    "k_opt": 25,
+    "k_theory": 25,
+    "p_max": 0.9994612447444077,
+    "max_dev_vs_theory": 3.3306690738754696e-16
+   }
+  ],
+  "CONTROLE linear GF(2)": [
+   {
+    "M": 4,
+    "k_opt": 25,
+    "k_theory": 25,
+    "p_max": 0.9994612447444075,
+    "max_dev_vs_theory": 6.661338147750939e-16
+   },
+   {
+    "M": 4,
+    "k_opt": 25,
+    "k_theory": 25,
+    "p_max": 0.9994612447444075,
+    "max_dev_vs_theory": 7.771561172376096e-16
+   },
+   {
+    "M": 2,
+    "k_opt": 35,
+    "k_theory": 35,
+    "p_max": 0.9999968477766198,
+    "max_dev_vs_theory": 5.995204332975845e-15
+   }
+  ]
+ },
+ "verdict": {
+  "RSD-S v5.1 (8R + SHA-256)": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "RSD-S v5.1 core cru (8R, sem SHA)": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "CONTROLE RSD-S 1R cru": {
+   "flagged_tests": [
+    "collisions_N_minus_image"
+   ],
+   "distinguished_from_RO": true
+  },
+  "CONTROLE RSD-S 2R cru": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "HMAC-SHA256": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "HMAC-SHA3-256": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "BLAKE2b (keyed)": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "SHAKE256(k||m)": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "SHA3-256(k||m)": {
+   "flagged_tests": [],
+   "distinguished_from_RO": false
+  },
+  "CONTROLE linear GF(2)": {
+   "flagged_tests": [
+    "collisions_N_minus_image",
+    "simon_max_xor_period_matches"
+   ],
+   "distinguished_from_RO": true
+  }
+ }
+}

@@ -1,0 +1,24 @@
+{
+  "gate_id": "GATE_M6_POST_QUANTUM_READINESS",
+  "benchmarks_microseconds_per_call": {
+    "rsd_s_v5_c99_8rounds": 26.194,
+    "sha256_64B": 0.472,
+    "shake256_512bit_64B": 0.813
+  },
+  "quantum_bounds": {
+    "key_bits": 256,
+    "grover_effective_bits": 128,
+    "output_256bit_bht_collision_bits": 85.3,
+    "output_512bit_bht_collision_bits": 128.0,
+    "shor_applicable": false,
+    "fft_periodicity_z_peak": 4.999,
+    "hidden_periodicity_detected": false
+  },
+  "scientific_honesty_notice": "Conforme especificacao/RESTRICOES_DE_PROJETO.md, passar nos gates laboratoriais nao constitui certificacao pos-quantica nem aprovacao para producao sem revisao independente por pares e prova formal no modelo QROM.",
+  "prior_notebook_verdicts": {
+    "v5_nist_sac_bic_results.json": true,
+    "v5_tvla_dfa_memory_results.json": true,
+    "v5_algebraic_bandlimited_results.json": true
+  },
+  "gate_passed": true
+}

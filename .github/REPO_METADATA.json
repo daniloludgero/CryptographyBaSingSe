@@ -1,0 +1,20 @@
+{
+  "repository": "daniloludgero/CryptographyBaSingSe",
+  "description": "Laboratório de criptoanálise para a RSD-S v5.2, primitiva simétrica experimental. Código-fonte disponível, vetores públicos, limites declarados. Protótipo de pesquisa, não auditado.",
+  "homepage": "",
+  "topics": [
+    "cryptography",
+    "cryptanalysis",
+    "finite-fields",
+    "mds-matrix",
+    "s-box",
+    "symmetric-cryptography",
+    "known-answer-tests",
+    "constant-time",
+    "avx2",
+    "python"
+  ],
+  "license": "PolyForm-Noncommercial-1.0.0",
+  "default_branch": "main",
+  "visibility_until_gate_G5": "private"
+}

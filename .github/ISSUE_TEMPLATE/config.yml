@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Relatar vulnerabilidade de forma privada
+    url: https://github.com/daniloludgero/CryptographyBaSingSe/security/advisories/new
+    about: Para falhas de implementação ou de cadeia de suprimentos. Leia o SECURITY.md antes.
+  - name: Licença comercial
+    url: https://github.com/daniloludgero/CryptographyBaSingSe/blob/main/COMMERCIAL.md
+    about: Uso em produto, serviço pago ou ambiente de empresa precisa de licença comercial.

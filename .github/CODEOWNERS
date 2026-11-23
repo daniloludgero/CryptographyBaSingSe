@@ -1,0 +1,15 @@
+# Dono padrão de tudo no repositório
+* @daniloludgero
+
+# Núcleo criptográfico, especificações, vetores, licença e segurança exigem aprovação do dono
+/especificacao/ @daniloludgero
+/implementacao/ @daniloludgero
+/testes/vetores_v4.json @daniloludgero
+/testes/vetores_v52.json @daniloludgero
+/LICENSE @daniloludgero
+/NOTICE @daniloludgero
+/COMMERCIAL.md @daniloludgero
+/CLA.md @daniloludgero
+/SECURITY.md @daniloludgero
+/GOVERNANCE.md @daniloludgero
+/.github/ @daniloludgero

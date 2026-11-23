@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+permissions:
+  contents: write
+
+jobs:
+  verificar-e-publicar:
+    name: Verificar vetores e publicar release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+
+      - name: Python 3.12
+        uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Dependências
+        run: |
+          python -m pip install --upgrade pip build
+          pip install -r requirements.txt
+
+      - name: Portão pré-release (higiene, vetores e testes)
+        run: |
+          python ferramentas/verificar_higiene.py
+          python ferramentas/rsd_cli.py kat
+          python ferramentas/rsd_cli.py kat52
+          python -m unittest \
+            testes/test_rsd_s_v4.py \
+            testes/test_cli_and_repo.py \
+            testes/test_higiene.py \
+            testes/test_matriz_b.py \
+            testes/test_rsd_s_v5_and_bandlimited.py \
+            testes/test_lote_b_cryptanalysis.py \
+            testes/test_milestone1_cryptographic_evaluation.py \
+            testes/test_milestone3_threat_model_bounds.py \
+            testes/test_v52_high_fixes.py \
+            testes/test_v52_medium_fixes.py \
+            testes/test_vetores_v52.py -v
+
+      - name: Pacotes Python e somas de verificação
+        run: |
+          python -m build
+          sha256sum dist/* testes/vetores_v4.json testes/vetores_v52.json > dist/SHA256SUMS.txt
+
+      - name: Publicar release
+        uses: softprops/action-gh-release@3bb12739c298aeb8a4eeaf626c5b8d85266b0e65 # v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/*
+            testes/vetores_v4.json
+            testes/vetores_v52.json
+            docs/historia/RELATORIO_FINAL.md

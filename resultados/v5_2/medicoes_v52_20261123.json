@@ -1,0 +1,230 @@
+{
+  "identificacao": {
+    "repositorio_mae_commit": "97b0975fffc6084aebb75baaf23c7be29924f2d3",
+    "sha256": {
+      "rsd_s_v5_ct_c": "ebcae8d327b7d5dc0d81aa1d743eab14337a1c6b8bbd1f2c8052b8a2bfa2b96c",
+      "rsd_s_v5_hardened_py": "3ac6fb1eaf5332328aa5563b430c2457f25c4d3b74067bd4a0a281f708301b96",
+      "bandlimited_dual_key_py": "99aa6d5703f1a3a29ccdef08c320fac733147ae9c582ccb39cb3e542a394c3bd",
+      "vetores_v52_json": "fcd0ef8bf9e62e21431bf30c32ead5373b52cafd2729501733f6ab8dc43a179d"
+    }
+  },
+  "ambiente": {
+    "data": "2026-11-23",
+    "cpu": "Intel(R) Xeon(R) Processor @ 2.10GHz (VM KVM, 4 vCPU, AVX2/AVX-512/SHA-NI)",
+    "tsc_ghz": 2.1,
+    "gcc": "13.3.0",
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "kernel": "Linux 6.18",
+    "cpu_fixada": true,
+    "observacao": "VM compartilhada; sem controle de frequência nem de vizinhos"
+  },
+  "latencia_nucleo_c": {
+    "O3_avx2|8R": {
+      "passadas_us_mediana": [
+        29.677,
+        29.5547
+      ],
+      "us_mediana": 29.62,
+      "us_min": 29.0329,
+      "ciclos_por_byte": 971.8,
+      "mib_s": 2.061
+    },
+    "O3_avx2|4R": {
+      "passadas_us_mediana": [
+        14.7634,
+        14.6838
+      ],
+      "us_mediana": 14.72,
+      "us_min": 14.6016,
+      "ciclos_por_byte": 483.1,
+      "mib_s": 4.145
+    },
+    "O2_escalar|8R": {
+      "passadas_us_mediana": [
+        355.6726,
+        354.2967
+      ],
+      "us_mediana": 354.98,
+      "us_min": 348.7712,
+      "ciclos_por_byte": 11647.9,
+      "mib_s": 0.172
+    },
+    "O2_escalar|4R": {
+      "passadas_us_mediana": [
+        176.1427,
+        178.2184
+      ],
+      "us_mediana": 177.18,
+      "us_min": 174.0212,
+      "ciclos_por_byte": 5813.7,
+      "mib_s": 0.345
+    },
+    "ABLACAO_O3_avx2_so_fluxo_A|8R": {
+      "passadas_us_mediana": [
+        14.7875,
+        15.5557
+      ],
+      "us_mediana": 15.17,
+      "us_min": 14.6635,
+      "ciclos_por_byte": 497.8,
+      "mib_s": 4.026
+    },
+    "ABLACAO_O3_avx2_so_fluxo_A|4R": {
+      "passadas_us_mediana": [
+        8.5992,
+        7.5671
+      ],
+      "us_mediana": 8.08,
+      "us_min": 7.3824,
+      "ciclos_por_byte": 265.2,
+      "mib_s": 7.582
+    },
+    "O0|8R": {
+      "passadas_us_mediana": [
+        1793.542,
+        1861.7139
+      ],
+      "us_mediana": 1827.63,
+      "us_min": 1754.3184,
+      "ciclos_por_byte": 59969.1,
+      "mib_s": 0.033
+    }
+  },
+  "custo_anti_dfa_8r": {
+    "dois_fluxos_us": 29.62,
+    "so_fluxo_A_ablacao_us": 15.17,
+    "razao": 1.95
+  },
+  "latencia_python_ms": {
+    "python": "3.13.18",
+    "numpy": "2.5.3",
+    "init_engine_ms": 4.8,
+    "pre_sha_8r": {
+      "ms_mediana": 82.652,
+      "ms_min": 75.744,
+      "ms_max": 112.781
+    },
+    "api_32B_8r": {
+      "ms_mediana": 77.66,
+      "ms_min": 76.981,
+      "ms_max": 81.628
+    },
+    "api_64B_8r": {
+      "ms_mediana": 76.359,
+      "ms_min": 75.503,
+      "ms_max": 77.957
+    },
+    "dual_key_refactor_8r": {
+      "ms_mediana": 79.934,
+      "ms_min": 76.269,
+      "ms_max": 109.967
+    },
+    "derive_keys_8r_us": 25.0
+  },
+  "paridade_e_falhas": {
+    "O3_avx2": {
+      "paridade": "126/126",
+      "falhas_detectadas_zeram_saida": "24/24"
+    },
+    "O2_escalar": {
+      "paridade": "126/126",
+      "falhas_detectadas_zeram_saida": "24/24"
+    },
+    "O0": {
+      "paridade": "126/126",
+      "falhas_detectadas_zeram_saida": "24/24"
+    }
+  },
+  "tvla_100000_pares_por_grupo_6_execucoes": {
+    "fixo_vs_aleatorio": {
+      "t_assinado_bruto": [
+        -1.24,
+        0.01,
+        -0.13,
+        2.24,
+        -0.13,
+        -1.7
+      ],
+      "max_abs_t_bruto": 2.24,
+      "max_abs_t_recorte_1pct": 1.61
+    },
+    "zeros_vs_uns": {
+      "t_assinado_bruto": [
+        -0.15,
+        -0.2,
+        0.06,
+        1.07,
+        0.94,
+        -0.15
+      ],
+      "max_abs_t_bruto": 1.07,
+      "max_abs_t_recorte_1pct": 1.92
+    },
+    "controle_aleatorio_vs_aleatorio": {
+      "t_assinado_bruto": [
+        0.9,
+        -2.05,
+        2.18,
+        -1.77,
+        -0.13,
+        -0.74
+      ],
+      "max_abs_t_bruto": 2.18,
+      "max_abs_t_recorte_1pct": 1.85
+    }
+  },
+  "ataque_square_3r": {
+    "rounds": 3,
+    "textos_claros_escolhidos": 131072,
+    "palavras_recuperadas_exatamente": "32/32",
+    "bits_recuperados": 512,
+    "candidatos_por_palavra_set1_set2_inter": [
+      [
+        1,
+        1,
+        1
+      ],
+      [
+        1,
+        4,
+        1
+      ],
+      [
+        2,
+        2,
+        1
+      ],
+      [
+        3,
+        1,
+        1
+      ],
+      [
+        2,
+        2,
+        1
+      ],
+      [
+        2,
+        3,
+        1
+      ]
+    ],
+    "tempo_consultas_s": 6.2,
+    "tempo_analise_s": 2.9,
+    "tempo_tabela_sbox_s": 5.2,
+    "tempo_total_s": 9.1
+  },
+  "comparativo_linear_generico_N524288": [
+    "RSD-S v5.2 1R (generico)           max_z= 2.804  detectado= False",
+    "AES-128 1R (generico)              max_z= 68.418  detectado= True",
+    "AES-256 1R (generico)              max_z= 68.418  detectado= True",
+    "RSD-S v5.2 2R (generico)           max_z= 2.815  detectado= False",
+    "AES-128 2R (generico)              max_z= 2.174  detectado= False",
+    "AES-256 2R (generico)              max_z= 1.909  detectado= False",
+    "RSD-S v5.2 3R (generico)           max_z= 2.605  detectado= False",
+    "AES-128 3R (generico)              max_z= 2.834  detectado= False",
+    "AES-256 3R (generico)              max_z= 2.248  detectado= False"
+  ]
+}

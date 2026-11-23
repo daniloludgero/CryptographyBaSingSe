@@ -1,0 +1,323 @@
+{
+  "timestamp": "2026-11-07T05:22:25.694779+00:00",
+  "rounds": 4,
+  "bitstream_length": 1000000,
+  "modes": {
+    "pre_sha": {
+      "generation_time_s": 5.748277902603149,
+      "suite_time_s": 4.434252023696899,
+      "pass_count": 9,
+      "total_tests": 10,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 0.902,
+          "p_value": 0.367056867734941,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "S_n": 902,
+            "n": 1000000,
+            "proportion_ones": 0.500451
+          }
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 7790.3125,
+          "p_value": 0.5668387930109648,
+          "degrees_of_freedom": 7812,
+          "passed": true,
+          "details": {
+            "M": 128,
+            "N_blocks": 7812,
+            "chi2": 7790.3125
+          }
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 499721.0,
+          "p_value": 0.5773997737614305,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "V_n": 499721,
+            "pi": 0.500451
+          }
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 4.077462948574073,
+          "p_value": 0.5383180025530259,
+          "degrees_of_freedom": 5,
+          "passed": true,
+          "details": {
+            "bins": [
+              908,
+              1910,
+              1937,
+              1342,
+              852,
+              863
+            ],
+            "expected": [
+              917.1288000000001,
+              1898.316,
+              1947.5316,
+              1368.6624,
+              802.2924,
+              878.0688
+            ],
+            "chi2": 4.077462948574073
+          }
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 0.022657808673103706,
+          "p_value": 0.988735026052016,
+          "degrees_of_freedom": 2,
+          "passed": true,
+          "details": {
+            "n_matrices": 976,
+            "F_32": 280,
+            "F_31": 566,
+            "F_rem": 130,
+            "chi2": 0.022657808673103706
+          }
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": 1.6701465425776898,
+          "p_value": 0.09489037356649112,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "N0": 475000.0,
+            "N1": 475182.0,
+            "d": 1.6701465425776898,
+            "threshold": 1730.8183826022853
+          }
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 953.8525252525296,
+          "p_value": 0.6879360576921254,
+          "degrees_of_freedom": 976,
+          "passed": true,
+          "details": {
+            "template": "000000001",
+            "N_blocks": 976,
+            "mu": 1.984375,
+            "chi2": 953.8525252525296
+          }
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 37.17216592646899,
+          "p_value": 0.0019831356656108425,
+          "degrees_of_freedom": 16,
+          "passed": false,
+          "details": {
+            "m": 5,
+            "ApEn": 0.693128594476982,
+            "chi2": 37.17216592646899
+          }
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 1240.0,
+          "p_value": 0.42955234387170704,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "z_forward": 1193,
+            "p_forward": 0.4650489280547347,
+            "z_backward": 1240,
+            "p_backward": 0.42955234387170704
+          }
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 1.6538799999980256,
+          "p_value": 0.7684821064648781,
+          "degrees_of_freedom": 4,
+          "passed": true,
+          "details": {
+            "m": 3,
+            "nabla_psi": 1.6538799999980256,
+            "p_value_1": 0.7990773224521428,
+            "nabla2_psi": 0.5266759999794886,
+            "p_value_2": 0.7684821064648781
+          }
+        }
+      ]
+    },
+    "post_sha": {
+      "generation_time_s": 1.8673324584960938,
+      "suite_time_s": 4.267264127731323,
+      "pass_count": 10,
+      "total_tests": 10,
+      "tests": [
+        {
+          "test_id": 1,
+          "name": "Frequency (Monobit)",
+          "statistic": 1.286,
+          "p_value": 0.1984430616791036,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "S_n": 1286,
+            "n": 1000000,
+            "proportion_ones": 0.500643
+          }
+        },
+        {
+          "test_id": 2,
+          "name": "Block Frequency",
+          "statistic": 7937.9375,
+          "p_value": 0.15684851646283446,
+          "degrees_of_freedom": 7812,
+          "passed": true,
+          "details": {
+            "M": 128,
+            "N_blocks": 7812,
+            "chi2": 7937.9375
+          }
+        },
+        {
+          "test_id": 3,
+          "name": "Runs",
+          "statistic": 500310.0,
+          "p_value": 0.5341688630467696,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "V_n": 500310,
+            "pi": 0.500643
+          }
+        },
+        {
+          "test_id": 4,
+          "name": "Longest Run of Ones",
+          "statistic": 3.704362384571652,
+          "p_value": 0.592714907829071,
+          "degrees_of_freedom": 5,
+          "passed": true,
+          "details": {
+            "bins": [
+              927,
+              1836,
+              1972,
+              1387,
+              787,
+              903
+            ],
+            "expected": [
+              917.1288000000001,
+              1898.316,
+              1947.5316,
+              1368.6624,
+              802.2924,
+              878.0688
+            ],
+            "chi2": 3.704362384571652
+          }
+        },
+        {
+          "test_id": 5,
+          "name": "Binary Matrix Rank",
+          "statistic": 1.6234471647504713,
+          "p_value": 0.4440919770990278,
+          "degrees_of_freedom": 2,
+          "passed": true,
+          "details": {
+            "n_matrices": 976,
+            "F_32": 287,
+            "F_31": 547,
+            "F_rem": 142,
+            "chi2": 1.6234471647504713
+          }
+        },
+        {
+          "test_id": 6,
+          "name": "Spectral (DFT)",
+          "statistic": -0.39459506225736624,
+          "p_value": 0.6931417581917918,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "N0": 475000.0,
+            "N1": 474957.0,
+            "d": -0.39459506225736624,
+            "threshold": 1730.8183826022853
+          }
+        },
+        {
+          "test_id": 7,
+          "name": "Non-overlapping Template",
+          "statistic": 1037.9898989899043,
+          "p_value": 0.08235006316257837,
+          "degrees_of_freedom": 976,
+          "passed": true,
+          "details": {
+            "template": "000000001",
+            "N_blocks": 976,
+            "mu": 1.984375,
+            "chi2": 1037.9898989899043
+          }
+        },
+        {
+          "test_id": 8,
+          "name": "Approximate Entropy",
+          "statistic": 24.144529159775274,
+          "p_value": 0.08639500262164061,
+          "degrees_of_freedom": 16,
+          "passed": true,
+          "details": {
+            "m": 5,
+            "ApEn": 0.6931351082953654,
+            "chi2": 24.144529159775274
+          }
+        },
+        {
+          "test_id": 9,
+          "name": "Cumulative Sums",
+          "statistic": 1861.0,
+          "p_value": 0.1254883061065124,
+          "degrees_of_freedom": null,
+          "passed": true,
+          "details": {
+            "z_forward": 1366,
+            "p_forward": 0.34379457974079747,
+            "z_backward": 1861,
+            "p_backward": 0.1254883061065124
+          }
+        },
+        {
+          "test_id": 10,
+          "name": "Serial Test",
+          "statistic": 3.9798479999881238,
+          "p_value": 0.3787700448073481,
+          "degrees_of_freedom": 4,
+          "passed": true,
+          "details": {
+            "m": 3,
+            "nabla_psi": 3.9798479999881238,
+            "p_value_1": 0.4087399962907047,
+            "nabla2_psi": 1.941651999950409,
+            "p_value_2": 0.3787700448073481
+          }
+        }
+      ]
+    }
+  }
+}
