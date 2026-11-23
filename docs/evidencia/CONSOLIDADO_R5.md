@@ -1,6 +1,6 @@
 # Relatório Final Consolidado — Rodada R5 (`RSD-S v5.1` & `Dupla-Chave SIV`)
 
-> **Nota de versão.** Relatório do marco R5, sobre a **v5.1**. Os achados de severidade Alta e Média que ele lista foram corrigidos na v5.2 (ver [`GARANTIAS_E_LIMITES.md`](GARANTIAS_E_LIMITES.md)). Onde o texto diz "aprovado", leia: aprovado nos testes **internos** do projeto. Não houve revisão independente externa.
+> **Nota de versão.** Relatório do marco R5, sobre a **v5.1**. Os achados de severidade Alta e Média que ele lista foram corrigidos na v5.2 (ver [`GARANTIAS_E_LIMITES.md`](GARANTIAS_E_LIMITES.md)). Onde o texto diz "aprovado", leia: aprovado nos testes **internos** do projeto. Não houve revisão independente externa. Os números de desempenho e de tempo constante deste relatório são da v5.1; os da v5.2 estão em [`MEDICOES_V5_2.md`](MEDICOES_V5_2.md).
 
 
 > [!CAUTION]

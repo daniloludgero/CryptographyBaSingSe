@@ -96,7 +96,7 @@ static inline __m256i rotl16_avx2(__m256i x, int k) {
     return _mm256_or_si256(_mm256_slli_epi16(x, k), _mm256_srli_epi16(x, 16 - k));
 }
 
-/* Avalia 16 S-boxes v5.1 em paralelo via AVX2 (Itoh-Tsujii + A_16 + 0x63A9). */
+/* Avalia 16 S-boxes v5 em paralelo via AVX2 (Itoh-Tsujii + A_16 + 0x63A9). */
 static inline __m256i sbox_v5_avx2(__m256i x) {
     __m256i a2  = gf16_mul_avx2(gf16_sq_avx2(x), x);
     __m256i a3  = gf16_mul_avx2(gf16_sq_avx2(a2), x);

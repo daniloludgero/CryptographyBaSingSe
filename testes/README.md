@@ -92,6 +92,16 @@ reduzidas nem truncadas silenciosamente.
 
 Os módulos `test_r3_*`, `test_r4_*` e `test_r5_*` reproduzem as campanhas de criptoanálise e levam vários minutos (a R5 leva cerca de 8). Eles exigem `scipy` (`pip install scipy`) e `gcc`, e gravam relatórios em `resultados/`. Rode-os com `python3 -m pytest testes/test_r5_m1_hardened_margin.py` (e semelhantes).
 
+## Medições da v5.2
+
+A latência, o TVLA, a paridade C99 × Python, o ataque Square de 3 rodadas e o comparativo linear com o AES têm roteiro próprio, que reproduz todas as medições da v5.2 em cerca de 5 minutos:
+
+```bash
+ferramentas/medicao_v52/executar_medicao.sh 2 resultados/v5_2/minha_medicao
+```
+
+Método, ambiente e limites: [`docs/evidencia/MEDICOES_V5_2.md`](../docs/evidencia/MEDICOES_V5_2.md).
+
 ## Fórmulas CNF grandes
 
 Os arquivos `*.cnf` com mais de 1 MB não ficam na árvore do repositório. Eles são publicados como *asset* de cada release, com soma SHA-256 (veja `ferramentas/LEIAME_CNF.md`). Os geradores em `implementacao/` os recriam: `rsd_round_cnf.py`, `rsd_differential_cnf.py`, `analise_duas_rodadas.py` e `mds_xor_synthesis.py`.

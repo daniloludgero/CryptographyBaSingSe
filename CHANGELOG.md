@@ -14,6 +14,16 @@ Todas as mudanças relevantes do **BaSingSe (RSD-S)** ficam neste arquivo. O for
 - `ferramentas/verificar_higiene.py` e `testes/test_higiene.py`: detecção de segredos e arquivos sensíveis, executada na CI e no portão de release.
 - Documentos de evidência em [`docs/evidencia/`](docs/evidencia/): objetivo e modelo de ameaça, garantias e limites, cobertura de criptoanálise e [desafio público](docs/DESAFIO.md).
 
+- **Medições da v5.2** em [`docs/evidencia/MEDICOES_V5_2.md`](docs/evidencia/MEDICOES_V5_2.md): latência do núcleo C99, custo do Anti-DFA, TVLA com controle, paridade C99 × Python, ataque Square de 3 rodadas reproduzido e comparativo com o AES. Dados brutos em [`resultados/v5_2/`](resultados/v5_2/) e ferramenta reproduzível em [`ferramentas/medicao_v52/`](ferramentas/medicao_v52/).
+- `testes/test_matriz_b.py`: confere `det(B) mod 65537 = 31974`.
+
+### Corrigido
+- **Desempenho:** o README citava 16,26 µs por chamada (v5.1, outra CPU). Na v5.2 o núcleo leva **29,6 µs**, porque o Anti-DFA agora cobre todas as rodadas (custo de 1,95×).
+- **Comparativo linear com o AES:** o relatório R5 comparava a RSD-S com N = 524 288 contra o AES com N = 16 384. Com máscaras genéricas e o mesmo N, a RSD-S é detectada em 0R e o AES em 1R; com máscaras estruturais da MDS, a RSD-S é detectada em 1R.
+- **Tempo constante:** o \|t\| de 0,32 era da v5.1; na v5.2 o máximo foi 2,30 em 12 execuções (controle 2,18).
+- **Quebra de 3 rodadas:** reproduzida na v5.2 em cerca de 10 s (o relatório da v5.1 dizia 296 s).
+- Comentários do cabeçalho de `rsd_s_v5_ct.c` (versão, 6 multiplicações, Anti-DFA em `R1..R`). O código de máquina gerado não mudou.
+
 ### Alterado
 - `ESPECIFICACAO_V5_AAA.md` passou a [`ESPECIFICACAO_V5_2.md`](especificacao/ESPECIFICACAO_V5_2.md), com correções: 6 multiplicações (e não 5) na inversão de Itoh–Tsujii; descrição do Anti-DFA por dois fluxos A/B em `R1..R`; *folding* por SHAKE-256; definição completa da permutação e da saída; limite de reprodutibilidade do `float64` na matriz `B`; seção quântica sem alegação de prontidão.
 - O rascunho QROM passou a [`REDUCAO_QROM_RASCUNHO_V5_1.md`](especificacao/REDUCAO_QROM_RASCUNHO_V5_1.md), com aviso das divergências em relação à v5.2 e correção do mínimo de S-boxes ativas em 4 rodadas (66, e não 132).
