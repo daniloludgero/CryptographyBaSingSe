@@ -2,11 +2,8 @@
 
 Site estático com a página inicial e o **laboratório** da RSD-S v5.2, em português e inglês. O laboratório executa o motor no navegador do visitante: tudo o que aparece é calculado, e cada valor é conferido bit a bit contra o Python e o núcleo C do repositório.
 
-**Endereço (depois de ativar o Pages):** <https://daniloludgero.github.io/CryptographyBaSingSe/>
+**Endereço:** <https://daniloludgero.github.io/CryptographyBaSingSe/>
 
-## Ativar a publicação (uma vez, pelo dono)
-
-*Settings → Pages → Build and deployment → Source: **GitHub Actions***. Depois, rode o workflow **Pages** (aba *Actions*, *Run workflow*) ou faça um commit em `main`. O workflow roda os testes do motor e só publica se a paridade com o Python passar.
 
 ## Estrutura
 
